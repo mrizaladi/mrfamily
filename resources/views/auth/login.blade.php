@@ -1,9 +1,8 @@
 @extends('layouts.guest')
 
 @section('content')
-    <form class="card card-md" action="{{ route('login') }}" method="post" autocomplete="off">
+    <form action="{{ route('login') }}" method="post" autocomplete="off">
         @csrf
-
         <div class="card-body">
             <h2 class="card-title text-center mb-4">{{ __('Login to your account') }}</h2>
 
