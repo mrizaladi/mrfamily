@@ -15,7 +15,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item @if(request()->routeIs('users.index')) active @endif">
+                    {{-- <li class="nav-item @if(request()->routeIs('users.index')) active @endif">
                         <a class="nav-link" href="{{ route('users.index') }}" >
                             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/file-text -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -30,7 +30,7 @@
                                 {{ __('Users') }}
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item @if(request()->routeIs('tps')) active @endif">
                         <a class="nav-link" href="{{ route('tps') }}">
@@ -47,7 +47,45 @@
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart-handshake" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
+                                    <path d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25"></path>
+                                    <path d="M12.5 15.5l2 2"></path>
+                                    <path d="M15 13l2 2"></path>
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                {{ __('Simpatisan') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-analytics" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                    <path d="M9 17l0 -5"></path>
+                                    <path d="M12 17l0 -1"></path>
+                                    <path d="M15 17l0 -3"></path>
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                {{ __('Laporan') }}
+                            </span>
+                        </a>
+                    </li>
+
+                    
+
+
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
                             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list-details" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -88,7 +126,7 @@
                                 Submenu Item #3
                             </a>
                         </div>
-                    </li>
+                    </li> --}}
 
                 </ul>
             </div>

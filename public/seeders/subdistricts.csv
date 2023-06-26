@@ -1,0 +1,722 @@
+id,name,district_id
+1,Blorok,1
+2,Brangsong,1
+3,Kebon Adem,1
+4,Kertomulyo,1
+5,Penjalin,1
+6,Purwokerto,1
+7,Rejosari,1
+8,Sidorejo,1
+9,Sumur,1
+10,Tosari,1
+11,Tunggulsari,1
+12,Turunrejo,1
+13,Banjarejo,2
+14,Bebengan,2
+15,Blimbing,2
+16,Boja,2
+17,Campurejo,2
+18,Kaligading,2
+19,Karangmanggis,2
+20,Kliris,2
+21,Leban,2
+22,Medono,2
+23,Metesih,2
+24,Ngabean,2
+25,Pasigitan,2
+26,Puguh,2
+27,Purwogondo,2
+28,Salamsari,2
+29,Tampingan,2
+30,Trisobo,2
+31,Botomulyo,3
+32,Cepiring,3
+33,Damarsari,3
+34,Gondang,3
+35,Juwiring,3
+36,Kaliayu,3
+37,Kalirandu Gede,3
+38,Karangayu,3
+39,Karangsuno,3
+40,Korowelang Anyar,3
+41,Korowelang Kulon,3
+42,Margorejo,3
+43,Pandes,3
+44,Podosari,3
+45,Sidomulyo,3
+46,Cepokomulyo,4
+47,Galih,4
+48,Gebang,4
+49,Gemuhblanten,4
+50,Jenarsari,4
+51,Johorejo,4
+52,Krompaan,4
+53,Lumansari,4
+54,Pamriyan,4
+55,Poncorejo,4
+56,Pucangrejo,4
+57,Sedayu,4
+58,Sojomerto,4
+59,Tamangede,4
+60,Tlahab,4
+61,Triharjo,4
+62,Karangtengah,5
+63,Krajan Kulon,5
+64,Kumpul Rejo,5
+65,Kutoharjo,5
+66,Mororejo,5
+67,Nolokerto,5
+68,Sarirejo,5
+69,Sumberejo,5
+70,Wonorejo,5
+71,Darupono,6
+72,Jeruk Giling,6
+73,Kedungsuren,6
+74,Magelung,6
+75,Plantaran,6
+76,Protomulyo,6
+77,Sidomakmur,6
+78,Sukomulyo,6
+79,Gebanganom Wetan,7
+80,Jungsemi,7
+81,Kadilangu,7
+82,Kalirejo,7
+83,Kaliyoso,7
+84,Kangkung,7
+85,Karangmalang Wetan,7
+86,Laban,7
+87,Lebosari,7
+88,Rejosari,7
+89,Sendangdawung,7
+90,Sendangkulon,7
+91,Sukodadi,7
+92,Tanjungmojo,7
+93,Truko,7
+94,Balok,8
+95,Bandengan,8
+96,Banyutowo,8
+97,Bugangin,8
+98,Candiroto,8
+99,Jetis,8
+100,Jotang,8
+101,Kalibuntu Wetan,8
+102,Karang Sari,8
+103,Kebondalem,8
+104,Ketapang,8
+105,Langenharjo,8
+106,Ngilir,8
+107,Pakauman,8
+108,Patukangan,8
+109,Pegulon,8
+110,Sijeruk,8
+111,Sukodono,8
+112,Trompo,8
+113,Tunggulrejo,8
+114,Gondang,9
+115,Gonoharjo,9
+116,Jawisari,9
+117,Kedungboto,9
+118,Limbangan,9
+119,Margosari,9
+120,Ngesrepbalong,9
+121,Pagertoyo,9
+122,Pagerwojo,9
+123,Pakis,9
+124,Peron,9
+125,Sriwulan,9
+126,Sumberrahayu,9
+127,Tabet,9
+128,Tamanrejo,9
+129,Tambahsari,9
+130,Banyuurip,10
+131,Bojonggede,10
+132,Dempelrejo,10
+133,Jatirejo,10
+134,Kebonagung,10
+135,Ngampel Kulon,10
+136,Ngampel Wetan,10
+137,Putatgede,10
+138,Rejosari,10
+139,Sudipayung,10
+140,Sumbersari,10
+141,Winong,10
+142,Bendosari,11
+143,Blumah,11
+144,Jati,11
+145,Jurangagung,11
+146,Karanganyar,11
+147,Kediten,11
+148,Manggungmangu,11
+149,Mojoagung,11
+150,Tirtomulyo,11
+151,Tlogopayung,11
+152,Wadas,11
+153,Wonodadi,11
+154,Bangunsari,12
+155,Gebangan,12
+156,Getas Blawong,12
+157,Gondoharum,12
+158,Kebongembong,12
+159,Krikil,12
+160,Pagergunung,12
+161,Pageruyung,12
+162,Parakan Sebaran,12
+163,Petung,12
+164,Pucakwangi,12
+165,Surokonto Kulon,12
+166,Surokonto Wetan,12
+167,Tambahrejo,12
+168,Curugsewu,13
+169,Gedong,13
+170,Kalibareng,13
+171,Kalices,13
+172,Kalilumpang,13
+173,Mlatiharjo,13
+174,Pagersari,13
+175,Pakisan,13
+176,Plososari,13
+177,Selo,13
+178,Sidodadi,13
+179,Sidokumpul,13
+180,Sukomangli,13
+181,Wirosari,13
+182,Bangunrejo,14
+183,Bangunsari,14
+184,Bulugede,14
+185,Donosari,14
+186,Jambearum,14
+187,Kartikajaya,14
+188,Kebonharjo,14
+189,Kumpulrejo,14
+190,Lanji,14
+191,Magersari,14
+192,Margosari,14
+193,Pidodo Kulon,14
+194,Pidodo Wetan,14
+195,Purwokerto,14
+196,Purwosari,14
+197,Sukolilan,14
+198,Tambakrejo,14
+199,Wonosari,14
+200,Dawungsari,15
+201,Gubugsari,15
+202,Karangmulyo,15
+203,Margomulyo,15
+204,Pegandon,15
+205,Pekuncen,15
+206,Penanggulan,15
+207,Pesawahan,15
+208,Pucang Rejo,15
+209,Puguh,15
+210,Tegorejo,15
+211,Wonosari,15
+212,Caruban,16
+213,Kedungasri,16
+214,Kedunggading,16
+215,Mojo,16
+216,Ngawensari,16
+217,Ngerjo,16
+218,Pagerdawung,16
+219,Purworejo,16
+220,Ringinarum,16
+221,Rowobranten,16
+222,Tejorejo,16
+223,Wungurejo,16
+224,Bulak,17
+225,Gebanganom,17
+226,Gempolsewu,17
+227,Jatipurwo,17
+228,Karangsari,17
+229,Kebonsari,17
+230,Parakan,17
+231,Pojoksari,17
+232,Randusari,17
+233,Rowosari,17
+234,Sendang Sikucing,17
+235,Sendangdawuhan,17
+236,Tambaksari,17
+237,Tanjunganom,17
+238,Tanjungsari,17
+239,Wonotenggang,17
+240,Banyuringin,18
+241,Cacaban,18
+242,Cening,18
+243,Getas,18
+244,Kaliputih,18
+245,Kalirejo,18
+246,Kedungsari,18
+247,Kertosari,18
+248,Merbuh,18
+249,Ngareanak,18
+250,Singorojo,18
+251,Sukodadi,18
+252,Trayu,18
+253,Bringinsari,19
+254,Damarjati,19
+255,Genting Gunung,19
+256,Harjodowo,19
+257,Kalibogor,19
+258,Kalipakis,19
+259,Kebumen,19
+260,Mulyosari,19
+261,Ngadiwarno,19
+262,Ngargosari,19
+263,Peron,19
+264,Pesaren,19
+265,Purwo Sari,19
+266,Selokaton,19
+267,Sukorejo,19
+268,Taman Rejo,19
+269,Tamping Winarno,19
+270,Trimulyo,19
+271,Bumiayu,20
+272,Karanganom,20
+273,Karangdowo,20
+274,Manggungsari,20
+275,Montongsari,20
+276,Nawangsari,20
+277,Ngasinan,20
+278,Payung,20
+279,Penaruban,20
+280,Penyangkringan,20
+281,Pucuksari,20
+282,Sambongsari,20
+283,Sidomukti,20
+284,Sumberagung,20
+285,Tratemulyo,20
+286,Weleri,20
+287,Jetak,21
+288,Manggihan,21
+289,Ngrawan,21
+290,Polobogo,21
+291,Tajuk,21
+292,Tolokan,21
+293,Wates,21
+294,Samirono,21
+295,Kopeng,21
+296,Sumogawe,21
+297,Batur,21
+298,Getasan,21
+299,Nogosaren,21
+300,Barukan,22
+301,Bener,22
+302,Butuh,22
+303,Cukil,22
+304,Duren,22
+305,Karangduren,22
+306,Klero,22
+307,Nyamat,22
+308,Patemon,22
+309,Regunung,22
+310,Sruwen,22
+311,Sugihan,22
+312,Tegalrejo,22
+313,Tegalwaton,22
+314,Tengaran,22
+315,Badran,23
+316,Bakalrejo,23
+317,Gentan,23
+318,Kemetul,23
+319,Kenteng,23
+320,Ketapang,23
+321,Koripan,23
+322,Muncar,23
+323,Ngasinan,23
+324,Sidoharjo,23
+325,Susukan,23
+326,Tawang,23
+327,Timpik,23
+328,Beji Lor,24
+329,Bonomerto,24
+330,Cukilan,24
+331,Dadapayam,24
+332,Gunung Tumpeng,24
+333,Jatirejo,24
+334,Kebowan,24
+335,Kedungringin,24
+336,Ketanggi,24
+337,Krandon Lor,24
+338,Medayu,24
+339,Plumbon,24
+340,Purworejo,24
+341,Reksosari,24
+342,Sukorejo,24
+343,Suruh,24
+344,Dersansari,24
+345,Bejaten,25
+346,Bendungan,25
+347,Giling,25
+348,Glawan,25
+349,Jembrak,25
+350,Kadirejo,25
+351,Karanggondang,25
+352,Kauman Lor,25
+353,Pabelan,25
+354,Padaan,25
+355,Segiri,25
+356,Semowo,25
+357,Sukoharjo,25
+358,Sumberejo,25
+359,Terban,25
+360,Tukang,25
+361,Ujung-Ujung,25
+362,Candirejo,26
+363,Delik,26
+364,Gedangan,26
+365,Jombor,26
+366,Kalibeji,26
+367,Karanganyar,26
+368,Karang Tengah,26
+369,Kesongo,26
+370,Lopait,26
+371,Ngajaran,26
+372,Rowosari,26
+373,Sraten,26
+374,Tlogo,26
+375,Tlompakan,26
+376,Tuntang,26
+377,Watuagung,26
+378,Banyubiru,27
+379,Gedong,27
+380,Kebondowo,27
+381,Kebumen,27
+382,Kemambang,27
+383,Ngrapah,27
+384,Rowoboni,27
+385,Sepakung,27
+386,Tegaron,27
+387,Wirogomo,27
+388,Bedono,28
+389,Brongkol,28
+390,Gemawang,28
+391,Genting,28
+392,Jambu,28
+393,Kebondalem,28
+394,Kelurahan,28
+395,Kuwarasan,28
+396,Rejosari,28
+397,Gondoriyo,28
+398,Bumen,29
+399,Candigaron,29
+400,Duren,29
+401,Jubelan,29
+402,Kebonagung,29
+403,Kemawi,29
+404,Kemitir,29
+405,Keseneng,29
+406,Lanjan,29
+407,Losari,29
+408,Mendongan,29
+409,Ngadikerso,29
+410,Piyanggang,29
+411,Pledokan,29
+412,Sumowono,29
+413,Trayu,29
+414,Bejalen,30
+415,Pasekan,30
+416,Baran,30
+417,Kranggan,30
+418,Kupang,30
+419,Lodoyong,30
+420,Ngampin,30
+421,Panjang,30
+422,Pojoksari,30
+423,Tambakboyo,30
+424,Asinan,31
+425,Doplang,31
+426,Kandangan,31
+427,Lemahireng,31
+428,Polosiri,31
+429,Poncoruso,31
+430,Samban,31
+431,Bawen,31
+432,Harjosari,31
+433,Banding,32
+434,Bringin,32
+435,Gogodalem,32
+436,Kalijambe,32
+437,Kalikurmo,32
+438,Lebak,32
+439,Nyemoh,32
+440,Pakis,32
+441,Popongan,32
+442,Rembes,32
+443,Sambirejo,32
+444,Sendang,32
+445,Tanjung,32
+446,Tempuran,32
+447,Truko,32
+448,Wiru,32
+449,Bergas Kidul,33
+450,Diwak,33
+451,Gebugan,33
+452,Gondoriyo,33
+453,Jatijajar,33
+454,Munding,33
+455,Pagersari,33
+456,Randugunting,33
+457,Wringin Putih,33
+458,Bergas Lor,33
+459,Karangjati,33
+460,Ngempon,33
+461,Wujil,33
+462,Candirejo,34
+463,Derekan,34
+464,Jatirunggo,34
+465,Klepu,34
+466,Penawangan,34
+467,Pringsari,34
+468,Wonorejo,34
+469,Wonoyoso,34
+470,Pringapus,34
+471,Bancak,35
+472,Bancak,35
+473,Bata,35
+474,Jlumpang,35
+475,Lembu,35
+476,Plumutan,35
+477,Pucung,35
+478,Rejosari,35
+479,Wonokerto,35
+480,Kaliwungu,36
+481,Kener,36
+482,Kradenan,36
+483,Mukiran,36
+484,Pager,36
+485,Papringan,36
+486,Payungan,36
+487,Rogomulyo,36
+488,Siwal,36
+489,Udanwuh,36
+490,Jetis,36
+491,Branjang,37
+492,Gogik,37
+493,Kalisidi,37
+494,Keji,37
+495,Lerep,37
+496,Nyatnyono,37
+497,Bandarjo,37
+498,Candirejo,37
+499,Genuk,37
+500,Langensari,37
+501,Ungaran,37
+502,Kalikayen,38
+503,Kalongan,38
+504,Kawengen,38
+505,Leyangan,38
+506,Mluweh,38
+507,Beji,38
+508,Gedanganak,38
+509,Kalirejo,38
+510,Sidomulyo,38
+511,Susukan,38
+512,Banyukuning,39
+513,Candi,39
+514,Duren,39
+515,Jetis,39
+516,Jimbaran,39
+517,Kenteng,39
+518,Mlilir,39
+519,Pakopen,39
+520,Sidomukti,39
+521,Bandungan,39
+522,Cebongan,40
+523,Kumpulrejo,40
+524,Ledok,40
+525,Noborejo,40
+526,Randuacir,40
+527,Tegalrejo,40
+528,Blotongan,41
+529,Bugel,41
+530,Kauman Kidul,41
+531,Pulutan,41
+532,Salatiga,41
+533,Sidorejo Lor,41
+534,Dukuh,42
+535,Kalicacing,42
+536,Kecandran,42
+537,Mangunsari,42
+538,Gendongan,43
+539,Kalibening,43
+540,Kutowinangun Kidul,43
+541,Kutowinangun Lor,43
+542,Sidorejo Kidul,43
+543,Tingkir Lor,43
+544,Tingkir Tengah,43
+545,Banyumanik,44
+546,Gedawang,44
+547,Jabungan,44
+548,Ngesrep,44
+549,Padangsari,44
+550,Pedalangan,44
+551,Pudakpayung,44
+552,Srondol Kulon,44
+553,Srondol Wetan,44
+554,Sumurboto,44
+555,Tinjomoyo,44
+556,Candi,45
+557,Jatingaleh,45
+558,Jomblang,45
+559,Kaliwiru,45
+560,Karanganyar Gunung,45
+561,Tegalsari,45
+562,Wonotingal,45
+563,Bendanduwur,46
+564,Bendan Ngisor,46
+565,Bendungan,46
+566,Gajahmungkur,46
+567,Karangrejo,46
+568,Lempongsari,46
+569,Petompon,46
+570,Sampangan,46
+571,Gayamsari,47
+572,Kaligawe,47
+573,Pandean Lamper,47
+574,Sambirejo,47
+575,Sawahbesar,47
+576,Siwalan,47
+577,Tambakrejo,47
+578,Bangetayu Kulon,48
+579,Bangetayu Wetan,48
+580,Banjardowo,48
+581,Gebangsari,48
+582,Genuksari,48
+583,Karangroto,48
+584,Kudu,48
+585,Muktiharjo Lor,48
+586,Penggaron Lor,48
+587,Sembungharjo,48
+588,Terboyo Kulon,48
+589,Terboyo Wetan,48
+590,Trimulyo,48
+591,Candirejo,49
+592,Gunungpati,49
+593,Jatirejo,49
+594,Kalisegoro,49
+595,Kandri,49
+596,Mangunsari,49
+597,Ngijo,49
+598,Nongkosawit,49
+599,Pakintelan,49
+600,Patemon,49
+601,Plalangan,49
+602,Pongangan,49
+603,Sadeng,49
+604,Sekaran,49
+605,Sukorejo,49
+606,Sumurejo,49
+607,Bubakan,50
+608,Cangkiran,50
+609,Jatibarang,50
+610,Jatisari,50
+611,Karangmalang,50
+612,Kedungpane,50
+613,Mijen,50
+614,Ngadirgo,50
+615,Pesantren,50
+616,Polaman,50
+617,Purwosari,50
+618,Tambangan,50
+619,Wonolopo,50
+620,Wonoplumbon,50
+621,Bambankerep,51
+622,Bringin,51
+623,Gondoriyo,51
+624,Kalipancur,51
+625,Ngaliyan,51
+626,Podorejo,51
+627,Purwoyoso,51
+628,Tambakaji,51
+629,Wonosari,51
+630,Wates,51
+631,Gemah,52
+632,Kalicari,52
+633,Muktiharjo Kidul,52
+634,Palebon,52
+635,Pedurungan Kidul,52
+636,Pedurungan Lor,52
+637,Pedurungan Tengah,52
+638,Penggaron Kidul,52
+639,Plamongan Sari,52
+640,Tlogomulyo,52
+641,Tlogosari Kulon,52
+642,Tlogosari Wetan,52
+643,Bojongsalaman,53
+644,Bongsari,53
+645,Cabean,53
+646,Gisikdrono,53
+647,Kalibanteng Kidul,53
+648,Kalibanteng Kulon,53
+649,Karangayu,53
+650,Kembangarum,53
+651,Krapyak,53
+652,Krobokan,53
+653,Manyaran,53
+654,Ngemplak Simongan,53
+655,Salaman Mloyo,53
+656,Tambakharjo,53
+657,Tawang Mas,53
+658,Tawangsari,53
+659,Barusari,54
+660,Bulustalan,54
+661,Lamper Kidul,54
+662,Lamper Lor,54
+663,Lamper Tengah,54
+664,Mugassari,54
+665,Peterongan,54
+666,Pleburan,54
+667,Randusari,54
+668,Wonodri,54
+669,Bangunharjo,55
+670,Brumbungan,55
+671,Gabahan,55
+672,Jagalan,55
+673,Karangkidul,55
+674,Kauman,55
+675,Kembangsari,55
+676,Kranggan,55
+677,Miroto,55
+678,Pandansari,55
+679,Pekunden,55
+680,Pendrikan Kidul,55
+681,Pendrikan Lor,55
+682,Purwodinatan,55
+683,Sekayu,55
+684,Bugangan,56
+685,Karangtempel,56
+686,Karangturi,56
+687,Kebonagung,56
+688,Kemijen,56
+689,Mlatibaru,56
+690,Mlatiharjo,56
+691,Rejomulyo,56
+692,Rejosari,56
+693,Sarirejo,56
+694,Bandarharjo,57
+695,Bulu Lor,57
+696,Dadapsari,57
+697,Kuningan,57
+698,Panggung Kidul,57
+699,Panggung Lor,57
+700,Plombokan,57
+701,Purwosari,57
+702,Tanjung Mas,57
+703,Bulusan,58
+704,Jangli,58
+705,Kedungmundu,58
+706,Kramas,58
+707,Mangunharjo,58
+708,Meteseh,58
+709,Rowosari,58
+710,Sambiroto,58
+711,Sendangguwo,58
+712,Sendangmulyo,58
+713,Tandang,58
+714,Tembalang,58
+715,Jerakah,59
+716,Karanganyar,59
+717,Mangkang Kulon,59
+718,Mangkang Wetan,59
+719,Mangunharjo,59
+720,Randu Garut,59
+721,Tugurejo,59

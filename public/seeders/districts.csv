@@ -1,0 +1,60 @@
+id,name,district_id
+1,Brangsong,1
+2,Boja,1
+3,Cepiring,1
+4,Gemuh,1
+5,Kaliwungu,1
+6,Kaliwungu Selatan,1
+7,Kangkung,1
+8,Kendal,1
+9,Limbangan,1
+10,Ngampel,1
+11,Platungan,1
+12,Pageruyung,1
+13,Patean,1
+14,Patebon,1
+15,Pegandon,1
+16,Ringinarum,1
+17,Rowosari,1
+18,Singorojo,1
+19,Sukorejo,1
+20,Weleri,1
+21,Getasan,2
+22,Tengaran,2
+23,Susukan,2
+24,Suruh,2
+25,Pabelan,2
+26,Tuntang,2
+27,Banyubiru,2
+28,Jambu,2
+29,Sumowono,2
+30,Ambarawa,2
+31,Bawen,2
+32,Bringin,2
+33,Bergas,2
+34,Pringapus,2
+35,Bancak,2
+36,Kaliwungu,2
+37,Ungaran Barat,2
+38,Ungaran Timur,2
+39,Bandungan,2
+40,Argomulyo,3
+41,Sidorejo,3
+42,Sidomukti,3
+43,Tingkir,3
+44,Banyumanik,4
+45,Candisari,4
+46,Gajahmungkur,4
+47,Gayamsari,4
+48,Genuk,4
+49,Gunungpati,4
+50,Mijen,4
+51,Ngaliyan,4
+52,Pedurungan,4
+53,Semarang Barat,4
+54,Semarang Selatan,4
+55,Semarang Tengah,4
+56,Semarang Timur,4
+57,Semarang Utara,4
+58,Tembalang,4
+59,Tugu,4
