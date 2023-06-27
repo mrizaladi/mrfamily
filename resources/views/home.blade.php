@@ -5,9 +5,65 @@
 @endsection
 
 @section('content')
+
     <div class="page-body">
         <div class="container-xl">
             <div class="row row-deck row-cards">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Simpatisan Per-Kabupaten/Kota</h3>
+                        </div>
+                        <table class="table card-table table-vcenter">
+                            <thead>
+                                <tr>
+                                    <th>Kabupaten/Kota</th>
+                                    <th>Jumlah</th>
+                                    <th>Target</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Kota Semarang</td>
+                                    <td>3,550,000</td>
+                                    <td class="w-40">
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar bg-primary" style="width: 71.0%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kabupaten Semarang</td>
+                                    <td>1,798,000</td>
+                                    <td class="w-40">
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar bg-primary" style="width: 35.96%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kabupaten Kendal</td>
+                                    <td>1,245,000</td>
+                                    <td class="w-40">
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar bg-primary" style="width: 24.9%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kabupaten Salatiga</td>
+                                    <td>986,000</td>
+                                    <td class="w-40">
+                                        <div class="progress progress-xs">
+                                            <div class="progress-bar bg-primary" style="width: 19.72%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <div class="col-sm-6 col-lg-3">
                     <div class="card">
                         <div class="card-body">
@@ -47,7 +103,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>

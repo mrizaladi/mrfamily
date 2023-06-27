@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SimpatisanController;
+use App\Http\Controllers\TpsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,14 +27,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function () {
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
-    Route::name('tps.')->group(function(){
-        Route::view('tps', 'tps.index')->name('index');
-        Route::view('tps/create', 'tps.create')->name('create');
+    Route::name('tps.')->prefix('tps')->group(function(){
+        Route::view('/', 'tps.index')->name('index');
+        Route::view('create', 'tps.create')->name('create');
+        Route::get('store', [TpsController::class, 'store'])->name('store');
+        Route::get('destroy',[TpsController::class,'destroy'])->name('destroy');
+        Route::get('edit', [TpsController::class, 'edit'])->name('edit');
+        Route::get('update',[TpsController::class, 'update'])->name('update');
+        Route::get('import', [TpsController::class, 'import'])->name('import');
     });
 
-    Route::name('simpatisan.')->group(function(){
-        Route::view('simpatisan','simpatisan.index')->name('index');
-        Route::view('simpatisan/create', 'simpatisan.create')->name('create');
+    Route::name('simpatisan.')->prefix('simpatisan')->group(function(){
+        Route::view('/','simpatisan.index')->name('index');
+        Route::view('create', 'simpatisan.create')->name('create');
+        Route::get('store', [SimpatisanController::class,'store'])->name('store');
     });
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

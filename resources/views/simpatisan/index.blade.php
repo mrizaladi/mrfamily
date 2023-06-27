@@ -2,66 +2,10 @@
 
 @section('content')
 
-@php
-$cities = ['Kab. Kendal', 'Kota Semarang', 'Kab. Semarang', 'Kota Salatiga'];
-$subdistricts = [
-'Banyumanik',
-'Candisari',
-'Gajahmungkur',
-'Gayamsari',
-'Genuk',
-'Gunungpati',
-'Mijen',
-'Ngaliyan',
-'Pedurungan',
-'Semarang Barat',
-'Semarang Selatan',
-'Semarang Tengah',
-'Semarang Timur',
-'Semarang Utara',
-'Tembalang',
-'Tugu',
-];
-$urbanvillages = [
-'Bendan Duwur',
-'Bendan Ngisor',
-'Bongsari',
-'Bubakan',
-'Candirenggo',
-'Gemah',
-'Gisik',
-'Gundih',
-'Jatingaleh',
-'Karangayu',
-'Karangrejo',
-'Karangtempel',
-'Kebon Agung',
-'Kemijen',
-'Mangkang',
-'Mlatiharjo',
-'Ngemplaksragen',
-'Plalangan',
-'Rejosari',
-'Semarang Barat',
-'Semarang Selatan',
-'Semarang Tengah',
-'Semarang Timur',
-'Semarang Utara',
-'Sudirejan',
-'Sukorejo',
-'Tambakaji',
-'Tanjungmas',
-'Tawangsari',
-'Tlogosari',
-'Wonosari',
-];
-@endphp
-
 <div class="container-xl">
-    <!-- Page title -->
     <div class="page-header d-print-none">
         <h2 class="page-title">
-            Form Monitoring TPS
+            Simpatisan
         </h2>
     </div>
 </div>
@@ -70,7 +14,27 @@ $urbanvillages = [
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Invoices</h3>
+                <h3 class="card-title">Data Simpatisan</h3>
+                <div class="card-actions">
+                    <a href="" class="btn btn-azure d-none d-sm-inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                            <path d="M7 9l5 -5l5 5"></path>
+                            <path d="M12 4l0 12"></path>
+                        </svg>
+                        Import
+                    </a>
+                    <a href="{{ route('simpatisan.create') }}" class="btn btn-primary d-none d-sm-inline-block">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M12 5l0 14"></path>
+                            <path d="M5 12l14 0"></path>
+                        </svg>
+                        Tambah
+                    </a>
+                </div>
             </div>
             <div class="card-body border-bottom py-3">
                 <div class="d-flex">
@@ -93,280 +57,59 @@ $urbanvillages = [
                 <table class="table card-table table-vcenter text-nowrap datatable">
                     <thead>
                         <tr>
-                            <th class="w-1"><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select all invoices"></th>
-                            <th class="w-1">No.
-                                <!-- Download SVG icon from http://tabler-icons.io/i/chevron-up -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm icon-thick" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M6 15l6 -6l6 6"></path>
-                                </svg>
-                            </th>
-                            <th>Invoice Subject</th>
-                            <th>Client</th>
-                            <th>VAT No.</th>
-                            <th>Created</th>
-                            <th>Status</th>
-                            <th>Price</th>
-                            <th></th>
+                            <th>No</th>
+                            <th>Kabupaten/Kota</th>
+                            <th>Kecamatan</th>
+                            <th>Kelurahan</th>
+                            <th>TPS</th>
+                            <th>Nama Petugas</th>
+                            <th>Jumlah Pemilih</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001401</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">Design Works</a></td>
+                        @for($i = 1; $i <= 10; $i++) <tr>
+                            <td>{{ $i }}</td>
                             <td>
-                                <span class="flag flag-country-us"></span>
-                                Carlson Limited
+                                Kab. Kendal
                             </td>
                             <td>
-                                87956621
+                                Kaliwungu
                             </td>
                             <td>
-                                15 Dec 2017
+                                Kutoharjo
                             </td>
                             <td>
-                                <span class="badge bg-success me-1"></span> Paid
-                            </td>
-                            <td>$887</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001402</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">UX Wireframes</a></td>
-                            <td>
-                                <span class="flag flag-country-gb"></span>
-                                Adobe
+                                A0{{ $i }}
                             </td>
                             <td>
-                                87956421
+                                Baihaqi
                             </td>
                             <td>
-                                12 Apr 2017
+                                {{ rand(10000,90000) }}
                             </td>
                             <td>
-                                <span class="badge bg-warning me-1"></span> Pending
+                                <a class="btn btn-warning btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit data">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                        <path d="M16 5l3 3"></path>
+                                    </svg>
+                                </a>
+                                <button class="btn btn-danger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M4 7l16 0"></path>
+                                        <path d="M10 11l0 6"></path>
+                                        <path d="M14 11l0 6"></path>
+                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                    </svg>
+                                </button>
                             </td>
-                            <td>$1200</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001403</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">New Dashboard</a></td>
-                            <td>
-                                <span class="flag flag-country-de"></span>
-                                Bluewolf
-                            </td>
-                            <td>
-                                87952621
-                            </td>
-                            <td>
-                                23 Oct 2017
-                            </td>
-                            <td>
-                                <span class="badge bg-warning me-1"></span> Pending
-                            </td>
-                            <td>$534</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001404</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">Landing Page</a></td>
-                            <td>
-                                <span class="flag flag-country-br"></span>
-                                Salesforce
-                            </td>
-                            <td>
-                                87953421
-                            </td>
-                            <td>
-                                2 Sep 2017
-                            </td>
-                            <td>
-                                <span class="badge bg-secondary me-1"></span> Due in 2 Weeks
-                            </td>
-                            <td>$1500</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001405</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">Marketing Templates</a></td>
-                            <td>
-                                <span class="flag flag-country-pl"></span>
-                                Printic
-                            </td>
-                            <td>
-                                87956621
-                            </td>
-                            <td>
-                                29 Jan 2018
-                            </td>
-                            <td>
-                                <span class="badge bg-danger me-1"></span> Paid Today
-                            </td>
-                            <td>$648</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001406</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">Sales Presentation</a></td>
-                            <td>
-                                <span class="flag flag-country-br"></span>
-                                Tabdaq
-                            </td>
-                            <td>
-                                87956621
-                            </td>
-                            <td>
-                                4 Feb 2018
-                            </td>
-                            <td>
-                                <span class="badge bg-secondary me-1"></span> Due in 3 Weeks
-                            </td>
-                            <td>$300</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001407</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">Logo &amp; Print</a></td>
-                            <td>
-                                <span class="flag flag-country-us"></span>
-                                Apple
-                            </td>
-                            <td>
-                                87956621
-                            </td>
-                            <td>
-                                22 Mar 2018
-                            </td>
-                            <td>
-                                <span class="badge bg-success me-1"></span> Paid Today
-                            </td>
-                            <td>$2500</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input m-0 align-middle" type="checkbox" aria-label="Select invoice"></td>
-                            <td><span class="text-muted">001408</span></td>
-                            <td><a href="invoice.html" class="text-reset" tabindex="-1">Icons</a></td>
-                            <td>
-                                <span class="flag flag-country-pl"></span>
-                                Tookapic
-                            </td>
-                            <td>
-                                87956621
-                            </td>
-                            <td>
-                                13 May 2018
-                            </td>
-                            <td>
-                                <span class="badge bg-success me-1"></span> Paid Today
-                            </td>
-                            <td>$940</td>
-                            <td class="text-end">
-                                <span class="dropdown">
-                                    <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Another action
-                                        </a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
+                            </tr>
+                            @endfor
                     </tbody>
                 </table>
             </div>
