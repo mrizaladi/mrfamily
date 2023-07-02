@@ -20,6 +20,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('picture')->nullable();
+            $table->foreignId('regency_id')->nullable();
+            $table->foreignId('district_id')->nullable();
+            $table->foreignId('subdistrict_id')->nullable();
         });
     }
 

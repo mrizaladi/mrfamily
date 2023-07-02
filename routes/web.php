@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SimpatisanController;
 use App\Http\Controllers\TpsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +25,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
 
     Route::name('tps.')->prefix('tps')->group(function(){
         Route::view('/', 'tps.index')->name('index');
@@ -42,6 +45,6 @@ Route::middleware('auth')->group(function () {
         Route::view('create', 'simpatisan.create')->name('create');
         Route::get('store', [SimpatisanController::class,'store'])->name('store');
     });
-    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
