@@ -65,7 +65,7 @@ $urbanvillages = [
 </div>
 <div class="page-body">
     <div class="container-xl">
-        <form class="card">
+        <form class="card" id="myForm">
             <div class="card-body">
                 <div class="row row-cards">
                     <div class="col-sm-6 col-md-3">
@@ -123,54 +123,6 @@ $urbanvillages = [
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="mb-3">
-                            <label class="form-label">Tanggal Lahir</label>
-                            <div class="row g-2">
-                                <div class="col-4">
-                                    <select name="user[day]" class="form-select form-control">
-                                        <option value="">Hari</option>
-                                        @for($i = 0; $i < 31; $i++) <option>{{ $i }}</option>
-                                            @endfor
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                    <select name="user[month]" class="form-select">
-                                        <option value="">Bulan</option>
-                                        <option value="1">January</option>
-                                        <option value="2">February</option>
-                                        <option value="3">March</option>
-                                        <option value="4">April</option>
-                                        <option value="5">May</option>
-                                        <option value="6">June</option>
-                                        <option value="7">July</option>
-                                        <option value="8">August</option>
-                                        <option value="9">September</option>
-                                        <option value="10">October</option>
-                                        <option value="11">November</option>
-                                        <option value="12">December</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                    <select name="user[year]" class="form-select">
-                                        <option value="">Tahun</option>
-                                        @for($i = 2023; $i >= 1973; $i--)
-                                        <option>{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="mb-3">
-                            <label class="form-label">Provinsi</label>
-                            <select name="" id="" class="form-control form-select">
-                                <option value="">Pilih Provinsi</option>
-                                <option value="">Kota Semarang</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="mb-3">
                             <label class="form-label">Kabupaten/Kota</label>
                             <select class="form-control form-select">
                                 <option value="">Pilih Kabupaten / Kota</option>
@@ -202,7 +154,7 @@ $urbanvillages = [
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-6 col-md-3">
                         <div class="mb-3">
                             <label class="form-label">KTP</label>
                             <input type="file" class="form-control">
@@ -212,7 +164,7 @@ $urbanvillages = [
             </div>
             <div class="card-footer text-end">
                 <div class="d-flex">
-                    <a href="#" class="btn btn-link">Clear</a>
+                    <button onclick="resetForm()" class="btn btn-link">Clear</button>
                     <a href="{{ route('simpatisan.store') }}" class="btn btn-green btn-pill ms-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -226,6 +178,13 @@ $urbanvillages = [
         </form>
     </div>
 </div>
-
 @endsection
 
+@section('custom_scripts')
+<script>
+    function resetForm() {
+        document.getElementById("myForm").reset();
+    }
+
+</script>
+@endsection
