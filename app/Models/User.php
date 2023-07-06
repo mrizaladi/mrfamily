@@ -45,4 +45,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function regency()
+    {
+        return $this->belongsTo(Regency::class);
+    }
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function subdistrict()
+    {
+        return $this->belongsTo(Subdistrict::class);
+    }
 }

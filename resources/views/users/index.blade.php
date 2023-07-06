@@ -21,6 +21,9 @@
                                 <th>{{ __('Email Address') }}</th>
                                 <th>{{ __('Created at') }}</th>
                                 <th>{{ __('Updated in') }}</th>
+                                <th>{{ __('Kabupaten/Kota') }}</th>
+                                <th>{{ __('Kecamatan') }}</th>
+                                <th>{{ __('Kelurahan') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +33,9 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at->diffForhumans() }}</td>
+                                <td>{{ $user->regency?->name }}</td>
+                                <td>{{ $user->district?->name }}</td>
+                                <td>{{ $user->subdistrict?->name }}</td>
                             </tr>
                         @endforeach
                         </tbody>
