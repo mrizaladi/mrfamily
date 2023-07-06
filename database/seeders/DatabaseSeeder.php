@@ -19,13 +19,14 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin'),
             'regency_id' => '1',
             'district_id' => '1',
-            'subdistrict_id' => '1',
+            'subdistrict_id' => '1'
         ]);
 
         $this->call([
             RegencySeeder::class,
             DistrictSeeder::class,
             SubdistrictSeeder::class,
+            SimpatisanSeeder::class,
         ]);
     }
 }
