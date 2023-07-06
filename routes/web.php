@@ -38,6 +38,13 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('simpatisan', SimpatisanController::class);
     
+    Route::name('simpatisan.')->prefix('simpatisan')->group(function(){
+        Route::view('/','simpatisan.index')->name('index');
+        Route::get('create', [SimpatisanController::class,'create'])->name('create');
+        Route::get('getdistrict/{id}', [SimpatisanController::class,'getdistrict'])->name('getdistrict');
+        Route::get('getsubdistrict/{id}', [SimpatisanController::class,'getsubdistrict'])->name('getsubdistrict');
+        Route::get('store', [SimpatisanController::class,'store'])->name('store');
+    });
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });

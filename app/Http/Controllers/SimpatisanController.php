@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Simpatisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\District;
+use App\Models\Regency;
+use App\Models\Subdistrict;
+use Illuminate\Support\Facades\Response;
 
 class SimpatisanController extends Controller
 {
@@ -20,14 +24,14 @@ class SimpatisanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        $data['regencies'] = DB::table('regencies')->get();
-        $data['districts'] = DB::table('districts')->get();
-        $data['subdistricts'] = DB::table('subdistricts')->get();
+    // public function create()
+    // {
+    //     $data['regencies'] = DB::table('regencies')->get();
+    //     $data['districts'] = DB::table('districts')->get();
+    //     $data['subdistricts'] = DB::table('subdistricts')->get();
 
-        return view('simpatisan.create', $data);
-    }
+    //     return view('simpatisan.create', $data);
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -107,4 +111,23 @@ class SimpatisanController extends Controller
         $sim->delete();
         return redirect()->route('simpatisan.index')->with('info', 'Data berhasil dihapus');
     }
+
+	public function create()
+    {
+        $create = Regency::all();
+        return view('simpatisan/create', ['create' => $create]);
+    }
+
+    public function getdistrict($id)
+    {
+        $district = District::where('regency_id', $id)->get();
+        return Response::json($district);
+    }
+
+	public function getsubdistrict($id)
+    {
+        $subdistricts = Subdistrict::where('district_id', $id)->get();
+        return Response::json($subdistricts);
+    }
+
 }
