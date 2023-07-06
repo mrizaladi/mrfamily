@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'regency_id' => ['required'],
             'district_id' => ['required'],
-            'subdist' => ['required'],
+            'subdistrict_id' => ['required'],
         ]);
     }
 
