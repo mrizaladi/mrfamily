@@ -2,13 +2,109 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Simpatisan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SimpatisanController extends Controller
 {
-    public function store()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        toastr()->success('Data berhasil disimpan');
-        return view('simpatisan.index');
+        $data['simpatisan'] = Simpatisan::with(['regency','district','subdistrict'])->get();
+        return view('simpatisan.index', $data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $data['regencies'] = DB::table('regencies')->get();
+        $data['districts'] = DB::table('districts')->get();
+        $data['subdistricts'] = DB::table('subdistricts')->get();
+
+        return view('simpatisan.create', $data);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'regency_id' => 'required',
+            'district_id' => 'required',
+            'subdistrict_id' => 'required',
+            'nik' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'sex' => 'required',
+            'ktp' => ''
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Simpatisan::create($validatedData);
+        
+        return redirect()->route('simpatisan.index')->with('success', 'Data berhasil ditambahkan');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $data['regencies'] = DB::table('regencies')->get();
+        $data['districts'] = DB::table('districts')->get();
+        $data['subdistricts'] = DB::table('subdistricts')->get();
+        $data['sim'] = Simpatisan::find($id);
+
+        return view('simpatisan.edit', $data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $sim = Simpatisan::find($id);
+
+        $validatedData = $request->validate([
+            'regency_id' => 'required',
+            'district_id' => 'required',
+            'subdistrict_id' => 'required',
+            'nik' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'sex' => 'required',
+            'ktp' => ''
+        ]);
+
+        $sim->update($validatedData);
+
+        return redirect()->route('simpatisan.index')->with('success', 'Data berhasil diupdate.');
+        
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $sim = Simpatisan::find($id);
+
+        $sim->delete();
+        return redirect()->route('simpatisan.index')->with('info', 'Data berhasil dihapus');
     }
 }

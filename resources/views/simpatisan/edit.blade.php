@@ -4,24 +4,25 @@
 <div class="container-xl">
     <div class="page-header d-print-none">
         <h2 class="page-title">
-            Tambah Data Simpatisan
+            Update Data Simpatisan
         </h2>
     </div>
 </div>
 <div class="page-body">
     <div class="container-xl">
-        <form action="{{ route('simpatisan.store') }}" id="simpatisanForm" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('simpatisan.update', $sim->id) }}" id="simpatisanForm" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="card">
                 <div class="card-body">
                     <div class="row row-cards">
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kabupaten/Kota</label>
-                                <select class="form-control form-select" name="regency_id">
+                                <select class="form-control form-select" name="regency_id" required>
                                     <option value="">Pilih Kabupaten / Kota</option>
                                     @foreach ($regencies as $regency)
-                                    <option value="{{ $regency->id }}">{{ $regency->name }}</option>
+                                    <option value="{{ $regency->id }}" {{ $sim->regency_id === $regency->id ? 'selected' : '' }}>{{ $regency->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -29,10 +30,10 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kecamatan</label>
-                                <select class="form-control form-select" name="district_id">
+                                <select class="form-control form-select" name="district_id" required>
                                     <option value="">Pilih Kecamatan</option>
                                     @foreach ($districts as $district)
-                                    <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                    <option value="{{ $district->id }}" {{ $sim->district_id === $district->id ? 'selected' : '' }}>{{ $district->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -40,10 +41,10 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kelurahan</label>
-                                <select class="form-control form-select" name="subdistrict_id">
+                                <select class="form-control form-select" name="subdistrict_id" required>
                                     <option value="">Pilih Kelurahan</option>
                                     @foreach ($subdistricts as $subdistrict)
-                                    <option value="{{ $subdistrict->id }}">{{ $subdistrict->name }}</option>
+                                    <option value="{{ $subdistrict->id }}" {{ $sim->subdistrict_id === $subdistrict->id ? 'selected' : '' }}>{{ $subdistrict->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -57,19 +58,19 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">NIK</label>
-                                <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ old('nik') }}">
+                                <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ $sim->nik }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Nama Lengkap</label>
-                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ old('name') }}">
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ $sim->name }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Nomor HP</label>
-                                <input type="tel" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan Nomor HP" name="phone" value="{{ old('phone') }}">
+                                <input type="tel" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan Nomor HP" name="phone" value="{{ $sim->phone }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -77,7 +78,7 @@
                                 <label class="form-label required">Jenis Kelamin</label>
                                 <div class="form-selectgroup">
                                     <label class="form-selectgroup-item">
-                                        <input type="radio" name="sex" value="Laki-Laki" class="form-selectgroup-input">
+                                        <input type="radio" name="sex" value="Laki-Laki" class="form-selectgroup-input" {{ $sim->sex === 'Laki-Laki' ? 'checked' : '' }}>
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-man" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -91,7 +92,7 @@
                                             Laki - Laki</span>
                                     </label>
                                     <label class="form-selectgroup-item">
-                                        <input type="radio" name="sex" value="Perempuan" class="form-selectgroup-input">
+                                        <input type="radio" name="sex" value="Perempuan" class="form-selectgroup-input" {{ $sim->sex === 'Perempuan' ? 'checked' : '' }}>
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-woman" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -119,7 +120,7 @@
                                 <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
                                 <path d="M14 4l0 4l-6 0l0 -4"></path>
                             </svg>
-                            Simpan
+                            Update
                         </button>
                     </div>
                 </div>

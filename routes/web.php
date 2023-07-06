@@ -40,11 +40,8 @@ Route::middleware('auth')->group(function () {
         Route::get('import', [TpsController::class, 'import'])->name('import');
     });
 
-    Route::name('simpatisan.')->prefix('simpatisan')->group(function(){
-        Route::view('/','simpatisan.index')->name('index');
-        Route::view('create', 'simpatisan.create')->name('create');
-        Route::get('store', [SimpatisanController::class,'store'])->name('store');
-    });
+    Route::resource('simpatisan', SimpatisanController::class);
+    
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
