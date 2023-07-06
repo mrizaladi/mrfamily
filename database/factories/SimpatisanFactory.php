@@ -17,7 +17,7 @@ class SimpatisanFactory extends Factory
     public function definition(): array
     {
         return [
-            'nik' => $this->faker->numerify('##############'),
+            'nik' => $this->faker->nik(),
             'name' => $this->faker->name(),
             'phone' => $this->faker->phoneNumber(),
             'sex' => $this->faker->randomElement(['Laki-Laki', 'Perempuan']),
