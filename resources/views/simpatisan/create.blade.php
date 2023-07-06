@@ -134,7 +134,6 @@
     function resetForm() {
         document.getElementById("simpatisanForm").reset();
     }
-
 </script>
 @endsection
 

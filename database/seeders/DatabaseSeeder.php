@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             DistrictSeeder::class,
             SubdistrictSeeder::class,
             SimpatisanSeeder::class,
+            TpsSeeder::class,
         ]);
     }
 }

@@ -25,17 +25,8 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
-
-    Route::name('tps.')->prefix('tps')->group(function(){
-        Route::view('/', 'tps.index')->name('index');
-        Route::view('create', 'tps.create')->name('create');
-        Route::get('store', [TpsController::class, 'store'])->name('store');
-        Route::get('destroy',[TpsController::class,'destroy'])->name('destroy');
-        Route::get('edit', [TpsController::class, 'edit'])->name('edit');
-        Route::get('update',[TpsController::class, 'update'])->name('update');
-        Route::get('import', [TpsController::class, 'import'])->name('import');
-    });
-
+    
+    Route::resource('tps', TpsController::class);
     Route::resource('simpatisan', SimpatisanController::class);
     
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');

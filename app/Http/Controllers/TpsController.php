@@ -2,33 +2,104 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tps;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class TpsController extends Controller
 {
-    public function store() 
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        toastr()->success('Data berhasil disimpan!');
-        return view('tps.index');
+        $data['tps'] = Tps::with(['regency', 'district', 'subdistrict'])->get();
+        return view('tps.index', $data);
     }
 
-    public function destroy()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        toastr()->warning('Data berhasil dihapus!');
-        return view('tps.index');
+        $data['regencies'] = DB::table('regencies')->get();
+        $data['districts'] = DB::table('districts')->get();
+        $data['subdistricts'] = DB::table('subdistricts')->get();
+
+        return view('tps.create', $data);
     }
 
-    public function edit()
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        return view('tps.edit');
+        $validatedData = $request->validate([
+            'regency_id' => 'required',
+            'district_id' => 'required',
+            'subdistrict_id' => 'required',
+            'village' => '',
+            'tps' => 'required',
+            'officer' => 'required',
+            'total_voters' => 'required'
+        ]);
+
+        Tps::create($validatedData);
+
+        return redirect()->route('tps.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
-    public function update()
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        toastr()->info('Data berhasil diupdate!');
-        return view('tps.index');
+        //
     }
 
-    public function import()
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        return view('tps.import');
+        $data['regencies'] = DB::table('regencies')->get();
+        $data['districts'] = DB::table('districts')->get();
+        $data['subdistricts'] = DB::table('subdistricts')->get();
+        $data['tp'] = Tps::find($id);
+
+        return view('tps.edit', $data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $tp = Tps::find($id);
+
+        $validatedData = $request->validate([
+            'regency_id' => 'required',
+            'district_id' => 'required',
+            'subdistrict_id' => 'required',
+            'tps' => 'required',
+            'officer' => 'required',
+            'total_voters' => 'required'
+        ]);
+
+        $tp->update($validatedData);
+
+        return redirect()->route('tps.index')->with('success', 'Data berhasil diupdate.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $tp = Tps::find($id);
+
+        $tp->delete();
+        return redirect()->route('tps.index')->with('info', 'Data berhasil dihapus');
+
     }
 }
