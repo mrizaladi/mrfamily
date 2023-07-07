@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\District;
+use App\Models\Regency;
+use App\Models\Subdistrict;
 use App\Models\Simpatisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class SimpatisanController extends Controller
 {
@@ -107,4 +110,24 @@ class SimpatisanController extends Controller
         $sim->delete();
         return redirect()->route('simpatisan.index')->with('info', 'Data berhasil dihapus');
     }
+
+    // public function regency()
+    // {
+    //     $regency = Regency::all();
+    //     redirect()->route('simpatisan/create');
+    //     //return view('simpatisan/create', ['create' => $create]);
+    // }
+
+    public function getdistrict($id)
+    {
+        $district = District::where('regency_id', $id)->get();
+        return Response::json($district);
+    }
+
+    public function getsubdistrict($id)
+    {
+        $subdistricts = Subdistrict::where('district_id', $id)->get();
+        return Response::json($subdistricts);
+    }
+
 }
