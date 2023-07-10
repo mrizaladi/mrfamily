@@ -56,7 +56,7 @@
                                     @endforeach
                                 </select> --}}
                                 <label class="form-label required">Desa/Kelurahan</label>
-                                <select class="form-control form-select" name="subdistrict_id">
+                                <select class="form-control form-select" name="subdistrict_id" id="subdistrict">
                                 </select>
                             </div>
                         </div>
