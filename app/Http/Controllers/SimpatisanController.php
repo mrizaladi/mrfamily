@@ -118,13 +118,13 @@ class SimpatisanController extends Controller
     //     //return view('simpatisan/create', ['create' => $create]);
     // }
 
-    public function getdistrict($id)
+    public function district($id)
     {
         $district = District::where('regency_id', $id)->get();
         return Response::json($district);
     }
 
-    public function getsubdistrict($id)
+    public function subdistrict($id)
     {
         $subdistricts = Subdistrict::where('district_id', $id)->get();
         return Response::json($subdistricts);

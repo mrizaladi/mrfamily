@@ -27,9 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     
     Route::resource('tps', TpsController::class);
+    Route::get('district/{id}', [SimpatisanController::class,'district'])->name('district');
+    Route::get('subdistrict/{id}', [SimpatisanController::class,'subdistrict'])->name('subdistrict');
     Route::resource('simpatisan', SimpatisanController::class);
-    Route::get('getdistrict/{id}', [SimpatisanController::class,'getdistrict'])->name('getdistrict');
-    Route::get('getsubdistrict/{id}', [SimpatisanController::class,'getsubdistrict'])->name('getsubdistrict');
+    
     
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');

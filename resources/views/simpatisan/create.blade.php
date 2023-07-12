@@ -151,58 +151,51 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
-        $('#regency').on('change', function() {
-            var regencyID = $(this).val();
-            console.log(regencyID);
-            if(regencyID) {
+        $('#regency').on('change', function () {
+                var idRegency = this.value;
+                console.log(idRegency);
+                $("#district").html('');
                 $.ajax({
-                    url: '/getdistrict/'+regencyID,
+                    url: '/district/'+idRegency,
                     type: "GET",
-                    data : {"_token":"{{ csrf_token() }}"},
-                    dataType: "json",
-                    success:function(data)
-                    {
-                        if(data){
+                    data : {},
+                    dataType: 'json',
+                    success: function (result) {
+                        if(result){
                             $('#district').empty();
                             $('#district').append('<option hidden>Pilih Kecamatan</option>'); 
-                            $.each(data, function(key, district){
-                                $('select[name="district_id"]').append('<option value="'+ key +'">' + district.name+ '</option>');
+                            $.each(result, function(key, value){
+                                $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.name+ '</option>');
                             });
                             }else{
                                 $('#district').empty();
                             }
-                        }
-                    });
-                }else{
-                    $('#district').empty();
-                }
+                    }
+                });
             });
-        });
-        $('#district').on('change', function() {
-            var districtID = $(this).val();
-            if(districtID) {
+            $('#district').on('change', function () {
+                var idRegency = this.value;
+                console.log(idRegency);
+                $("#subdistrict").html('');
                 $.ajax({
-                    url: '/getsubdistrict/'+districtID,
+                    url: '/subdistrict/'+idRegency,
                     type: "GET",
-                    data : {"_token":"{{ csrf_token() }}"},
-                    dataType: "json",
-                    success:function(data)
-                    {
-                        if(data){
+                    data : {},
+                    dataType: 'json',
+                    success: function (res) {
+                        if(res){
                             $('#subdistrict').empty();
-                            $('#subdistrict').append('<option hidden>Pilih Desa/Kelurahan</option>'); 
-                            $.each(data, function(key, subdistrict){
-                                $('select[name="subdistrict_id"]').append('<option value="'+ key +'">' + subdistrict.name+ '</option>');
+                            $('#subdistrict').append('<option hidden>Pilih Kecamatan</option>'); 
+                            $.each(res, function(key, val){
+                                $('select[name="subdistrict_id"]').append('<option value="'+ val.id +'">' + val.name+ '</option>');
                             });
                             }else{
                                 $('#subdistrict').empty();
                             }
-                        }
-                    });
-                }else{
-                    $('#subdistrict').empty();
-                }
+                    }
+                });
             });
+    });
         
         </script>
 
