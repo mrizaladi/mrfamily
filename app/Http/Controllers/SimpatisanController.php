@@ -111,13 +111,6 @@ class SimpatisanController extends Controller
         return redirect()->route('simpatisan.index')->with('info', 'Data berhasil dihapus');
     }
 
-    // public function regency()
-    // {
-    //     $regency = Regency::all();
-    //     redirect()->route('simpatisan/create');
-    //     //return view('simpatisan/create', ['create' => $create]);
-    // }
-
     public function district($id)
     {
         $district = District::where('regency_id', $id)->get();

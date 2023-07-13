@@ -21,42 +21,24 @@
                                 <select class="form-control form-select" name="regency_id" id="regency">
                                     <option value="">Pilih Kabupaten / Kota</option>
                                     @foreach ($regencies as $regency)
-                                    <option value="{{ $regency->id }}">{{ $regency->name }}</option>
+                                    <option value="{{ $regency->id }}" {{ old('regency_id') == $regency->id ? 'selected' : '' }}>{{ $regency->name }}</option>
                                     @endforeach
                                 </select>
-                                {{-- <select class="form-control form-select required" id="regency">
-                                    <option value="">Pilih Kabupaten / Kota</option>
-                                    @foreach ($regency as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select> --}}
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                {{-- <label class="form-label required">Kecamatan</label>
-                                <select class="form-control form-select" name="district_id">
-                                    <option value="">Pilih Kecamatan</option>
-                                    @foreach ($districts as $district)
-                                    <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                    @endforeach
-                                </select> --}}
                                 <label class="form-label required">Kecamatan</label>
                                 <select class="form-control form-select" name="district_id" id="district">
+                                    <option value="">Pilih Kabupaten</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                {{-- <label class="form-label required">Kelurahan</label> --}}
-                                {{-- <select class="form-control form-select" name="subdistrict_id">
-                                    <option value="">Pilih Kelurahan</option>
-                                    @foreach ($subdistricts as $subdistrict)
-                                    <option value="{{ $subdistrict->id }}">{{ $subdistrict->name }}</option>
-                                    @endforeach
-                                </select> --}}
                                 <label class="form-label required">Desa/Kelurahan</label>
                                 <select class="form-control form-select" name="subdistrict_id" id="subdistrict">
+                                    <option value="">Pilih Desa/Kelurahan</option>
                                 </select>
                             </div>
                         </div>
@@ -143,61 +125,58 @@
 
 @section('custom_scripts')
 <script>
+
     function resetForm() {
         document.getElementById("simpatisanForm").reset();
     }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function() {
-        $('#regency').on('change', function () {
-                var idRegency = this.value;
-                console.log(idRegency);
-                $("#district").html('');
-                $.ajax({
-                    url: '/district/'+idRegency,
-                    type: "GET",
-                    data : {},
-                    dataType: 'json',
-                    success: function (result) {
-                        if(result){
-                            $('#district').empty();
-                            $('#district').append('<option hidden>Pilih Kecamatan</option>'); 
-                            $.each(result, function(key, value){
-                                $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.name+ '</option>');
-                            });
-                            }else{
-                                $('#district').empty();
-                            }
-                    }
-                });
-            });
-            $('#district').on('change', function () {
-                var idRegency = this.value;
-                console.log(idRegency);
-                $("#subdistrict").html('');
-                $.ajax({
-                    url: '/subdistrict/'+idRegency,
-                    type: "GET",
-                    data : {},
-                    dataType: 'json',
-                    success: function (res) {
-                        if(res){
-                            $('#subdistrict').empty();
-                            $('#subdistrict').append('<option hidden>Pilih Kecamatan</option>'); 
-                            $.each(res, function(key, val){
-                                $('select[name="subdistrict_id"]').append('<option value="'+ val.id +'">' + val.name+ '</option>');
-                            });
-                            }else{
-                                $('#subdistrict').empty();
-                            }
-                    }
-                });
-            });
-    });
-        
-        </script>
 
+    $(document).ready(function() {
+        $('#regency').on('change', function() {
+            var idRegency = this.value;
+            console.log(idRegency);
+            $("#district").html('');
+            $.ajax({
+                url: '/district/' + idRegency
+                , type: "GET"
+                , data: {}
+                , dataType: 'json'
+                , success: function(result) {
+                    if (result) {
+                        $('#district').empty();
+                        $('#district').append('<option hidden>Pilih Kecamatan</option>');
+                        $.each(result, function(key, value) {
+                            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    } else {
+                        $('#district').empty();
+                    }
+                }
+            });
+        });
+        $('#district').on('change', function() {
+            var idRegency = this.value;
+            console.log(idRegency);
+            $("#subdistrict").html('');
+            $.ajax({
+                url: '/subdistrict/' + idRegency
+                , type: "GET"
+                , data: {}
+                , dataType: 'json'
+                , success: function(res) {
+                    if (res) {
+                        $('#subdistrict').empty();
+                        $('#subdistrict').append('<option hidden>Pilih Kecamatan</option>');
+                        $.each(res, function(key, val) {
+                            $('select[name="subdistrict_id"]').append('<option value="' + val.id + '">' + val.name + '</option>');
+                        });
+                    } else {
+                        $('#subdistrict').empty();
+                    }
+                }
+            });
+        });
+    });
+
+</script>
 @endsection
 
