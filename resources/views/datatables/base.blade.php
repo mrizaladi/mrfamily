@@ -32,7 +32,9 @@
                 </div>
             </div>
             <div class="card-body border-bottom py-3">
-                {{ $dataTable->table() }}
+                <div class="table-responsive">
+                    {{ $dataTable->table() }}
+                </div>
             </div>
         </div>
 
