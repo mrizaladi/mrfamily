@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('regency_id');
             $table->foreignId('district_id');
             $table->foreignId('subdistrict_id');
-            $table->string('ktp')->nullable();
+            $table->string('ktp');
             $table->foreignId('user_id')->nullable();
         });
     }

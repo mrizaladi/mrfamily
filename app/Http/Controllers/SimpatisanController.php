@@ -49,9 +49,10 @@ class SimpatisanController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'sex' => 'required',
-            'ktp' => ''
+            'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 
+        $validatedData['ktp'] = $request->file('ktp')->store('fotoktp');
         $validatedData['user_id'] = auth()->user()->id;
 
         Simpatisan::create($validatedData);
@@ -62,9 +63,9 @@ class SimpatisanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Simpatisan $id)
     {
-        //
+        return view('simpatisan.show', ['simpatisan'=> $id]);
     }
 
     /**
@@ -95,7 +96,7 @@ class SimpatisanController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'sex' => 'required',
-            'ktp' => ''
+            'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
         ]);
 
         $sim->update($validatedData);
