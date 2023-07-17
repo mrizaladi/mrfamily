@@ -84,6 +84,8 @@
       	</div>
     </div>
 
+	@stack('scripts')
+
     <!-- Core plugin JavaScript-->
     @vite('resources/js/app.js')
 

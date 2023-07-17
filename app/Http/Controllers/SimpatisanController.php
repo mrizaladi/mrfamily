@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\DataTables\SimpatisanDataTable;
 use App\Models\District;
 use App\Models\Regency;
 use App\Models\Subdistrict;
@@ -14,10 +16,12 @@ class SimpatisanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SimpatisanDataTable $dataTable)
     {
         $data['simpatisan'] = Simpatisan::with(['regency','district','subdistrict'])->get();
-        return view('simpatisan.index', $data);
+        // return view('simpatisan.index', $data);
+
+        return $dataTable->render('datatables.base');
     }
 
     /**
