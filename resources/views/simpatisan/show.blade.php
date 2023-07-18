@@ -33,6 +33,9 @@
                     <div class="col-md-12">
                         <h3>KTP:</h3>
                         <img src="{{ asset('storage/fotoktp/' . $simpatisan->ktp) }}" alt="KTP" style="max-width: 50%;">
+                        <img src="{{ $simpatisan->ktp_url }}" alt="KTP" style="max-width: 100%;">
+
+
                     </div>
                 </div>
             </div>

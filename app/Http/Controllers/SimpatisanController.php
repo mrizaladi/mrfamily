@@ -49,15 +49,10 @@ class SimpatisanController extends Controller
             'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 
-        if ($request->hasFile('ktp')) {
-            $image = $request->file('ktp');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $ktp = $request->file('ktp');
+        $ktpUrl = $ktp->store('fotoktp', 'public');
 
-            $image->storeAs('public/fotoktp', $imageName);
-
-            $validatedData['ktp'] = $imageName;
-        }
-
+        $validatedData['ktp_url'] = asset('storage/' . $ktpUrl);
         $validatedData['user_id'] = auth()->user()->id;
 
         Simpatisan::create($validatedData);
