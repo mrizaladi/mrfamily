@@ -18,9 +18,6 @@ class SimpatisanController extends Controller
      */
     public function index(SimpatisanDataTable $dataTable)
     {
-        $data['simpatisan'] = Simpatisan::with(['regency','district','subdistrict'])->get();
-        // return view('simpatisan.index', $data);
-
         return $dataTable->render('datatables.base');
     }
 
@@ -52,7 +49,15 @@ class SimpatisanController extends Controller
             'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 
-        $validatedData['ktp'] = $request->file('ktp')->store('fotoktp');
+        if ($request->hasFile('ktp')) {
+            $image = $request->file('ktp');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+            $image->storeAs('public/fotoktp', $imageName);
+
+            $validatedData['ktp'] = $imageName;
+        }
+
         $validatedData['user_id'] = auth()->user()->id;
 
         Simpatisan::create($validatedData);
@@ -63,9 +68,11 @@ class SimpatisanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Simpatisan $id)
+    public function show($id)
     {
-        return view('simpatisan.show', ['simpatisan'=> $id]);
+        $simpatisan = Simpatisan::find($id);
+
+        return view('simpatisan.show', ['simpatisan'=> $simpatisan]);
     }
 
     /**

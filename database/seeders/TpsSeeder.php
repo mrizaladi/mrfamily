@@ -13,6 +13,6 @@ class TpsSeeder extends Seeder
      */
     public function run(): void
     {
-        Tps::factory()->count(100)->create();
+        Tps::factory()->count(2000)->create();
     }
 }
