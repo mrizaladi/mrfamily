@@ -23,7 +23,7 @@
                                 <th>{{ __('Updated in') }}</th>
                                 <th>{{ __('Kabupaten/Kota') }}</th>
                                 <th>{{ __('Kecamatan') }}</th>
-                                <th>{{ __('Kelurahan') }}</th>
+                                <th>{{ __('Kelurahan/Desa') }}</th>
                             </tr>
                         </thead>
                         <tbody>
