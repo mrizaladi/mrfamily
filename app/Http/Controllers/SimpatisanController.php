@@ -18,7 +18,8 @@ class SimpatisanController extends Controller
      */
     public function index(SimpatisanDataTable $dataTable)
     {
-        return $dataTable->render('datatables.base');
+        $data['title'] = 'Simpatisan';
+        return $dataTable->render('datatables.base', $data);
     }
 
     /**

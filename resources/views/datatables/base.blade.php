@@ -4,7 +4,7 @@
 <div class="container-xl">
     <div class="page-header d-print-none">
         <h2 class="page-title">
-            Simpatisan
+            {{ $title }}
         </h2>
     </div>
 </div>
@@ -12,7 +12,7 @@
     <div class="container-xl">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Data Simpatisan</h3>
+                <h3 class="card-title">Data {{ $title }}</h3>
                 <div class="card-actions">
                     <a href="#" class="btn btn-outline-azure btn-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
