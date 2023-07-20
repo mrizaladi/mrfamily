@@ -49,17 +49,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($simpatisan as $sim)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $sim->nik }}</td>
-                                <td>{{ $sim->name }}</td>
-                                <td>{{ $sim->phone }}</td>
-                                <td>{{ $sim->sex }}</td>
-                                <td>{{ $sim->regency?->name }}</td>
-                                <td>{{ $sim->district->name }}</td>
-                                <td>{{ $sim->subdistrict->name }}</td>
-                                <td>{{ $sim->user?->name }}</td>
+                        @php
+                            $target = auth()->user()->id;
+                            dd($target);
+                        @endphp
+                        @foreach ($simpatisan as $sim)
+                            @if ($sim->user->id === $target)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $sim->nik }}</td>
+                                    <td>{{ $sim->name }}</td>
+                                    <td>{{ $sim->phone }}</td>
+                                    <td>{{ $sim->sex }}</td>
+                                    <td>{{ $sim->regency?->name }}</td>
+                                    <td>{{ $sim->district->name }}</td>
+                                    <td>{{ $sim->subdistrict->name }}</td>
+                                    <td>{{ $sim->user?->name }}</td>
                                 <td style="width: 10%;">
                                     <div class="d-flex justify-content-around">
                                         <a href="{{ route('simpatisan.edit', $sim->id) }}" class="btn btn-outline-success btn-icon">
