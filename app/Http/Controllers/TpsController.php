@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\TpsDataTable;
 use App\Models\Tps;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,10 +12,10 @@ class TpsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TpsDataTable $dataTable)
     {
-        $data['tps'] = Tps::with(['regency', 'district', 'subdistrict'])->get();
-        return view('tps.index', $data);
+        $data['title'] = 'TPS';
+        return $dataTable->render('datatables.base', $data);
     }
 
     /**
