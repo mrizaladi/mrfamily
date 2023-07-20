@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Simpatisan;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -70,6 +71,10 @@ class SimpatisanDataTable extends DataTable
             ->editColumn('user_id', function ($row) {
                 return $row->user?->name;
             })
+            ->editColumn('created_at', function ($row) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $row->created_at)->format('d F y H:i');
+                return $formatedDate;
+            })
             ->setRowId('id');
     }
 
@@ -96,7 +101,7 @@ class SimpatisanDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -116,11 +121,11 @@ class SimpatisanDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('nik'),
-            Column::make('phone'),
-            Column::make('sex'),
+            Column::make('created_at'),
+            Column::make('name')->title('Nama'),
+            Column::make('nik')->title('NIK'),
+            Column::make('phone')->title('Nomor HP'),
+            Column::make('sex')->title('Jenis Kelamin'),
             Column::make('regency_id')->title('Kota/Kabupaten'),
             Column::make('district_id')->title('Kecamatan'),
             Column::make('subdistrict_id')->title('Kelurahan'),
