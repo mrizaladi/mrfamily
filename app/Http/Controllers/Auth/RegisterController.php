@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\District;
+use App\Models\Subdistrict;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
+
 
 class RegisterController extends Controller
 {
@@ -76,4 +81,37 @@ class RegisterController extends Controller
             'subdistrict_id' => $data['subdistrict_id'],
         ]);
     }
+
+    
+    public function regdistrict($id)
+    {
+        $district = District::where('regency_id', $id)->get();
+        return Response::json($district);
+    }
+
+    public function regsubdistrict($id)
+    {
+        $subdistricts = Subdistrict::where('district_id', $id)->get();
+        return Response::json($subdistricts);
+    }
+
+    public function approval()
+    {
+        return view('auth.approval');
+    }
+
+    
+    public function createuser(Request $request){
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'regency_id' => $request->regency_id,
+            'district_id' => $request->district_id,
+            'subdistrict_id' => $request->subdistrict_id,
+        ]);
+
+        return redirect()->route('approval');
+    }
+
 }

@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-<form action="{{ route('register') }}" method="post" autocomplete="off">
+<form action="{{ route('createuser') }}" method="post" autocomplete="off">
     @csrf
 
     <div class="card-body">
@@ -37,7 +37,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label">{{ __('Kota/Kabupaten') }}</label>
-            <select name="regency_id" id="regencies" class="form-select @error('regency_id') is-invalid @enderror">
+            <select name="regency_id" id="regency" class="form-select @error('regency_id') is-invalid @enderror">
                 <option value="" style="color: #999;">Pilih Kota/Kabupaten</option>
                 @foreach ($regencies as $regency)
                 <option value="{{ $regency->id }}">{{ $regency->name }}</option>
@@ -49,11 +49,8 @@
         </div>
         <div class="mb-3">
             <label class="form-label">{{ __('Kecamatan') }}</label>
-            <select name="district_id" class="form-select @error('district_id') is-invalid @enderror">
-                <option value="" style="color: #999;">Pilih Kecamatan</option>
-                @foreach ($districts as $district)
-                <option value="{{ $district->id }}">{{ $district->name }}</option>
-                @endforeach
+            <select name="district_id" id="regdistrict" class="form-select @error('district_id') is-invalid @enderror">
+                <option value="">Pilih Kabupaten</option>
             </select>
             @error('district_id')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -61,11 +58,8 @@
         </div>
         <div class="mb-3">
             <label class="form-label">{{ __('Kelurahan') }}</label>
-            <select name="subdistrict_id" class="form-select @error('subdistrict_id') is-invalid @enderror">
-                <option value="" style="color: #999;">Pilih Kelurahan</option>
-                @foreach ($subdistricts as $sub)
-                <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                @endforeach
+            <select class="form-control form-select" name="subdistrict_id" id="regsubdistrict">
+                <option value="">Pilih Desa/Kelurahan</option>
             </select>
             @error('subdistrict_id')
             <div class="invalid-feedback">{{ $message }}</div>
@@ -84,4 +78,57 @@
 </div>
 @endif
 
+@endsection
+
+@section('custom_scripts')
+<script>
+
+    $(document).ready(function() {
+        $('#regency').on('change', function() {
+            var idRegency = this.value;
+            console.log(idRegency);
+            $("#regdistrict").html('');
+            $.ajax({
+                url: '/regdistrict/' + idRegency
+                , type: "GET"
+                , data: {}
+                , dataType: 'json'
+                , success: function(result) {
+                    if (result) {
+                        $('#regdistrict').empty();
+                        $('#regdistrict').append('<option hidden>Pilih Kecamatan</option>');
+                        $.each(result, function(key, value) {
+                            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    } else {
+                        $('#regdistrict').empty();
+                    }
+                }
+            });
+        });
+        $('#regdistrict').on('change', function() {
+            var idRegency = this.value;
+            console.log(idRegency);
+            $("#regsubdistrict").html('');
+            $.ajax({
+                url: '/regsubdistrict/' + idRegency
+                , type: "GET"
+                , data: {}
+                , dataType: 'json'
+                , success: function(res) {
+                    if (res) {
+                        $('#regsubdistrict').empty();
+                        $('#regsubdistrict').append('<option hidden>Pilih Kecamatan</option>');
+                        $.each(res, function(key, val) {
+                            $('select[name="subdistrict_id"]').append('<option value="' + val.id + '">' + val.name + '</option>');
+                        });
+                    } else {
+                        $('#regsubdistrict').empty();
+                    }
+                }
+            });
+        });
+    });
+
+</script>
 @endsection

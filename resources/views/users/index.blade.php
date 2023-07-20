@@ -24,6 +24,7 @@
                                 <th>{{ __('Kabupaten/Kota') }}</th>
                                 <th>{{ __('Kecamatan') }}</th>
                                 <th>{{ __('Kelurahan/Desa') }}</th>
+                                <th>Approval</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,6 +37,8 @@
                                 <td>{{ $user->regency?->name }}</td>
                                 <td>{{ $user->district?->name }}</td>
                                 <td>{{ $user->subdistrict?->name }}</td>
+                                <td><a href="{{ route('users.approve', $user->id) }}"
+                                    class="btn btn-primary btn-sm">Approve</a></td>
                             </tr>
                         @endforeach
                         </tbody>

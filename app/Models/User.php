@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'regency_id',
         'district_id',
-        'subdistrict_id'
+        'subdistrict_id',
+        'approved_at'
     ];
 
     /**
