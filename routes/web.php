@@ -20,23 +20,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('regdistrict/{id}', [RegisterController::class,'regdistrict'])->name('regdistrict');
-Route::get('regsubdistrict/{id}', [RegisterController::class,'regsubdistrict'])->name('regsubdistrict');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('regdistrict/{id}', [RegisterController::class, 'regdistrict'])->name('regdistrict');
+Route::get('regsubdistrict/{id}', [RegisterController::class, 'regsubdistrict'])->name('regsubdistrict');
 
 Auth::routes();
 
-Route::middleware('auth')->group(function () { 
-    Route::middleware('role:superadmin')->group(function () {
-        Route::get('users', [UserController::class, 'index'])->name('users.index');
-    });
-
-    Route::middleware(['role:admin'])->group(function () {
-        Route::resource('tps', TpsController::class);
-        Route::resource('simpatisan', SimpatisanController::class);
-        Route::controller(ProfileController::class)->group(function () {
-            Route::get('profile', 'show')->name('profile.show');
-            Route::put('profile', 'update')->name('profile.update');
-        });
+Route::middleware('auth')->group(function () {
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::resource('tps', TpsController::class);
+    Route::resource('simpatisan', SimpatisanController::class);
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('profile', 'show')->name('profile.show');
+        Route::put('profile', 'update')->name('profile.update');
     });
 });
