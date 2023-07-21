@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SimpatisanController;
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('regdistrict/{id}', [RegisterController::class,'regdistrict'])->name('regdistrict');
+Route::get('regsubdistrict/{id}', [RegisterController::class,'regsubdistrict'])->name('regsubdistrict');
 
 Auth::routes();
 
