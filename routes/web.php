@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SimpatisanController;
 use App\Http\Controllers\TpsController;
 use App\Http\Controllers\UserController;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,12 +22,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('regdistrict/{id}', [RegisterController::class, 'regdistrict'])->name('regdistrict');
-Route::get('regsubdistrict/{id}', [RegisterController::class, 'regsubdistrict'])->name('regsubdistrict');
 
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+    Route::controller(SimpatisanController::class)->group(function() {
+        Route::get('district/{id}', 'district')->name('district');
+        Route::get('subdistrict/{id}', 'subdistrict')->name('subdistrict');
+    });
+    Route::controller(RegisterController::class)->group(function() {
+        Route::get('regdistrict/{id}', 'regdistrict')->name('regdistrict');
+        Route::get('regsubdistrict/{id}', 'regsubdistrict')->name('regsubdistrict');
+    });
+    
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::resource('tps', TpsController::class);
     Route::resource('simpatisan', SimpatisanController::class);
