@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function () {
         Route::get('regdistrict/{id}', 'regdistrict')->name('regdistrict');
         Route::get('regsubdistrict/{id}', 'regsubdistrict')->name('regsubdistrict');
     });
-    
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+    Route::get('users', [UserController::class, 'index'])->middleware('role:superadmin')->name('users.index');
     Route::resource('tps', TpsController::class);
     Route::resource('simpatisan', SimpatisanController::class);
     Route::controller(ProfileController::class)->group(function () {
