@@ -13,6 +13,6 @@ class SimpatisanSeeder extends Seeder
      */
     public function run(): void
     {
-        Simpatisan::factory()->count(2000)->create();
+        Simpatisan::factory()->count(50)->create();
     }
 }
