@@ -6,7 +6,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SimpatisanController;
 use App\Http\Controllers\TpsController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,19 +26,17 @@ Route::get('regsubdistrict/{id}', [RegisterController::class,'regsubdistrict'])-
 
 Auth::routes();
 
-Route::get('/foo', function () {
-    Artisan::call('storage:link');
-});
+Route::middleware('auth')->group(function () { 
+    Route::middleware('role:superadmin')->group(function () {
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
+    });
 
-Route::middleware('auth')->group(function () {
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
-    
-    Route::resource('tps', TpsController::class);
-    Route::get('district/{id}', [SimpatisanController::class,'district'])->name('district');
-    Route::get('subdistrict/{id}', [SimpatisanController::class,'subdistrict'])->name('subdistrict');
-    Route::resource('simpatisan', SimpatisanController::class);
-    
-    
-    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::middleware(['role:admin'])->group(function () {
+        Route::resource('tps', TpsController::class);
+        Route::resource('simpatisan', SimpatisanController::class);
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('profile', 'show')->name('profile.show');
+            Route::put('profile', 'update')->name('profile.update');
+        });
+    });
 });

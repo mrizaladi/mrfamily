@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
-
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -71,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -79,6 +79,12 @@ class RegisterController extends Controller
             'district_id' => $data['district_id'],
             'subdistrict_id' => $data['subdistrict_id'],
         ]);
+
+        $adminRole = Role::where('name', 'admin')->first();
+
+        $user->assignRole($adminRole);
+
+        return $user;
     }
 
     
