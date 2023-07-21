@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
+use App\Models\Subdistrict;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
+
 
 class RegisterController extends Controller
 {
@@ -76,4 +80,18 @@ class RegisterController extends Controller
             'subdistrict_id' => $data['subdistrict_id'],
         ]);
     }
+
+    
+    public function regdistrict($id)
+    {
+        $district = District::where('regency_id', $id)->get();
+        return Response::json($district);
+    }
+
+    public function regsubdistrict($id)
+    {
+        $subdistricts = Subdistrict::where('district_id', $id)->get();
+        return Response::json($subdistricts);
+    }
+
 }

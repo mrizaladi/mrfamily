@@ -30,7 +30,12 @@
         </div>
     </div>
 
+    @stack('scripts')
+
+    <!-- Core plugin JavaScript-->
     @vite('resources/js/app.js')
+
+    <!-- Page level custom scripts -->
+    @yield('custom_scripts')
 </body>
-@yield('scripts')
 </html>
