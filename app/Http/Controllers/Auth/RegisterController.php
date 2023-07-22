@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\District;
 use App\Models\Subdistrict;
 use App\Providers\RouteServiceProvider;
@@ -100,4 +101,22 @@ class RegisterController extends Controller
         return Response::json($subdistricts);
     }
 
+    public function approval()
+    {
+        return view('auth.approval');
+    }
+
+    
+    public function createuser(Request $request){
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'regency_id' => $request->regency_id,
+            'district_id' => $request->district_id,
+            'subdistrict_id' => $request->subdistrict_id,
+        ]);
+
+        return redirect()->route('approval');
+    }
 }

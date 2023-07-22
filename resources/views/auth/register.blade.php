@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-<form action="{{ route('register') }}" method="post" autocomplete="off">
+<form action="{{ route('createuser') }}" method="post" autocomplete="off">
     @csrf
 
     <div class="card-body">

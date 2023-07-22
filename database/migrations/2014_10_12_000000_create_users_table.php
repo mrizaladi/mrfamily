@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreignId('regency_id')->nullable();
             $table->foreignId('district_id')->nullable();
             $table->foreignId('subdistrict_id')->nullable();
+            $table->boolean('admin')->default(false);
+            $table->timestamp('approved_at')->nullable();
         });
     }
 
