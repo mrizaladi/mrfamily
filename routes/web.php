@@ -25,14 +25,15 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('regdistrict/{id}', 'regdistrict')->name('regdistrict');
+    Route::get('regsubdistrict/{id}', 'regsubdistrict')->name('regsubdistrict');
+});
+
 Route::middleware('auth')->group(function () {
     Route::controller(SimpatisanController::class)->group(function() {
         Route::get('district/{id}', 'district')->name('district');
         Route::get('subdistrict/{id}', 'subdistrict')->name('subdistrict');
-    });
-    Route::controller(RegisterController::class)->group(function() {
-        Route::get('regdistrict/{id}', 'regdistrict')->name('regdistrict');
-        Route::get('regsubdistrict/{id}', 'regsubdistrict')->name('regsubdistrict');
     });
 
     Route::get('users', [UserController::class, 'index'])->middleware('role:superadmin')->name('users.index');
