@@ -29,11 +29,8 @@ Route::controller(RegisterController::class)->group(function() {
     Route::get('regsubdistrict/{id}', 'regsubdistrict')->name('regsubdistrict');
     Route::get('approval', 'approval')->name('approval');
 });
-Auth::routes();
 
-Route::get('/foo', function () {
-    Artisan::call('storage:link');
-});
+Auth::routes();
 
 Route::middleware('auth')->group(function () {
 
