@@ -24,7 +24,7 @@
                                 <th>{{ __('Kabupaten/Kota') }}</th>
                                 <th>{{ __('Kecamatan') }}</th>
                                 <th>{{ __('Kelurahan/Desa') }}</th>
-                                <th>Approval</th>
+                                <th>{{ __('Approve') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,7 +38,14 @@
                                 <td>{{ $user->district?->name }}</td>
                                 <td>{{ $user->subdistrict?->name }}</td>
                                 <td><a href="{{ route('users.approve', $user->id) }}"
-                                    class="btn btn-primary btn-sm">Approve</a></td>
+                                    class="btn btn-success btn-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M5 12l5 5l10 -10"></path>
+                                    </svg>
+                                    Approve</a>
+                                </td>
+
                             </tr>
                         @endforeach
                         </tbody>

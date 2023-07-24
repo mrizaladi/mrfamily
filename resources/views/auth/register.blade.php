@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-<form action="{{ route('createuser') }}" method="post" autocomplete="off">
+<form action="{{ route('register') }}" method="post" autocomplete="off">
     @csrf
 
     <div class="card-body">
@@ -43,27 +43,18 @@
                 <option value="{{ $regency->id }}">{{ $regency->name }}</option>
                 @endforeach
             </select>
-            @error('regency_id')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
         </div>
         <div class="mb-3">
             <label class="form-label">{{ __('Kecamatan') }}</label>
             <select name="district_id" id="regdistrict" class="form-select @error('district_id') is-invalid @enderror">
                 <option value="">Pilih Kabupaten</option>
             </select>
-            @error('district_id')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
         </div>
         <div class="mb-3">
             <label class="form-label">{{ __('Kelurahan') }}</label>
-            <select class="form-control form-select" name="subdistrict_id" id="regsubdistrict">
+            <select class="form-control form-select @error('subdistrict_id') is-invalid @enderror" name="subdistrict_id" id="regsubdistrict">
                 <option value="">Pilih Desa/Kelurahan</option>
             </select>
-            @error('subdistrict_id')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
         </div>
 
         <div class="form-footer">

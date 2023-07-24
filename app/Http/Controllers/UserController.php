@@ -8,8 +8,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::whereNull('approved_at')->get();
-        $users = User::paginate();
+        $users = User::whereNull('approved_at')->paginate();
 
         return view('users.index', compact('users'));
     }
@@ -19,6 +18,6 @@ class UserController extends Controller
         $user = User::findOrFail($user_id);
         $user = $user->update(['approved_at' => now()]);
 
-        return redirect()->route('users.index')->withMessage('User approved successfully');
+        return redirect()->route('users.index')->with('info', 'User berhasil diapprove');
     }
 }

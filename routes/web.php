@@ -33,26 +33,17 @@ Route::controller(RegisterController::class)->group(function() {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
-
     Route::middleware(['approved'])->group(function () {
-        Route::controller(SimpatisanController::class)->group(function() {
-            Route::get('district/{id}', 'district')->name('district');
-            Route::get('subdistrict/{id}', 'subdistrict')->name('subdistrict');
-        });
-
-        Route::middleware(['admin'])->group(function () {
-            Route::get('users', [UserController::class, 'index'])->middleware('role:superadmin')->name('users.index');
-            Route::get('users', [UserController::class, 'index'])->name('users.index');
-            Route::get('/users/{user_id}/approve', [UserController::class, 'approve'])->name('users.approve');
-
-            Route::resource('tps', TpsController::class);
-        });
-
+        Route::get('users', [UserController::class, 'index'])->middleware('role:superadmin')->name('users.index');
+        Route::get('/users/{user_id}/approve', [UserController::class, 'approve'])->name('users.approve');
         Route::get('district/{id}', [SimpatisanController::class,'district'])->name('district');
         Route::get('subdistrict/{id}', [SimpatisanController::class,'subdistrict'])->name('subdistrict');
+
+
+        Route::resource('tps', TpsController::class);
         Route::resource('simpatisan', SimpatisanController::class);
-    
-        Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
-        Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
     });
+
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
