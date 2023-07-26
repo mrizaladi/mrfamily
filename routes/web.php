@@ -34,7 +34,7 @@ Auth::routes();
 
 Route::middleware('auth')->group(function () {
     Route::middleware(['approved'])->group(function () {
-        Route::get('users', [UserController::class, 'index'])->middleware('role:superadmin')->name('users.index');
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/{user_id}/approve', [UserController::class, 'approve'])->name('users.approve');
         Route::get('district/{id}', [SimpatisanController::class,'district'])->name('district');
         Route::get('subdistrict/{id}', [SimpatisanController::class,'subdistrict'])->name('subdistrict');

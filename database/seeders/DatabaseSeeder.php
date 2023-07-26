@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $superadminRole = Role::create(['name' => 'superadmin']);
         $adminRole = Role::create(['name' => 'admin']);
+        $userRole = Role::create(['name' => 'user']);
 
 
         $admin = User::create([
@@ -42,9 +43,21 @@ class DatabaseSeeder extends Seeder
             'admin' => 1,
             'approved_at' => now()
         ]);
+        
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@mrfamily.com',
+            'password' => Hash::make('user'),
+            'regency_id' => '1',
+            'district_id' => '1',
+            'subdistrict_id' => '1',
+            'admin' => 0,
+            'approved_at' => now()
+        ]);
 
         $admin->assignRole('admin');
         $superadmin->assignRole('superadmin');
+        $user->assignRole('user');
 
         // Create permissions
         Permission::create(['name' => 'access all pages']);
@@ -53,7 +66,8 @@ class DatabaseSeeder extends Seeder
 
         // Assign permissions to roles
         $superadminRole->givePermissionTo('access all pages');
-        $adminRole->givePermissionTo('access tps page', 'access simpatisan page');
+        $adminRole->givePermissionTo('access all pages');
+        $userRole->givePermissionTo('access tps page', 'access simpatisan page');
 
         $this->call([
             RegencySeeder::class,

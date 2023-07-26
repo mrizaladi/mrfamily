@@ -3,7 +3,7 @@
         <div class="navbar navbar-light">
             <div class="container-xl">
                 <ul class="navbar-nav">
-                    @if(auth()->user()->hasAnyRole(['superadmin', 'admin']))
+                    @if(auth()->user()->hasAnyRole(['superadmin', 'admin', 'user']))
                     <li class="nav-item @if(request()->routeIs('home')) active @endif">
                         <a class="nav-link" href="{{ route('home') }}" >
                             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -18,7 +18,7 @@
 
                     @if(auth()->user()->approved_at)
 
-                        @if(auth()->user()->hasRole('superadmin'))
+                        @if(auth()->user()->hasAnyRole(['superadmin','admin']))
                         <li class="nav-item @if(request()->routeIs('users.index')) active @endif">
                             <a class="nav-link" href="{{ route('users.index') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">

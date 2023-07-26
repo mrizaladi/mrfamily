@@ -81,9 +81,9 @@ class RegisterController extends Controller
             'subdistrict_id' => $data['subdistrict_id'],
         ]);
 
-        $adminRole = Role::where('name', 'admin')->first();
+        $userRole = Role::where('name', 'user')->first();
 
-        $user->assignRole($adminRole);
+        $user->assignRole($userRole);
 
         return $user;
     }
