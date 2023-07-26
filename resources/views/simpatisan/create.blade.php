@@ -93,7 +93,7 @@
                                 <label class="form-label required">Jenis Kelamin</label>
                                 <div class="form-selectgroup">
                                     <label class="form-selectgroup-item">
-                                        <input type="radio" name="sex" value="Laki-Laki" class="form-selectgroup-input">
+                                        <input type="radio" name="sex" value="Laki-Laki" {{ old('sex') == 'Laki-Laki' ? 'checked' : '' }} class="form-selectgroup-input">
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-man" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -107,7 +107,7 @@
                                             Laki - Laki</span>
                                     </label>
                                     <label class="form-selectgroup-item">
-                                        <input type="radio" name="sex" value="Perempuan" class="form-selectgroup-input">
+                                        <input type="radio" name="sex" value="Perempuan" {{ old('sex') == 'Perempuan' ? 'checked' : '' }} class="form-selectgroup-input">
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-woman" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -172,6 +172,7 @@
                         $.each(result, function(key, value) {
                             $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
                         });
+                        $('#district').val("{{ old('district_id') }}").trigger('change');
                     } else {
                         $('#district').empty();
                     }
@@ -194,12 +195,17 @@
                         $.each(res, function(key, val) {
                             $('select[name="subdistrict_id"]').append('<option value="' + val.id + '">' + val.name + '</option>');
                         });
+                        $('#subdistrict').val("{{ old('subdistrict_id') }}").trigger('change');
                     } else {
                         $('#subdistrict').empty();
                     }
                 }
             });
         });
+        if("{{ old('regency_id')}}"){
+            console.log("{{ old('regency_id')}}");
+            $('#regency').trigger('change');
+        }
     });
 
 </script>
