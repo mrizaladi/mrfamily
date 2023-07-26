@@ -37,6 +37,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Created At</th>
                                 <th>NIK</th>
                                 <th>Nama</th>
                                 <th>No Handphone</th>
@@ -48,52 +49,6 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        @php
-                            $target = auth()->user()->id;
-                            dd($target);
-                        @endphp
-                        @foreach ($simpatisan as $sim)
-                            @if ($sim->user->id === $target)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $sim->nik }}</td>
-                                    <td>{{ $sim->name }}</td>
-                                    <td>{{ $sim->phone }}</td>
-                                    <td>{{ $sim->sex }}</td>
-                                    <td>{{ $sim->regency?->name }}</td>
-                                    <td>{{ $sim->district->name }}</td>
-                                    <td>{{ $sim->subdistrict->name }}</td>
-                                    <td>{{ $sim->user?->name }}</td>
-                                <td style="width: 10%;">
-                                    <div class="d-flex justify-content-around">
-                                        <a href="{{ route('simpatisan.edit', $sim->id) }}" class="btn btn-outline-success btn-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                                <path d="M16 5l3 3"></path>
-                                            </svg>
-                                        </a>
-                                        <form action="{{ route('simpatisan.destroy', $sim->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger btn-icon" onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <path d="M4 7l16 0"></path>
-                                                    <path d="M10 11l0 6"></path>
-                                                    <path d="M14 11l0 6"></path>
-                                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                                                </svg>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -105,10 +60,39 @@
 
 @section('custom_scripts')
 <script>
-    $(document).ready(function() {
-        $('#simpatisan').DataTable();
+    $(document).ready(function () {
+        $('#simpatisan').DataTable({
+            dom: 'Brltip',
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            deferRender:true,
+            scroller:true,
+            pageLength: 10,
+            lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+            ajax: {
+                type: 'GET',
+                url: '{{ route("getSimpatisan")}}'
+            },
+            columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex',orderable:false, searchable: false },
+            {data: 'created_at',name: 'created_at',searchable:true,visible:true,orderable:true},
+            {data: 'nik',name: 'nik',searchable:true,visible:true,orderable:true},
+            {data: 'name',name: 'name',searchable:true,visible:true,orderable:true},
+            {data: 'phone',name: 'phone',searchable:true,visible:true,orderable:true},
+            {data: 'sex',name: 'sex',searchable:true,visible:true,orderable:true},
+            {data: 'regency_id',name: 'regency_id',searchable:true,visible:true,orderable:true},
+            {data: 'district_id',name: 'district_id',searchable:true,visible:true,orderable:true},
+            {data: 'subdistrict_id',name: 'subdistrict_id',searchable:true,visible:true,orderable:true},
+            {data: 'user_id',name: 'user_id',searchable:true,visible:true,orderable:true},
+            {data: 'action',name: 'action',searchable:true,visible:true,orderable:true},
+            ],
+        });
     });
-
+    
+    $('#btnFiterSubmitSearch').click(function(){
+         $('#simpatisan').DataTable().draw(true);
+    });
 </script>
 @endsection
 

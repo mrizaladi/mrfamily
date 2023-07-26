@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
         Route::get('district/{id}', [SimpatisanController::class,'district'])->name('district');
         Route::get('subdistrict/{id}', [SimpatisanController::class,'subdistrict'])->name('subdistrict');
 
+        // Get data
+        Route::get('get-data-simpatisan', [SimpatisanController::class,'getSimpatisan'])->name('getSimpatisan');
+
 
         Route::resource('tps', TpsController::class);
         Route::resource('simpatisan', SimpatisanController::class);
