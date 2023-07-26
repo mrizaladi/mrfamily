@@ -18,28 +18,37 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kabupaten/Kota</label>
-                                <select class="form-control form-select" name="regency_id" id="regency">
+                                <select class="form-control form-select @error('regency_id') is-invalid @enderror" name="regency_id" id="regency">
                                     <option value="">Pilih Kabupaten / Kota</option>
                                     @foreach ($regencies as $regency)
                                     <option value="{{ $regency->id }}" {{ old('regency_id') == $regency->id ? 'selected' : '' }}>{{ $regency->name }}</option>
                                     @endforeach
                                 </select>
+                                 @error('regency_id')
+                                 <div class="invalid-feedback">{{ $message }}</div>
+                                 @enderror
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kecamatan</label>
-                                <select class="form-control form-select" name="district_id" id="district">
+                                <select class="form-control form-select @error('district_id') is-invalid @enderror" name="district_id" id="district">
                                     <option value="">Pilih Kabupaten</option>
                                 </select>
+                                @error('district_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Desa/Kelurahan</label>
-                                <select class="form-control form-select" name="subdistrict_id" id="subdistrict">
+                                <select class="form-control form-select @error('subdistrict_id') is-invalid @enderror" name="subdistrict_id" id="subdistrict">
                                     <option value="">Pilih Desa/Kelurahan</option>
                                 </select>
+                                @error('subdistrict_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -54,20 +63,29 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">NIK</label>
-                                <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ old('nik') }}">
+                                <label class="form-label required">Nama Lengkap</label>
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ old('name') }}">
+                                @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">Nama Lengkap</label>
-                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ old('name') }}">
+                                <label class="form-label required">NIK</label>
+                                <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ old('nik') }}">
+                                @error('nik')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Nomor HP</label>
                                 <input type="tel" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan Nomor HP" name="phone" value="{{ old('phone') }}">
+                                @error('phone')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -102,6 +120,9 @@
                                             </svg>
                                             Perempuan</span>
                                     </label>
+                                    @error('sex')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

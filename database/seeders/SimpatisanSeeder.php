@@ -5,36 +5,45 @@ namespace Database\Seeders;
 use App\Models\Simpatisan;
 use Illuminate\Database\Seeder;
 
-use function PHPSTORM_META\map;
 
 class SimpatisanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
+
     public function run(): void
     {
-        // Simpatisan::factory()->count(5000)->create();
+        $totalRecords = 1000000;
+        $batchSize = 80;
 
-        $data = [];
-        for ($i=0; $i < 500000; $i++) { 
-            $data[] = [
-                'updated_at' => now(),
+        for ($i = 0; $i < $totalRecords; $i += $batchSize) {
+            $dummyData = $this->generateDummyData(min($batchSize, $totalRecords - $i));
+            Simpatisan::insert($dummyData);
+        }
+    }
+
+    private function generateDummyData($count): array
+    {
+        $dummyData = [];
+        $faker = \Faker\Factory::create();
+
+        for ($i = 0; $i < $count; $i++) {
+            $dummyData[] = [
                 'created_at' => now(),
-                'nik' => fake()->nik(),
-                'name' => fake()->name(),
-                'phone' => fake()->phoneNumber(),
-                'sex' => fake()->randomElement(['Laki-Laki', 'Perempuan']),
-                'regency_id' => fake()->randomElement(range(1, 4)),
-                'district_id' => fake()->randomElement(range(1, 10)),
-                'subdistrict_id' => fake()->randomElement(range(1, 10)),
-                'ktp' => fake()->creditCardNumber(),
-                'user_id' => fake()->randomElement(range(1, 3))
+                'updated_at' => now(),
+                'nik' => $faker->numberBetween(1000000000000000, 9999999999999999),
+                'name' => $faker->name(),
+                'phone' => $faker->phoneNumber(),
+                'sex' => $faker->randomElement(['Laki-Laki', 'Perempuan']),
+                'regency_id' => $faker->randomElement(range(1, 4)),
+                'district_id' => $faker->randomElement(range(1, 10)),
+                'subdistrict_id' => $faker->randomElement(range(1, 10)),
+                'ktp' => $faker->creditCardNumber(),
+                'user_id' => $faker->randomElement(range(1, 3))
             ];
         }
 
-        foreach(array_chunk($data, 1000) as $chunk){
-            Simpatisan::insert($chunk);
-        }
+        return $dummyData;
     }
 }
