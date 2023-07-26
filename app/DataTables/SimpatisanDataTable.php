@@ -122,7 +122,7 @@ class SimpatisanDataTable extends DataTable
     {
         return [
             Column::make('created_at')->searchable(false),
-            Column::make('name')->searchable(false)->title('Nama'),
+            Column::make('name')->title('Nama'),
             Column::make('nik')->title('NIK'),
             Column::make('phone')->title('Nomor HP'),
             Column::make('sex')->searchable(false)->title('Jenis Kelamin'),
