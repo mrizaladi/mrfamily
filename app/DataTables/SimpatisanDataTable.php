@@ -5,6 +5,7 @@ namespace App\DataTables;
 use App\Models\Simpatisan;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
@@ -86,7 +87,15 @@ class SimpatisanDataTable extends DataTable
      */
     public function query(Simpatisan $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if (Auth::user()->hasRole('user')) {
+            $query->where('regency_id', '=', Auth::user()->regency_id)->where('district_id','=', Auth::user()->district_id)->where('subdistrict_id', '=', Auth::user()->subdistrict_id);
+        }elseif(Auth::user()->hasRole('admin')) {
+            $query->where('regency_id', '=', Auth::user()->regency_id);
+        }
+
+        return $query;
     }
 
     /**
