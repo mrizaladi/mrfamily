@@ -121,15 +121,15 @@ class SimpatisanDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('created_at'),
-            Column::make('name')->title('Nama'),
+            Column::make('created_at')->searchable(false),
+            Column::make('name')->searchable(false)->title('Nama'),
             Column::make('nik')->title('NIK'),
             Column::make('phone')->title('Nomor HP'),
-            Column::make('sex')->title('Jenis Kelamin'),
-            Column::make('regency_id')->title('Kota/Kabupaten'),
-            Column::make('district_id')->title('Kecamatan'),
-            Column::make('subdistrict_id')->title('Kelurahan'),
-            Column::make('user_id')->title('Created By'),
+            Column::make('sex')->searchable(false)->title('Jenis Kelamin'),
+            Column::make('regency_id')->searchable(false)->title('Kota/Kabupaten'),
+            Column::make('district_id')->searchable(false)->title('Kecamatan'),
+            Column::make('subdistrict_id')->searchable(false)->title('Kelurahan'),
+            Column::make('user_id')->searchable(false)->title('Created By'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
