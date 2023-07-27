@@ -2,6 +2,6 @@
 
 @task('deploy', ['on' => 'web'])
     cd www/mrfamily
-    git pull
-    php artisan optimize
+    git pull origin master
+    php artisan optimize:clear
 @endtask
