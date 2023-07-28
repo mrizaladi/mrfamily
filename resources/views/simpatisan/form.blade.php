@@ -14,7 +14,7 @@
                             <select name="dpt" id="dpt" class="form-control">
                                 <option></option>
                                 @foreach ($dpt as $data)
-                                    <option value="{{ $data->id }}">{{ $data->name }} - {{ $data->subdistrict->name }}, {{ $data->district->name }}, {{ $data->regency->name }}</option>
+                                    <option value="{{ $data->id }}">{{ $data->simpatisan_name }} - {{ $data->subdistrict_name }}, {{ $data->district_name }}, {{ $data->regency_name }}</option>
                                 @endforeach
                             </select>
                         </p>
