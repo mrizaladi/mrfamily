@@ -46,6 +46,7 @@
                                 <th>Kelurahan</th>
                                 <th>User</th>
                                 <th>Actions</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>

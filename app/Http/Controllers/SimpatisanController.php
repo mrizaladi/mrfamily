@@ -169,4 +169,33 @@ class SimpatisanController extends Controller
         return Response::json($subdistricts);
     }
 
+    public function approve(Request $request)
+    {
+        try{
+            $sim = Simpatisan::find($request->id);
+            if($sim){
+                Simpatisan::find($request->id)->update([
+                    'status' => true
+                ]);
+                $data = [
+                    'status' => 200,
+                    'output' => 'Simpatisan data has ben Approved!'
+                ];
+            }else{
+                $data = [
+                    'status' => 400,
+                    'output' => 'Simpatisan data not found!'
+                ];
+            }
+        }catch (\Throwable $th) {
+            DB::rollBack();
+            $message = $th->getMessage();
+            $data = [
+                'status' => 500,
+                'output' => $message
+            ];
+        }
+        return Response::json($data);
+    }
+
 }
