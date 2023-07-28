@@ -43,6 +43,9 @@ Route::middleware('auth')->group(function () {
             Route::get('subdistrict/{id}',  'subdistrict')->name('subdistrict');
             Route::get('district/{id}', 'district')->name('district');
             Route::get('approve', 'approve')->name('simpatisan.approve');
+            Route::get('getDistrict', 'getDistrict')->name('getDistrict');
+            Route::get('getSubDistrict', 'getSubDistrict')->name('getSubDistrict');
+            Route::get('getSimpatisan', 'getSimpatisan')->name('getSimpatisan');
         });
 
 
