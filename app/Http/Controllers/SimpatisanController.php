@@ -27,7 +27,7 @@ class SimpatisanController extends Controller
      */
     public function form()
     {
-        $data['dpt'] = Simpatisan::with(['regency', 'district', 'subdistrict'])->get();
+        $data['dpt'] = Simpatisan::with(['regency', 'district', 'subdistrict'])->limit(100)->get();
         return view('simpatisan.form', $data);
     }
 
