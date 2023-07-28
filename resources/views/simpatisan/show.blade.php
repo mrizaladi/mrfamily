@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3>KTP:</h3>
-                        <img src="{{ asset('storage/fotoktp/' . $simpatisan->ktp) }}" alt="KTP" style="max-width: 50%;">
+                        <img src="{{ asset('ktp/'. $simpatisan->ktp) }}" alt="KTP" style="max-width: 50%;">
                     </div>
                 </div>
             </div>

@@ -76,16 +76,14 @@ class SimpatisanController extends Controller
         if ($request->hasFile('ktp')) {
             $image = $request->file('ktp');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-
-            $image->storeAs('fotoktp', $imageName);
-
+            $image->move(public_path('ktp'), $imageName);
             $validatedData['ktp'] = $imageName;
         }
 
         $validatedData['user_id'] = auth()->user()->id;
 
         Simpatisan::create($validatedData);
-        
+
         return redirect()->route('simpatisan.index')->with('success', 'Data berhasil ditambahkan');
     }
 
@@ -129,6 +127,18 @@ class SimpatisanController extends Controller
             'sex' => 'required',
             'ktp' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
         ]);
+
+        if ($request->hasFile('ktp')) {
+            $image = $request->file('ktp');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('ktp'), $imageName);
+
+            if ($sim->ktp && file_exists(public_path('ktp/' . $sim->ktp))) {
+                unlink(public_path('ktp/' . $sim->ktp));
+            }
+
+            $validatedData['ktp'] = $imageName;
+        }
 
         $sim->update($validatedData);
 
