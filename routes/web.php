@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['approved'])->group(function () {
         Route::get('users', [UserController::class, 'index'])->name('users.index');
         Route::get('/users/{user_id}/approve', [UserController::class, 'approve'])->name('users.approve');
-        Route::get('district/{id}', [SimpatisanController::class,'district'])->name('district');
-        Route::get('subdistrict/{id}', [SimpatisanController::class,'subdistrict'])->name('subdistrict');
+        Route::controller(SimpatisanController::class)->group(function(){
+            Route::get('form', 'form')->name('simpatisan.form');
+            Route::get('handleSelect', 'handleSelect')->name('handleselect');
+            Route::get('subdistrict/{id}',  'subdistrict')->name('subdistrict');
+            Route::get('district/{id}', 'district')->name('district');
+            
+        });
 
 
         Route::resource('tps', TpsController::class);

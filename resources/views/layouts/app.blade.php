@@ -83,7 +83,7 @@
         	</div>
       	</div>
     </div>
-
+	@stack('styles')
 	@stack('scripts')
 
     <!-- Core plugin JavaScript-->

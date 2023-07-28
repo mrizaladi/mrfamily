@@ -25,6 +25,22 @@ class SimpatisanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function form()
+    {
+        $data['dpt'] = Simpatisan::with(['regency', 'district', 'subdistrict'])->get();
+        return view('simpatisan.form', $data);
+    }
+
+    public function handleSelect(Request $request)
+    {
+        $sim = $request->dpt;
+        if($sim){
+            return redirect()->route('simpatisan.edit', ['simpatisan' => $sim]);
+        }else{
+            return redirect()->route('simpatisan.create');
+        }
+    }
+
     public function create()
     {
         $data['regencies'] = DB::table('regencies')->get();
@@ -104,7 +120,7 @@ class SimpatisanController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'sex' => 'required',
-            'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
+            'ktp' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
         ]);
 
         $sim->update($validatedData);
