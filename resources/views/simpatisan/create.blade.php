@@ -33,7 +33,7 @@
                             <div class="mb-3">
                                 <label class="form-label required">Kecamatan</label>
                                 <select class="form-control form-select @error('district_id') is-invalid @enderror" name="district_id" id="district">
-                                    <option value="">Pilih Kabupaten</option>
+                                    <option value="">Pilih Kecamatan</option>
                                 </select>
                                 @error('district_id')
                                 <div class="invalid-feedback">{{ $message }}</div>

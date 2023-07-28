@@ -54,7 +54,7 @@ class SimpatisanController extends Controller
             $image = $request->file('ktp');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
 
-            $image->storeAs('fotoktp', $imageName);
+            $image->storeAs('public/fotoktp', $imageName);
 
             $validatedData['ktp'] = $imageName;
         }
