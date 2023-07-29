@@ -87,6 +87,7 @@
                     success: function(response) {
                         console.log(response);
                         if(response.status == 200){
+                            $('#approve_simpatisan').hide();
                             Swal.fire({
                               title: 'Success!',
                               text: response.output,
