@@ -172,8 +172,8 @@
                 $('#c_regency').addClass('non-interactive');
             }else if('{{auth()->user()->name}}' != 'superadmin' && '{{auth()->user()->admin}}' == false){
                 $('#regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
-                $('#district').append('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
-                $('#subdistrict').append('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
+                $('#district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
+                $('#subdistrict').html('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
                 $('#subdistrict').trigger('change');
                 $('#c_regency,#c_district,#c_subdistrict').addClass('non-interactive');
             }
