@@ -98,7 +98,6 @@
                                 })
                             };
                         },
-                        cache: true
                     },
                 }); 
             });
@@ -130,7 +129,6 @@
                                 })
                             };
                         },
-                        cache: true
                     },
                 }); 
             });
@@ -165,7 +163,6 @@
                                 })
                             };
                         },
-                        cache: true
                     },
                 }); 
             });
@@ -175,10 +172,10 @@
                 $('#c_regency').addClass('non-interactive');
             }else if('{{auth()->user()->name}}' != 'superadmin' && '{{auth()->user()->admin}}' == false){
                 $('#regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
-                $('#district').select2().val('{{ auth()->user()->district_id }}').trigger('change');
-                $('#subdistrict').select2().val('{{ auth()->user()->subdistrict_id }}').trigger('change');
-                $('#regency,#district,#subdistrict,#simpatisan').prop('readonly',true);
-                $('#c_regency,#c_district,#c_subdistrict,#c_simpatisan').addClass('non-interactive');
+                $('#district').append('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
+                $('#subdistrict').append('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
+                $('#subdistrict').trigger('change');
+                $('#c_regency,#c_district,#c_subdistrict').addClass('non-interactive');
             }
         })
     </script>
