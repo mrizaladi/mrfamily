@@ -27,15 +27,8 @@ class SimpatisanController extends Controller
      */
     public function form()
     {
-        $data['dpt'] =
-        DB::select("
-            SELECT s.id as id, s.name as simpatisan_name, r.name as regency_name, d.name as district_name, sd.name as subdistrict_name
-            FROM simpatisans as s
-            JOIN regencies as r ON s.regency_id = r.id
-            JOIN districts as d ON s.district_id = d.id
-            JOIN subdistricts as sd ON s.subdistrict_id = sd.id
-        ");
-        return view('simpatisan.form', $data);
+        $regency = Regency::orderBy('name')->get();
+        return view('simpatisan.form', compact('regency'));
     }
 
     public function handleSelect(Request $request)
@@ -138,6 +131,8 @@ class SimpatisanController extends Controller
             }
 
             $validatedData['ktp'] = $imageName;
+
+            $sim->update(['status' => true]);
         }
 
         $sim->update($validatedData);
@@ -169,4 +164,84 @@ class SimpatisanController extends Controller
         return Response::json($subdistricts);
     }
 
+    public function approve(Request $request)
+    {
+        try{
+            $sim = Simpatisan::find($request->id);
+            if($sim){
+                Simpatisan::find($request->id)->update([
+                    'status' => true
+                ]);
+                $data = [
+                    'status' => 200,
+                    'output' => 'Simpatisan data has ben Approved!'
+                ];
+            }else{
+                $data = [
+                    'status' => 400,
+                    'output' => 'Simpatisan data not found!'
+                ];
+            }
+        }catch (\Throwable $th) {
+            DB::rollBack();
+            $message = $th->getMessage();
+            $data = [
+                'status' => 500,
+                'output' => $message
+            ];
+        }
+        return Response::json($data);
+    }
+
+    public function getDistrict(Request $request)
+    {  
+       if($request->search){
+            $search = strtolower(trim($request->search));
+            $data = District::where('regency_id',$request->regency)
+                            ->where(db::raw("lower(name)"),'like',"%$search%")
+                            ->orderBy('name','ASC')
+                            ->get();
+       }else{
+            $data = District::where('regency_id',$request->regency)
+                            ->orderBy('name','ASC')
+                            ->get();
+       }
+       return response()->json($data,200);
+    }
+
+    public function getSubDistrict(Request $request)
+    {
+       if($request->search){
+            $search = strtolower(trim($request->search));
+            $data = Subdistrict::where('district_id',$request->district)
+                                ->where(db::raw("lower(name)"),'like',"%$search%")
+                                ->orderBy('name','ASC')
+                                ->get();
+       }else{
+            $data = Subdistrict::where('district_id',$request->district)
+                                ->orderBy('name','ASC')
+                                ->get();
+       }
+       return response()->json($data,200);
+    }
+
+    public function getSimpatisan(Request $request)
+    {
+       if($request->search){
+            $search = strtolower(trim($request->search));
+            $data = Simpatisan::where('regency_id',$request->regency)
+                                ->where('district_id',$request->district)
+                                ->where('subdistrict_id',$request->subdistrict)
+                                ->where(db::raw("lower(name)"),'like',"%$search%")
+                                ->orderBy('name','ASC')
+                                ->get();
+       }else{
+            $data = Simpatisan::where('regency_id',$request->regency)
+                                ->where('district_id',$request->district)
+                                ->where('subdistrict_id',$request->subdistrict)
+                                ->orderBy('name','ASC')
+                                ->get();
+       }
+       return response()->json($data,200);
+    }
 }

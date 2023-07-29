@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .non-interactive {
+    pointer-events: none;
+    background-color: rgb(236, 236, 236);
+}
+</style>
 <div class="container-xl">
     <div class="page-header d-print-none">
         <h2 class="page-title">
@@ -19,7 +25,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kabupaten/Kota</label>
-                                <select class="form-control form-select" name="regency_id" required>
+                                <select class="form-control form-select non-interactive" name="regency_id" required>
                                     <option value="">Pilih Kabupaten / Kota</option>
                                     @foreach ($regencies as $regency)
                                     <option value="{{ $regency->id }}" {{ $sim->regency_id === $regency->id ? 'selected' : '' }}>{{ $regency->name }}</option>
@@ -30,7 +36,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kecamatan</label>
-                                <select class="form-control form-select" name="district_id" required>
+                                <select class="form-control form-select non-interactive" name="district_id" required>
                                     <option value="">Pilih Kecamatan</option>
                                     @foreach ($districts as $district)
                                     <option value="{{ $district->id }}" {{ $sim->district_id === $district->id ? 'selected' : '' }}>{{ $district->name }}</option>
@@ -41,7 +47,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Kelurahan</label>
-                                <select class="form-control form-select" name="subdistrict_id" required>
+                                <select class="form-control form-select non-interactive" name="subdistrict_id" required>
                                     <option value="">Pilih Kelurahan</option>
                                     @foreach ($subdistricts as $subdistrict)
                                     <option value="{{ $subdistrict->id }}" {{ $sim->subdistrict_id === $subdistrict->id ? 'selected' : '' }}>{{ $subdistrict->name }}</option>
@@ -64,7 +70,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Nama Lengkap</label>
-                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ $sim->name }}">
+                                <input type="text" name="name" class="form-control non-interactive @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ $sim->name }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -77,7 +83,7 @@
                             <div class="mb-3">
                                 <label class="form-label required">Jenis Kelamin</label>
                                 <div class="form-selectgroup">
-                                    <label class="form-selectgroup-item">
+                                    <label class="form-selectgroup-item non-interactive">
                                         <input type="radio" name="sex" value="Laki-Laki" class="form-selectgroup-input" {{ $sim->sex === 'Laki-Laki' ? 'checked' : '' }}>
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-man" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -91,7 +97,7 @@
                                             </svg>
                                             Laki - Laki</span>
                                     </label>
-                                    <label class="form-selectgroup-item">
+                                    <label class="form-selectgroup-item non-interactive">
                                         <input type="radio" name="sex" value="Perempuan" class="form-selectgroup-input" {{ $sim->sex === 'Perempuan' ? 'checked' : '' }}>
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-woman" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
