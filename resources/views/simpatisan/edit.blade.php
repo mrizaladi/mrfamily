@@ -48,7 +48,7 @@
                             <div class="mb-3">
                                 <label class="form-label required">Kelurahan</label>
                                 <select class="form-control form-select non-interactive" name="subdistrict_id" required>
-                                    <option value="">Pilih Kelurahan</option>
+                                    <option value="">Pilih Kelurahan/Desa</option>
                                     @foreach ($subdistricts as $subdistrict)
                                     <option value="{{ $subdistrict->id }}" {{ $sim->subdistrict_id === $subdistrict->id ? 'selected' : '' }}>{{ $subdistrict->name }}</option>
                                     @endforeach

@@ -22,26 +22,26 @@
                     <div class="card-header">{{ __('Cari Data Simpatisan') }}</div>
                     <div class="card-body">
                         <div class="mb-3 p-1" id="c_regency">
-                            <label for="regency" class="fw-bold label">REGENCY</label>
+                            <label for="regency" class="fw-bold label">Kabupaten/Kota</label>
                             <select name="regency" id="regency" class="form-control" required>
-                                <option value="">--- Choose Regency ---</option>
+                                <option value="">--- Pilih Kabupaten/Kota ---</option>
                                 @foreach ($regency as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-3 p-1" id="c_district">
-                            <label for="district" class="fw-bold label">DISTRICT</label>
+                            <label for="district" class="fw-bold label">Kecamatan</label>
                             <select name="district" id="district" class="form-control" required>
                             </select>
                         </div>
                         <div class="mb-3 p-1" id="c_subdistrict">
-                            <label for="subdistrict" class="fw-bold label">SUBDISTRICT</label>
+                            <label for="subdistrict" class="fw-bold label">Desa/Kelurahan</label>
                             <select name="subdistrict" id="subdistrict" class="form-control" required>
                             </select>
                         </div>
                         <div class="mb-3 p-1" id="c_simpatisan">
-                            <label for="simpatisan" class="fw-bold label">SIMPATISAN</label>
+                            <label for="simpatisan" class="fw-bold label">Nama Simpatisan</label>
                             <select name="dpt" id="simpatisan" class="form-control" required>
                             </select>
                         </div>
@@ -63,7 +63,7 @@
     <script src="{{ asset('select2/select2.min.js') }}"></script>
     <script>
          $('#regency').select2({
-            placeholder: "--- Choose Regency ---",
+            placeholder: "--- Pilih Kabupaten/Kota ---",
             allowClear: true,
             multiple: false,
          });
@@ -75,7 +75,7 @@
                 $('#simpatisan').select2().val('').trigger('change');
                 let regency =  $('#regency').val();
                 $('#district').select2({
-                    placeholder: "--- Choose District ---",
+                    placeholder: "--- Pilih Kecamatan ---",
                     allowClear: true,
                     ajax: {
                         url :  "{{ route('getDistrict') }}",
@@ -106,7 +106,7 @@
                 $('#simpatisan').select2().val('').trigger('change');
                 let district =  $('#district').val();
                 $('#subdistrict').select2({
-                    placeholder: "--- Choose Sub District ---",
+                    placeholder: "--- Pilih Desa/Kelurahan ---",
                     allowClear: true,
                     ajax: {
                         url :  "{{ route('getSubDistrict') }}",
@@ -138,7 +138,7 @@
                 let district =  $('#district').val();
                 let subdistrict =  $('#subdistrict').val();
                 $('#simpatisan').select2({
-                    placeholder: "--- Choose Simpatisan ---",
+                    placeholder: "--- Cari Nama Simpatisan ---",
                     allowClear: true,
                     ajax: {
                         url :  "{{ route('getSimpatisan') }}",

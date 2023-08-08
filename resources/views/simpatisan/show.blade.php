@@ -24,7 +24,7 @@
                         <ul>
                             <li><strong>Kota/Kabupaten:</strong> {{ $simpatisan->regency->name }}</li>
                             <li><strong>Kecamatan:</strong> {{ $simpatisan->district->name }}</li>
-                            <li><strong>Kelurahan:</strong> {{ $simpatisan->subdistrict->name }}</li>
+                            <li><strong>Desa/Kelurahan:</strong> {{ $simpatisan->subdistrict->name }}</li>
                         </ul>
                         <p><strong>Created by:</strong> {{ $simpatisan->user?$simpatisan->user->name:'-' }}</p>
                         <p><strong>Status:</strong> 

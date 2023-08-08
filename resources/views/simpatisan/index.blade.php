@@ -43,7 +43,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Kabupaten/Kota</th>
                                 <th>Kecamatan</th>
-                                <th>Kelurahan</th>
+                                <th>Desa/Kelurahan</th>
                                 <th>User</th>
                                 <th>Actions</th>
                                 <th>Status</th>
