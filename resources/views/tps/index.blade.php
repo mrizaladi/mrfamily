@@ -68,7 +68,7 @@
                                                 <path d="M16 5l3 3"></path>
                                             </svg>
                                         </a>
-                                        <form action="{{ route('tps.destroy', $tp->id) }}" method="POST">
+                                        {{-- <form action="{{ route('tps.destroy', $tp->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-icon" onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">
@@ -81,7 +81,7 @@
                                                     <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                                                 </svg>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </div>
                                 </td>
                             </tr>
