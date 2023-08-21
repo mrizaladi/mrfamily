@@ -13,16 +13,20 @@ return new class extends Migration
     {
         Schema::create('simpatisans', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('nik');
+            $table->timestamps()->nullable();
+            $table->string('nik')->nullable();
             $table->string('name');
             $table->string('phone')->nullable();
             $table->enum('sex', ['Laki-Laki', 'Perempuan']);
             $table->foreignId('regency_id');
             $table->foreignId('district_id');
             $table->foreignId('subdistrict_id');
-            $table->string('ktp');
+            $table->string('ktp')->nullable();
             $table->foreignId('user_id')->nullable();
+            $table->integer('rt')->nullable();
+            $table->integer('rw')->nullable();
+            $table->integer('tps')->nullable();
+            $table->integer('usia')->nullable();
         });
     }
 

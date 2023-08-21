@@ -68,19 +68,6 @@ class SimpatisanDataTable extends DataTable
                 $actions .= '<path d="M16 5l3 3"></path>';
                 $actions .= '</svg>';
                 $actions .= '</a>';
-                $actions .= '<form action="' . route('simpatisan.destroy', $row->id) . '" method="POST">';
-                $actions .= csrf_field();
-                $actions .= method_field('DELETE');
-                $actions .= '<button type="submit" class="btn btn-outline-danger btn-icon" onclick="return confirm(\'Apakah Anda yakin ingin menghapus item ini?\')">';
-                $actions .= '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">';
-                $actions .= '<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>';
-                $actions .= '<path d="M4 7l16 0"></path>';
-                $actions .= '<path d="M10 11l0 6"></path>';
-                $actions .= '<path d="M14 11l0 6"></path>';
-                $actions .= '<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>';
-                $actions .= '<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>';
-                $actions .= '</svg>';
-                $actions .= '</button>';
                 $actions .= '</form>';
                 $actions .= '</div>';
 

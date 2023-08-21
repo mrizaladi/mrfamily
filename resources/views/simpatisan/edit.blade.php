@@ -64,7 +64,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">NIK</label>
-                                <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ $sim->nik }}">
+                                <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ $sim->nik }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -76,7 +76,7 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Nomor HP</label>
-                                <input type="tel" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan Nomor HP" name="phone" value="{{ $sim->phone }}">
+                                <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan Nomor HP" name="phone" value="{{ $sim->phone }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
