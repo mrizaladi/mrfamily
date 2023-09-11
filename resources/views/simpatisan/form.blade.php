@@ -157,7 +157,7 @@
                             return {
                                 results: $.map(data, function(item) {
                                     return {
-                                        text: `${item.name}`,
+                                        text: `${item.name}_RT0${item.rt}/RW0${item.rw}`,
                                         id: item.id
                                     }
                                 })

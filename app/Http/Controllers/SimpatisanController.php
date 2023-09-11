@@ -61,7 +61,6 @@ class SimpatisanController extends Controller
             'subdistrict_id' => 'required',
             'nik' => 'required',
             'name' => 'required',
-            'phone' => 'required',
             'sex' => 'required',
             'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
@@ -116,7 +115,6 @@ class SimpatisanController extends Controller
             'subdistrict_id' => 'required',
             'nik' => 'required',
             'name' => 'required',
-            'phone' => 'required',
             'sex' => 'required',
             'ktp' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
         ]);

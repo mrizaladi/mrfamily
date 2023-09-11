@@ -51,7 +51,7 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">{{ __('Kelurahan') }}</label>
+            <label class="form-label">{{ __('Kelurahan/Desa') }}</label>
             <select class="form-control form-select @error('subdistrict_id') is-invalid @enderror" name="subdistrict_id" id="regsubdistrict">
                 <option value="">Pilih Desa/Kelurahan</option>
             </select>

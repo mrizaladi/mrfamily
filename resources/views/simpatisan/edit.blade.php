@@ -46,9 +46,9 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">Kelurahan</label>
+                                <label class="form-label required">Desa/Kelurahan</label>
                                 <select class="form-control form-select non-interactive" name="subdistrict_id" required>
-                                    <option value="">Pilih Kelurahan/Desa</option>
+                                    <option value="">Pilih Desa/Kelurahan</option>
                                     @foreach ($subdistricts as $subdistrict)
                                     <option value="{{ $subdistrict->id }}" {{ $sim->subdistrict_id === $subdistrict->id ? 'selected' : '' }}>{{ $subdistrict->name }}</option>
                                     @endforeach
@@ -75,8 +75,8 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">Nomor HP</label>
-                                <input type="number" class="form-control @error('phone') is-invalid @enderror" placeholder="Masukan Nomor HP" name="phone" value="{{ $sim->phone }}">
+                                <label class="form-label">Nomor HP</label>
+                                <input type="number" class="form-control" placeholder="Masukan Nomor HP" name="phone" value="{{ $sim->phone }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
