@@ -57,26 +57,8 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">KTP</label>
-                                <input type="file" class="form-control @error('ktp') is-invalid @enderror" name="ktp">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="mb-3">
-                                <label class="form-label required">NIK</label>
-                                <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ $sim->nik }}">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="mb-3">
                                 <label class="form-label required">Nama Lengkap</label>
                                 <input type="text" name="name" class="form-control non-interactive @error('name') is-invalid @enderror" placeholder="Masukan Nama Lengkap" value="{{ $sim->name }}">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="mb-3">
-                                <label class="form-label">Nomor HP</label>
-                                <input type="number" class="form-control" placeholder="Masukan Nomor HP" name="phone" value="{{ $sim->phone }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -112,6 +94,24 @@
                                             Perempuan</span>
                                     </label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label required">NIK</label>
+                                <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ $sim->nik }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Nomor HP</label>
+                                <input type="number" class="form-control" placeholder="Masukan Nomor HP" name="phone" value="{{ $sim->phone }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label required">KTP</label>
+                                <input type="file" class="form-control @error('ktp') is-invalid @enderror" name="ktp">
                             </div>
                         </div>
                     </div>

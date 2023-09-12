@@ -150,15 +150,15 @@ class SimpatisanDataTable extends DataTable
     {
         return [
             // Column::make('created_at')->searchable(false),
-            Column::make('name')->title('Nama'),
-            Column::make('nik')->title('NIK'),
-            Column::make('phone')->title('Nomor HP'),
-            Column::make('sex')->searchable(false)->title('Jenis Kelamin'),
             Column::make('regency_id')->searchable(false)->title('Kota/Kabupaten'),
             Column::make('district_id')->searchable(false)->title('Kecamatan'),
             Column::make('subdistrict_id')->searchable(false)->title('Desa/Kelurahan'),
             Column::make('rt')->title('RT'),
             Column::make('rw')->title('RW'),
+            Column::make('name')->title('Nama'),
+            Column::make('nik')->title('NIK'),
+            Column::make('phone')->title('Nomor HP'),
+            Column::make('sex')->searchable(false)->title('Jenis Kelamin'),
             Column::make('user_id')->searchable(false)->title('Created By'),
             Column::computed('action')
                 ->exportable(false)

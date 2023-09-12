@@ -14,7 +14,7 @@ class SimpatisanSeeder extends Seeder
 
     public function run(): void
     {
-        $totalRecords = 1;
+        $totalRecords = 1000;
         $batchSize = 80;
 
         for ($i = 0; $i < $totalRecords; $i += $batchSize) {
@@ -32,14 +32,11 @@ class SimpatisanSeeder extends Seeder
             $dummyData[] = [
                 'created_at' => now(),
                 'updated_at' => now(),
-                'nik' => $faker->numberBetween(1000000000000000, 9999999999999999),
                 'name' => $faker->name(),
-                'phone' => $faker->phoneNumber(),
                 'sex' => $faker->randomElement(['Laki-Laki', 'Perempuan']),
                 'regency_id' => $faker->randomElement(range(1, 1)),
                 'district_id' => $faker->randomElement(range(1, 1)),
                 'subdistrict_id' => $faker->randomElement(range(1, 1)),
-                'ktp' => $faker->creditCardNumber(),
                 'user_id' => $faker->randomElement(range(1, 3)),
                 'usia' => $faker->randomElement(range(1, 3)),
                 'rt' => $faker->randomElement(range(1, 3)),

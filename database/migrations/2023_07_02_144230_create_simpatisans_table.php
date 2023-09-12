@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('simpatisans', function (Blueprint $table) {
             $table->id();
-            $table->timestamps()->nullable();
+            $table->timestamps();
             $table->string('nik')->nullable();
             $table->string('name');
             $table->string('phone')->nullable();

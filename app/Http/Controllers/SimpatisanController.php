@@ -59,11 +59,16 @@ class SimpatisanController extends Controller
             'regency_id' => 'required',
             'district_id' => 'required',
             'subdistrict_id' => 'required',
-            'nik' => 'required',
             'name' => 'required',
+            'nik' => '',
+            'phone' => '',
             'sex' => 'required',
             'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
+
+        if (!$request->nik && !$request->hasFile('ktp')) {
+            return back()->with('error', 'KTP dan NIK tidak boleh kosong');
+        }
 
         if ($request->hasFile('ktp')) {
             $image = $request->file('ktp');
@@ -113,11 +118,16 @@ class SimpatisanController extends Controller
             'regency_id' => 'required',
             'district_id' => 'required',
             'subdistrict_id' => 'required',
-            'nik' => 'required',
             'name' => 'required',
             'sex' => 'required',
+            'phone' => '',
+            'nik' => '',            
             'ktp' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
         ]);
+
+        if (!$request->nik && !$request->hasFile('ktp')) {
+            return back()->with('error', 'KTP dan NIK tidak boleh kosong');
+        }
 
         if ($request->hasFile('ktp')) {
             $image = $request->file('ktp');
