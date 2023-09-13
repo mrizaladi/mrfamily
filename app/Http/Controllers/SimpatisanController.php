@@ -63,7 +63,7 @@ class SimpatisanController extends Controller
             'nik' => '',
             'phone' => '',
             'sex' => 'required',
-            'ktp' => 'required|file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
+            'ktp' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 
         if (!$request->nik && !$request->hasFile('ktp')) {
@@ -142,6 +142,7 @@ class SimpatisanController extends Controller
 
             $sim->update(['status' => true]);
         }
+        $validatedData['user_id'] = auth()->user()->id;
 
         $sim->update($validatedData);
 

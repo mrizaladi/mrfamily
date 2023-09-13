@@ -8,7 +8,10 @@
 
             <div class="mb-3">
                 <label class="form-label">{{ __('Email address/No Handphone') }}</label>
-                <input type="text" name="email" value="{{ old('email') }}" class="form-control" placeholder="{{ __('Enter Email/No Handphone') }}" required autofocus tabindex="1">
+                <input type="text" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Enter Email/No Handphone') }}" required autofocus tabindex="1">
+                @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-3">
