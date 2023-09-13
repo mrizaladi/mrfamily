@@ -53,7 +53,7 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label class="form-label required">{{ __('Email address') }}</label>
+                        <label class="form-label required">{{ __('Email address/No Handphone') }}</label>
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
                     </div>
                     @error('email')

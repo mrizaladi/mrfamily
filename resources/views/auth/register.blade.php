@@ -15,11 +15,8 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label class="form-label">{{ __('Email address') }}</label>
-            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('Email Address') }}" value="{{ old('email') }}">
-            @error('email')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+            <label class="form-label">{{ __('Email address/No Handphone') }}</label>
+            <input type="text" name="email" class="form-control" placeholder="{{ __('Email Address/No Handphone') }}" value="{{ old('email') }}">
         </div>
         <div class="mb-3">
             <label class="form-label">{{ __('Password') }}</label>
