@@ -167,10 +167,10 @@
                 }); 
             });
             
-            if('{{auth()->user()->name}}' != 'superadmin' && '{{auth()->user()->admin}}' == true){
+            if('{{auth()->user()->name}}' != 'superadmin' && '{{auth()->user()->name}}' != 'UDCOK' && '{{auth()->user()->admin}}' == true){
                 $('#regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
                 $('#c_regency').addClass('non-interactive');
-            }else if('{{auth()->user()->name}}' != 'superadmin' && '{{auth()->user()->admin}}' == false){
+            }else if('{{auth()->user()->name}}' != 'superadmin' && '{{auth()->user()->name}}' != 'UDCOK' && '{{auth()->user()->admin}}' == false){
                 $('#regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
                 $('#district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
                 $('#subdistrict').html('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
