@@ -66,7 +66,7 @@
                                 <label class="form-label required">Jenis Kelamin</label>
                                 <div class="form-selectgroup">
                                     <label class="form-selectgroup-item non-interactive">
-                                        <input type="radio" name="sex" value="Laki-Laki" class="form-selectgroup-input" {{ $sim->sex === 'Laki-Laki' ? 'checked' : '' }}>
+                                        <input type="radio" name="sex" value="L" class="form-selectgroup-input" {{ $sim->sex === 'L' ? 'checked' : '' }}>
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-man" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -80,7 +80,7 @@
                                             Laki - Laki</span>
                                     </label>
                                     <label class="form-selectgroup-item non-interactive">
-                                        <input type="radio" name="sex" value="Perempuan" class="form-selectgroup-input" {{ $sim->sex === 'Perempuan' ? 'checked' : '' }}>
+                                        <input type="radio" name="sex" value="P" class="form-selectgroup-input" {{ $sim->sex === 'P' ? 'checked' : '' }}>
                                         <span class="form-selectgroup-label">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-woman" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
