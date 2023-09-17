@@ -21,21 +21,9 @@ class DatabaseSeeder extends Seeder
         $adminRole = Role::create(['name' => 'admin']);
         $userRole = Role::create(['name' => 'user']);
 
-
-        $admin = User::create([
-            'name' => 'admin',
-            'email' => 'admin@mrfamily.com',
-            'password' => Hash::make('admin'),
-            'regency_id' => '1',
-            'district_id' => '1',
-            'subdistrict_id' => '1',
-            'admin' => 1,
-            'approved_at' => now()
-        ]);
-
         $superadmin = User::create([
             'name' => 'superadmin',
-            'email' => 'superadmin@mrfamily.com',
+            'email' => 'superadmin@mr-family.com',
             'password' => Hash::make('superadmin'),
             'regency_id' => '1',
             'district_id' => '1',
@@ -43,21 +31,66 @@ class DatabaseSeeder extends Seeder
             'admin' => 1,
             'approved_at' => now()
         ]);
-        
-        $user = User::create([
-            'name' => 'user',
-            'email' => 'user@mrfamily.com',
-            'password' => Hash::make('user'),
-            'regency_id' => '1',
-            'district_id' => '1',
-            'subdistrict_id' => '1',
-            'admin' => 0,
-            'approved_at' => now()
-        ]);
 
-        $admin->assignRole('admin');
+        $adminUsers = [
+            [
+                'name' => 'Martin',
+                'email' => 'martin@mr-family.com',
+                'password' => Hash::make('admin123'),
+                'regency_id' => '1',
+                'district_id' => '1',
+                'subdistrict_id' => '1',
+                'admin' => 1,
+                'approved_at' => now()
+            ],
+            [
+                'name' => 'Sub Admin Kendal',
+                'email' => 'subadmin_kendal@mr-family.com',
+                'password' => Hash::make('admin123'),
+                'regency_id' => '1',
+                'district_id' => '1',
+                'subdistrict_id' => '1',
+                'admin' => 1,
+                'approved_at' => now()
+            ],
+            [
+                'name' => 'Din',
+                'email' => 'udcok@mr-family.com',
+                'password' => Hash::make('admin123'),
+                'regency_id' => '2',
+                'district_id' => '1',
+                'subdistrict_id' => '1',
+                'admin' => 1,
+                'approved_at' => now()
+            ],
+            [
+                'name' => 'Adidas',
+                'email' => 'adidas@mr-family.com',
+                'password' => Hash::make('admin123'),
+                'regency_id' => '4',
+                'district_id' => '1',
+                'subdistrict_id' => '1',
+                'admin' => 1,
+                'approved_at' => now()
+            ],
+            [
+                'name' => 'Jun',
+                'email' => 'junaedi@mr-family.com',
+                'password' => Hash::make('admin123'),
+                'regency_id' => '3',
+                'district_id' => '1',
+                'subdistrict_id' => '1',
+                'admin' => 1,
+                'approved_at' => now()
+            ]
+        ];
+
+        foreach ($adminUsers as $userData) {
+            $adminUser = User::create($userData);
+            $adminUser->assignRole('admin');
+        }
+
         $superadmin->assignRole('superadmin');
-        $user->assignRole('user');
 
         // Create permissions
         Permission::create(['name' => 'access all pages']);
