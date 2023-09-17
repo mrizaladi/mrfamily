@@ -14,38 +14,29 @@ class SimpatisanSeeder extends Seeder
 
     public function run(): void
     {
-        $totalRecords = 1000;
-        $batchSize = 80;
+        Simpatisan::truncate();
 
-        for ($i = 0; $i < $totalRecords; $i += $batchSize) {
-            $dummyData = $this->generateDummyData(min($batchSize, $totalRecords - $i));
-            Simpatisan::insert($dummyData);
-        }
-    }
+        $csvFile = fopen(base_path("public/seeders/kendal.csv"), "r");
 
-    private function generateDummyData($count): array
-    {
-        $dummyData = [];
-        $faker = \Faker\Factory::create();
-
-        for ($i = 0; $i < $count; $i++) {
-            $dummyData[] = [
-                'created_at' => now(),
-                'updated_at' => now(),
-                'name' => $faker->name(),
-                'sex' => $faker->randomElement(['Laki-Laki', 'Perempuan']),
-                'regency_id' => $faker->randomElement(range(1, 1)),
-                'district_id' => $faker->randomElement(range(1, 1)),
-                'subdistrict_id' => $faker->randomElement(range(1, 1)),
-                'user_id' => $faker->randomElement(range(1, 3)),
-                'usia' => $faker->randomElement(range(1, 3)),
-                'rt' => $faker->randomElement(range(1, 3)),
-                'rw' => $faker->randomElement(range(1, 3)),
-                'tps' => $faker->randomElement(range(1, 3)),
-
-            ];
+        $firstline = true;
+        while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
+            if (!$firstline) {
+                Simpatisan::create([
+                    "id" => $data['0'],
+                    "name" => $data['1'],
+                    "sex" => $data['2'],
+                    "age" => $data['3'],
+                    "regency_id" => $data['4'],
+                    "district_id" => $data['5'],
+                    "subdistrict_id" => $data['6'],
+                    "rt" => $data['7'],
+                    "rw" => $data['8'],
+                    "tps" => $data['9']
+                ]);
+            }
+            $firstline = false;
         }
 
-        return $dummyData;
+        fclose($csvFile);
     }
 }
