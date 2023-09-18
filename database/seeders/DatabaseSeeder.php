@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder
         $adminRole = Role::create(['name' => 'admin']);
         $userRole = Role::create(['name' => 'user']);
 
-        $superadmin = User::create([
-            'name' => 'superadmin',
-            'email' => 'superadmin@mr-family.com',
-            'password' => Hash::make('superadmin'),
+        $adminUser = User::create([
+            'name' => 'Sub Admin Kendal',
+            'email' => 'subadmin_kendal@mr-family.com',
+            'password' => Hash::make('admin123'),
             'regency_id' => '1',
             'district_id' => '1',
             'subdistrict_id' => '1',
@@ -32,20 +32,10 @@ class DatabaseSeeder extends Seeder
             'approved_at' => now()
         ]);
 
-        $adminUsers = [
+        $superadminUsers = [
             [
                 'name' => 'Martin',
                 'email' => 'martin@mr-family.com',
-                'password' => Hash::make('admin123'),
-                'regency_id' => '1',
-                'district_id' => '1',
-                'subdistrict_id' => '1',
-                'admin' => 1,
-                'approved_at' => now()
-            ],
-            [
-                'name' => 'Sub Admin Kendal',
-                'email' => 'subadmin_kendal@mr-family.com',
                 'password' => Hash::make('admin123'),
                 'regency_id' => '1',
                 'district_id' => '1',
@@ -82,15 +72,25 @@ class DatabaseSeeder extends Seeder
                 'subdistrict_id' => '1',
                 'admin' => 1,
                 'approved_at' => now()
+            ],
+            [
+                'name' => 'superadmin',
+                'email' => 'superadmin@mr-family.com',
+                'password' => Hash::make('superadmin'),
+                'regency_id' => '1',
+                'district_id' => '1',
+                'subdistrict_id' => '1',
+                'admin' => 1,
+                'approved_at' => now()
             ]
         ];
 
-        foreach ($adminUsers as $userData) {
+        foreach ($superadminUsers as $userData) {
             $adminUser = User::create($userData);
-            $adminUser->assignRole('admin');
+            $adminUser->assignRole('superadmin');
         }
 
-        $superadmin->assignRole('superadmin');
+        $adminUser->assignRole('admin');
 
         // Create permissions
         Permission::create(['name' => 'access all pages']);
