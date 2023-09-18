@@ -16,7 +16,7 @@ class SimpatisanSeeder extends Seeder
     {
         Simpatisan::truncate();
 
-        $csvFile = fopen(base_path("public/seeders/kendal.csv"), "r");
+        $csvFile = fopen(base_path("public/seeders/simpatisan.csv"), "r");
 
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
