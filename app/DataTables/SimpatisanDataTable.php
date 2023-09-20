@@ -109,9 +109,13 @@ class SimpatisanDataTable extends DataTable
         $query = $model->newQuery();
 
         if (Auth::user()->hasRole('user')) {
-            $query->where('regency_id', '=', Auth::user()->regency_id)->where('district_id','=', Auth::user()->district_id)->where('subdistrict_id', '=', Auth::user()->subdistrict_id);
+            $query->where('regency_id', '=', Auth::user()->regency_id)->where('district_id','=', Auth::user()->district_id)->where('subdistrict_id', '=', Auth::user()->subdistrict_id)->whereNotNull('nik');
         }elseif(Auth::user()->hasRole('admin')) {
-            $query->where('regency_id', '=', Auth::user()->regency_id);
+            $query->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
+        }elseif(Auth::user()->hasRole('superadmin') && Auth::user()->name != 'Superadmin'){
+            $query->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
+        }elseif(Auth::user()->hasRole('superadmin')) {
+            $query->whereNotNull('nik');
         }
 
         return $query;
