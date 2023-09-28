@@ -19,7 +19,12 @@ class Simpatisan extends Model
         'subdistrict_id',
         'ktp',
         'user_id',
-        'status'
+        'status',
+        'tps',
+        'age',
+        'rt',
+        'rw',
+        'kordes'
     ];
 
     public function user()

@@ -128,6 +128,10 @@ class SimpatisanController extends Controller
             'sex' => 'required',
             'phone' => '',
             'nik' => '',            
+            'age' => 'required',            
+            'rt' => 'required',            
+            'rw' => 'required',            
+            'kordes' => '',            
             'ktp' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
         ]);
 

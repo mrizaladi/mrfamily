@@ -98,6 +98,30 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
+                                <label class="form-label required">Usia</label>
+                                <input type="number" name="age" class="form-control @error('age') is-invalid @enderror" placeholder="Masukan Usia" value="{{ $sim->age }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label required">RT</label>
+                                <input type="number" name="rt" class="form-control @error('rt') is-invalid @enderror" placeholder="Masukan RT" value="{{ $sim->rt }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label required">RW</label>
+                                <input type="number" name="rw" class="form-control @error('rw') is-invalid @enderror" placeholder="Masukan RW" value="{{ $sim->rw }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Kordes</label>
+                                <textarea name="kordes" class="form-control" rows="4">{{ $sim->kordes }}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
                                 <label class="form-label required">NIK</label>
                                 <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ $sim->nik }}">
                             </div>
