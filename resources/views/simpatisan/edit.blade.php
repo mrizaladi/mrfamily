@@ -99,25 +99,25 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Usia</label>
-                                <input type="number" name="age" class="form-control @error('age') is-invalid @enderror" placeholder="Masukan Usia" value="{{ $sim->age }}">
+                                <input type="number" name="age" class="form-control non-interactive @error('age') is-invalid @enderror" placeholder="Masukan Usia" value="{{ $sim->age }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">RT</label>
-                                <input type="number" name="rt" class="form-control @error('rt') is-invalid @enderror" placeholder="Masukan RT" value="{{ $sim->rt }}">
+                                <input type="number" name="rt" class="form-control non-interactive @error('rt') is-invalid @enderror" placeholder="Masukan RT" value="{{ $sim->rt }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">RW</label>
-                                <input type="number" name="rw" class="form-control @error('rw') is-invalid @enderror" placeholder="Masukan RW" value="{{ $sim->rw }}">
+                                <input type="number" name="rw" class="form-control non-interactive @error('rw') is-invalid @enderror" placeholder="Masukan RW" value="{{ $sim->rw }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label">Kordes</label>
-                                <textarea name="kordes" class="form-control" rows="4">{{ $sim->kordes }}</textarea>
+                                <label class="form-label required">Kordes</label>
+                                <input type="text" name="kordes" class="form-control" placeholder="Masukan KorDes" value="{{ $sim->kordes }}">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
