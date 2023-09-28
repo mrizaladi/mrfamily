@@ -10,6 +10,9 @@ use App\Models\Simpatisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Carbon\Carbon;
+use DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class SimpatisanController extends Controller
 {
@@ -19,7 +22,10 @@ class SimpatisanController extends Controller
     public function index(SimpatisanDataTable $dataTable)
     {
         $data['title'] = 'Simpatisan';
-        return $dataTable->render('datatables.base', $data);
+        // return $dataTable->render('datatables.base', $data);//OLD
+        // return view('datatables.base', $data);//OLD
+        $data['regency'] = Regency::orderBy('name')->get();//NEW WITH FILTER
+        return view('simpatisan.index', $data);//NEW WITH FILTER
     }
 
     /**
@@ -253,4 +259,98 @@ class SimpatisanController extends Controller
        }
        return response()->json($data,200);
     }
+
+    public function getDataSimpatisan(Request $request){
+        // return $request->all();
+        if ($request->ajax())
+          {   
+            $regency = $request->regency;
+            $district = $request->district;
+            $subdistrict = $request->subdistrict;
+            $data = Simpatisan::whereNotNull('nik');
+            if (Auth::user()->hasRole('user')) {
+                $data->where('regency_id', '=', Auth::user()->regency_id)->where('district_id','=', Auth::user()->district_id)->where('subdistrict_id', '=', Auth::user()->subdistrict_id)->whereNotNull('nik');
+            }elseif(Auth::user()->hasRole('admin')) {
+                $data->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
+            }elseif(Auth::user()->hasRole('superadmin') && Auth::user()->name != 'Superadmin'){
+                $data->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
+            }elseif(Auth::user()->hasRole('superadmin')) {
+                $data->whereNotNull('nik');
+            }
+
+            $data->when($regency, function($query)use($regency){$query->where('regency_id', $regency);});
+            $data->when($district, function($query)use($district){$query->where('district_id', $district);});
+            $data->when($subdistrict, function($query)use($subdistrict){$query->where('subdistrict_id', $subdistrict);});
+
+                     
+             return Datatables::of($data)
+                  ->editColumn('status', function ($row) {
+                    $allowedEx = ['jpeg','jpg','png','ico','jfif','webp'];
+                    $fileExtension = pathinfo($row->ktp, PATHINFO_EXTENSION);
+                    if (in_array(strtolower($fileExtension), $allowedEx) || $row->status == true){
+                        $temp = '<a readonly class="disable badge bg-success text-nowrap text-decoration-none" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                        </svg> Valid</a>';
+                        return $temp;
+                    }
+                    else{
+                        if(!$row->nik){
+                            $temp = '<a readonly class="disable badge bg-secondary text-nowrap text-decoration-none" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                          </svg> Incomplete data</a>';
+                            return $row->status == false?$temp:'';
+                        }
+                        else{
+                            $temp = '<a readonly class="disable badge bg-success text-nowrap text-decoration-none" disabled><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                            </svg> Valid</a>';
+                            return $row->status == false?$temp:'';
+                        }
+                    }
+                })
+                ->addColumn('action', function ($row) {
+                    $actions = '<div class="d-flex justify-content-around">';
+                    $actions .= '<a href="' . route('simpatisan.show', $row->id) . '" class="btn btn-outline-primary btn-icon">';
+                    $actions .= '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">';
+                    $actions .= '<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>';
+                    $actions .= '<path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>';
+                    $actions .= '<path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>';   
+                    $actions .= '</svg>';
+                    $actions .= '</a>';
+                    $actions .= '<a href="' . route('simpatisan.edit', $row->id) . '" class="btn btn-outline-success btn-icon ms-1">';
+                    $actions .= '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">';
+                    $actions .= '<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>';
+                    $actions .= '<path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>';
+                    $actions .= '<path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>';
+                    $actions .= '<path d="M16 5l3 3"></path>';
+                    $actions .= '</svg>';
+                    $actions .= '</a>';
+                    $actions .= '</form>';
+                    $actions .= '</div>';
+    
+                    return $actions;
+                })
+                ->editColumn('regency_id', function ($row) {
+                    return $row->regency?->name;
+                })
+                ->editColumn('district_id', function ($row) {
+                    return $row->district?->name;
+                })
+                ->editColumn('subdistrict_id', function ($row) {
+                    return $row->subdistrict?->name;
+                })
+                ->editColumn('user_id', function ($row) {
+                    return $row->user?->name;
+                })
+                ->editColumn('created_at', function ($row) {
+                    $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $row->created_at)->format('d F y H:i');
+                    return $formatedDate;
+                })
+                ->rawColumns(['action','status'])
+                ->make(true);
+          }
+        }
 }

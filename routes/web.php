@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('tps', TpsController::class);
         Route::resource('simpatisan', SimpatisanController::class);
+        Route::get('get-data-simpatisan', [SimpatisanController::class,'getDataSimpatisan'])->name('getDataSimpatisan');//AJAX GET WITH QUERY
     });
 
     Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
