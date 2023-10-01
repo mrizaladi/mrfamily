@@ -229,43 +229,44 @@
                 }); 
             });
 
-            if(('{{auth()->user()->name}}' != 'Superadmin' && '{{auth()->user()->name}}' != 'Udcok'&& '{{auth()->user()->name}}' != 'Martin'
-            && '{{auth()->user()->name}}' != 'Jun'&& '{{auth()->user()->name}}' != 'Adidas')&& '{{auth()->user()->admin}}' == true){
-                $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
-                $('#c_regency').addClass('non-interactive');
-            }else if(('{{auth()->user()->name}}' != 'Superadmin' && '{{auth()->user()->name}}' != 'Udcok'&& '{{auth()->user()->name}}' != 'Martin'
-            && '{{auth()->user()->name}}' != 'Jun'&& '{{auth()->user()->name}}' != 'Adidas') && '{{auth()->user()->admin}}' == false){
-                $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
-                $('#filter_district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
-                $('#filter_subdistrict').html('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
-                $('#filter_subdistrict').trigger('change');
-                $('#c_regency,#c_district,#c_subdistrict').addClass('non-interactive');
-                
-            // }//JIKA HANYA ADMIN SATU DAPIL SAJA maka readonly hanya pada regency
-            // if(('{{auth()->user()->name}}' != 'Superadmin' && 
-            //     '{{auth()->user()->name}}' != 'Udcok' && 
-            //     '{{auth()->user()->name}}' != 'Martin' && 
-            //     '{{auth()->user()->name}}' != 'Jun' && 
-            //     '{{auth()->user()->name}}' != 'Adidas') 
-            //     && '{{auth()->user()->admin}}' == true)
-            // {
-            //         $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
-            //         $('#c_regency').addClass('non-interactive');
-            // //JIKA Koor Kecamatan maka readonly regency dan district
-            // }else if('{{auth()->user()->korkec}}' == true){
-            //         $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
-            //         $('#filter_district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>').trigger('change');
-            //         $('#c_regency,#c_district').addClass('non-interactive');
-                    
-            // //JIKA HANYA USER BIASA maka readonly semua                    
-            // }else if('{{auth()->user()->admin}}' == false && '{{auth()->user()->korkec}}' == false){
-            //         $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
-            //         $('#filter_district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
-            //         $('#filter_subdistrict').html('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
-            //         $('#filter_subdistrict').trigger('change');
-            //         $('#c_regency,#c_district,#c_subdistrict').addClass('non-interactive');
+            // if(('{{auth()->user()->name}}' != 'Superadmin' && '{{auth()->user()->name}}' != 'Udcok'&& '{{auth()->user()->name}}' != 'Martin'
+            // && '{{auth()->user()->name}}' != 'Jun'&& '{{auth()->user()->name}}' != 'Adidas')&& '{{auth()->user()->admin}}' == true){
+            //     $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
+            //     $('#c_regency').addClass('non-interactive');
+            // }else if(('{{auth()->user()->name}}' != 'Superadmin' && '{{auth()->user()->name}}' != 'Udcok'&& '{{auth()->user()->name}}' != 'Martin'
+            // && '{{auth()->user()->name}}' != 'Jun'&& '{{auth()->user()->name}}' != 'Adidas') && '{{auth()->user()->admin}}' == false){
+            //     $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
+            //     $('#filter_district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
+            //     $('#filter_subdistrict').html('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
+            //     $('#filter_subdistrict').trigger('change');
+            //     $('#c_regency,#c_district,#c_subdistrict').addClass('non-interactive');
             // }
-    }})
+            //JIKA HANYA ADMIN SATU DAPIL SAJA maka readonly hanya pada regency
+            if(('{{auth()->user()->name}}' != 'Superadmin' && 
+                '{{auth()->user()->name}}' != 'Udcok' && 
+                '{{auth()->user()->name}}' != 'Martin' && 
+                '{{auth()->user()->name}}' != 'Jun' && 
+                '{{auth()->user()->name}}' != 'Adidas') 
+                && '{{auth()->user()->admin}}' == true)
+            {
+                    $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
+                    $('#c_regency').addClass('non-interactive');
+            //JIKA Koor Kecamatan maka readonly regency dan district
+            }else if('{{auth()->user()->korcam}}' == true){
+                    $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
+                    $('#filter_district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>').trigger('change');
+                    $('#c_regency,#c_district').addClass('non-interactive');
+                    
+            //JIKA HANYA USER BIASA maka readonly semua                    
+            }else if('{{auth()->user()->admin}}' == false && '{{auth()->user()->korcam}}' == false){
+                    $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
+                    $('#filter_district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
+                    $('#filter_subdistrict').html('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
+                    $('#filter_subdistrict').trigger('change');
+                    $('#c_regency,#c_district,#c_subdistrict').addClass('non-interactive');
+            }
+        }
+    )
 </script>
 @endpush
 

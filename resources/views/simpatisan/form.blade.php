@@ -178,13 +178,13 @@
                     $('#regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
                     $('#c_regency').addClass('non-interactive');
             //JIKA Koor Kecamatan maka 
-            }else if('{{auth()->user()->korkec}}' == true){
+            }else if('{{auth()->user()->korcam}}' == true){
                     $('#regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
                     $('#district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>').trigger('change');
                     $('#c_regency,#c_district').addClass('non-interactive');
                     
             //JIKA HANYA USER BIASA maka readonly semua                    
-            }else if('{{auth()->user()->admin}}' == false && '{{auth()->user()->korkec}}' == false){
+            }else if('{{auth()->user()->admin}}' == false && '{{auth()->user()->korcam}}' == false){
                     $('#regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
                     $('#district').html('<option value="{{ auth()->user()->district_id }}" selected>{{ auth()->user()->district->name }}</option>');
                     $('#subdistrict').html('<option value="{{ auth()->user()->subdistrict_id }}" selected>{{ auth()->user()->subdistrict->name }}</option>');
