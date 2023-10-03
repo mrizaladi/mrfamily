@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Simpatisan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['totalSimpatisanKendal'] = Simpatisan::where('regency_id', 1)->whereNotNull('nik')->count();
+        $data['totalSimpatisanKabSemarang'] = Simpatisan::where('regency_id', 2)->whereNotNull('nik')->count();
+        $data['totalSimpatisanSalatiga'] = Simpatisan::where('regency_id', 3)->whereNotNull('nik')->count();
+        $data['totalSimpatisanKotaSemarang'] = Simpatisan::where('regency_id', 4)->whereNotNull('nik')->count();
+
+        $data['totalPemilihKendal'] = Simpatisan::where('regency_id', 1)->count();
+        $data['totalPemilihKabSemarang'] = Simpatisan::where('regency_id', 2)->count();
+        $data['totalPemilihSalatiga'] = Simpatisan::where('regency_id', 3)->count();
+        $data['totalPemilihKotaSemarang'] = Simpatisan::where('regency_id', 4)->count();
+
+        return view('home', $data);
     }
 }

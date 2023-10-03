@@ -12,59 +12,47 @@
                      <div class="col-md-6 col-lg-5">
                          <div class="card">
                              <div class="card-header">
-                                 <h3 class="card-title">Data Simpatisan Per-Kabupaten/Kota</h3>
+                                 <h3 class="card-title">Data Pemilih dan Simpatisan Per-Kabupaten/Kota</h3>
                              </div>
                              <table class="table card-table table-vcenter">
                                  <thead>
                                      <tr>
                                          <th>Kabupaten/Kota</th>
-                                         <th>Jumlah</th>
-                                         <th>Target</th>
+                                         <th>Jumlah Simpatisan</th>
+                                         <th>Jumlah DPT</th>
                                      </tr>
                                  </thead>
                                  <tbody>
                                      <tr>
                                          <td>Kota Semarang</td>
-                                         <td>3,550,000</td>
-                                         <td class="w-40">
-                                             <div class="progress progress-xs">
-                                                 <div class="progress-bar bg-primary" style="width: 71.0%"></div>
-                                             </div>
-                                         </td>
+                                         <td>{{ $totalSimpatisanKotaSemarang }}</td>
+                                         <td>{{ $totalPemilihKotaSemarang }}</td>
+
                                      </tr>
                                      <tr>
                                          <td>Kabupaten Semarang</td>
-                                         <td>1,798,000</td>
-                                         <td class="w-40">
-                                             <div class="progress progress-xs">
-                                                 <div class="progress-bar bg-primary" style="width: 35.96%"></div>
-                                             </div>
-                                         </td>
+                                         <td>{{ $totalSimpatisanKabSemarang }}</td>
+                                         <td>{{ $totalPemilihKabSemarang }}</td>
+
                                      </tr>
                                      <tr>
                                          <td>Kabupaten Kendal</td>
-                                         <td>1,245,000</td>
-                                         <td class="w-40">
-                                             <div class="progress progress-xs">
-                                                 <div class="progress-bar bg-primary" style="width: 24.9%"></div>
-                                             </div>
-                                         </td>
+                                         <td>{{ $totalSimpatisanKendal }}</td>
+                                         <td>{{ $totalPemilihKendal }}</td>
+
                                      </tr>
                                      <tr>
                                          <td>Kabupaten Salatiga</td>
-                                         <td>986,000</td>
-                                         <td class="w-40">
-                                             <div class="progress progress-xs">
-                                                 <div class="progress-bar bg-primary" style="width: 19.72%"></div>
-                                             </div>
-                                         </td>
+                                         <td>{{ $totalSimpatisanSalatiga }}</td>
+                                         <td>{{ $totalPemilihSalatiga }}</td>
+
                                      </tr>
                                  </tbody>
                              </table>
                          </div>
                      </div>
 
-                     <div class="col-sm-6 col-lg-3">
+                     {{-- <div class="col-sm-6 col-lg-3">
                          <div class="card">
                              <div class="card-body">
                                  <div class="d-flex align-items-center">
@@ -102,7 +90,7 @@
                                  </div>
                              </div>
                          </div>
-                     </div>
+                     </div> --}}
                  </div>
              </div>
          </div>
