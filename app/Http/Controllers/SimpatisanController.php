@@ -131,7 +131,6 @@ class SimpatisanController extends Controller
             'age' => 'required',            
             'rt' => 'required',            
             'rw' => 'required',            
-            'kordes' => '',            
             'ktp' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf|max:4096'
         ]);
 

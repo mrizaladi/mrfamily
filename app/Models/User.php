@@ -25,6 +25,7 @@ class User extends Authenticatable
         'regency_id',
         'district_id',
         'subdistrict_id',
+        'korcam',
         'approved_at'
     ];
 

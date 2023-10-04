@@ -47,7 +47,7 @@
         <div class="mb-3">
             <label class="form-label">{{ __('Kecamatan') }}</label>
             <select name="district_id" id="regdistrict" class="form-select @error('district_id') is-invalid @enderror">
-                <option value="">Pilih Kabupaten</option>
+                <option value="">Pilih Kecamatan</option>
             </select>
         </div>
         <div class="mb-3">
@@ -56,7 +56,15 @@
                 <option value="">Pilih Desa/Kelurahan</option>
             </select>
         </div>
-
+        <div class="mb-3">
+            <label class="form-label">{{ __('Koordinator') }}</label>
+            <select class="form-control form-select" name="korcam" id="korcam">
+                <option value="">Pilih Jenis Koordinator</option>
+                <option value="1">Koordinator Kecamatan</option>
+                <option value="0">Koordinator Kelurahan/Desa</option>
+            </select>
+        </div>
+        
         <div class="form-footer">
             <button type="submit" class="btn btn-primary w-100">{{ __('Create new account') }}</button>
         </div>

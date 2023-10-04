@@ -116,12 +116,6 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">Kordes</label>
-                                <input type="text" name="kordes" class="form-control" placeholder="Masukan KorDes" value="{{ $sim->kordes }}">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="mb-3">
                                 <label class="form-label required">NIK</label>
                                 <input type="number" name="nik" class="form-control @error('nik') is-invalid @enderror" placeholder="Masukan NIK" value="{{ $sim->nik }}">
                             </div>

@@ -61,6 +61,7 @@ class RegisterController extends Controller
             'regency_id' => ['required'],
             'district_id' => ['required'],
             'subdistrict_id' => ['required'],
+            'korcam' => ['required'],
         ]);
     }
 
@@ -79,6 +80,7 @@ class RegisterController extends Controller
             'regency_id' => $data['regency_id'],
             'district_id' => $data['district_id'],
             'subdistrict_id' => $data['subdistrict_id'],
+            'korcam' => $data['korcam'],
         ]);
 
         $userRole = Role::where('name', 'user')->first();
