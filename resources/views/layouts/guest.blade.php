@@ -17,7 +17,7 @@
             <div class="container container-tight my-5 px-lg-5">
                 <div class="text-center mb-4">
                     <a href="{{ config('app.url') }}" class="navbar-brand navbar-brand-autodark">
-                        <p style="font-size:50px;">MRFAMILY</p>
+                        <p style="font-size:50px;">MR-FAMILY</p>
                     </a>
                 </div>
 

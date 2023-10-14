@@ -29,12 +29,12 @@
                 @enderror
             </div>
 
-            <div>
+            {{-- <div>
                 <label class="form-check">
                     <input type="checkbox" class="form-check-input" tabindex="3" name="remember" />
                     <span class="form-check-label">{{ __('Remember me on this device') }}</span>
                 </label>
-            </div>
+            </div> --}}
 
             <div class="form-footer">
                 <button type="submit" class="btn btn-primary w-100" tabindex="4">{{ __('Sign in') }}</button>
@@ -44,7 +44,7 @@
 
     @if (Route::has('register'))
     <div class="text-center text-muted mt-3">
-        {{ __("Don't have account yet?") }} <a href="{{ route('register') }}" tabindex="-1">{{ __('Sign up') }}</a>
+        {{ __("Jika belum memiliki akun, silahkan daftar disini") }} <a href="{{ route('register') }}" tabindex="-1">{{ __('DAFTAR') }}</a>
     </div>
     @endif
 
