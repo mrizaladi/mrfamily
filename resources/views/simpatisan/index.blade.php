@@ -242,12 +242,7 @@
             //     $('#c_regency,#c_district,#c_subdistrict').addClass('non-interactive');
             // }
             //JIKA HANYA ADMIN SATU DAPIL SAJA maka readonly hanya pada regency
-            if(('{{auth()->user()->name}}' != 'Superadmin' && 
-                '{{auth()->user()->name}}' != 'Udcok' && 
-                '{{auth()->user()->name}}' != 'Martin' && 
-                '{{auth()->user()->name}}' != 'Jun' && 
-                '{{auth()->user()->name}}' != 'Adidas') 
-                && '{{auth()->user()->admin}}' == true)
+            if(('{{auth()->user()->superadmin}}' == null||'{{auth()->user()->superadmin}}' == false) && '{{auth()->user()->admin}}' == true)
             {
                     $('#filter_regency').select2().val('{{ auth()->user()->regency_id }}').trigger('change');
                     $('#c_regency').addClass('non-interactive');
