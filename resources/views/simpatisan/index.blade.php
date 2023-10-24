@@ -124,7 +124,7 @@
             });
 
             var table = $('#simpatisan').DataTable({
-                dom: 'Brltip',
+                dom: 'Brfltip',
                 responsive: true,
                 processing: true,
                 serverSide: true,
