@@ -276,12 +276,10 @@ class SimpatisanController extends Controller
                 $data->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
             }elseif (Auth::user()->hasRole('user')) {
                 $data->where('regency_id', '=', Auth::user()->regency_id)->where('district_id','=', Auth::user()->district_id)->where('subdistrict_id', '=', Auth::user()->subdistrict_id)->whereNotNull('nik');
-            }elseif(Auth::user()->hasRole('admin')) {
-                $data->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
-            }elseif(Auth::user()->hasRole('superadmin') && Auth::user()->name != 'Superadmin'){
-                $data->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
             }elseif(Auth::user()->hasRole('superadmin')) {
                 $data->whereNotNull('nik');
+            }elseif(Auth::user()->hasRole('admin')) {
+                $data->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
             }
 
             $data->when($regency, function($query)use($regency){$query->where('regency_id', $regency);});
