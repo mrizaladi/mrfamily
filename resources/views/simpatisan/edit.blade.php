@@ -128,7 +128,7 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">KTP</label>
+                                <label class="form-label">KTP</label>
                                 <input type="file" class="form-control @error('ktp') is-invalid @enderror" name="ktp">
                             </div>
                         </div>

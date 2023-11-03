@@ -40,14 +40,21 @@
                                 <td><strong>:</strong></td>
                                 <td>{{ $simpatisan->sex }}</td>
                             </tr>
+                            <tr>
+                                <td><strong>Usia</strong></td>
+                                <td><strong>:</strong></td>
+                                <td>{{ $simpatisan->age }}</td>
+                            </tr>
                         </table>
                     </div>
                     <div class="col-md-6">
                         <p><strong>Alamat:</strong></p>
                         <ul>
-                            <li><strong>Kota/Kabupaten:</strong> {{ $simpatisan->regency->name }}</li>
-                            <li><strong>Kecamatan:</strong> {{ $simpatisan->district->name }}</li>
-                            <li><strong>Desa/Kelurahan:</strong> {{ $simpatisan->subdistrict->name }}</li>
+                            <li><strong>Kota/Kabupaten :</strong> {{ $simpatisan->regency->name }}</li>
+                            <li><strong>Kecamatan :</strong> {{ $simpatisan->district->name }}</li>
+                            <li><strong>Desa/Kelurahan :</strong> {{ $simpatisan->subdistrict->name }}</li>
+                            <li><strong>RT/RW :</strong> {{ $simpatisan->rt }}/{{ $simpatisan->rw }}</li>
+                            <li><strong>TPS :</strong> {{ $simpatisan->tps }}</li>
                         </ul>
                         <p><strong>Created by:</strong> {{ $simpatisan->user?$simpatisan->user->name:'-' }}</p>
                         <p><strong>Status:</strong> 
