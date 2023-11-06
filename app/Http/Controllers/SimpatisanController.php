@@ -357,4 +357,20 @@ class SimpatisanController extends Controller
                 ->make(true);
           }
         }
+        /**
+         * Summary of clear
+         * @param \Illuminate\Http\Request $request
+         * @return \Illuminate\Http\RedirectResponse
+         */
+        public function clear($id)
+        {
+            $sim = Simpatisan::find($id)->update([
+                'nik' => null,
+                'ktp' => null,
+                'phone' => null
+            ]);
+    
+            return redirect()->route('simpatisan.index')->with('success', 'Data berhasil di-clear.');
+        }
+
 }
