@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\SimpatisanExport;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
@@ -47,8 +48,8 @@ Route::middleware('auth')->group(function () {
             Route::get('getSubDistrict', 'getSubDistrict')->name('getSubDistrict');
             Route::get('getSimpatisan', 'getSimpatisan')->name('getSimpatisan');
             Route::get('clear/{id}', 'clear')->name('simpatisan.clear');
+            Route::get('simpatisan/export/', 'export')->name('simpatisan.export');
         });
-
 
         Route::resource('tps', TpsController::class);
         Route::resource('simpatisan', SimpatisanController::class);

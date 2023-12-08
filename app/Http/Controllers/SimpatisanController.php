@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\SimpatisanDataTable;
+use App\Exports\SimpatisanExport;
 use App\Models\District;
 use App\Models\Regency;
 use App\Models\Subdistrict;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Response;
 use Carbon\Carbon;
 use DataTables;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SimpatisanController extends Controller
 {
@@ -373,4 +375,8 @@ class SimpatisanController extends Controller
             return redirect()->route('simpatisan.index')->with('success', 'Data berhasil di-clear.');
         }
 
+    public function export()
+    {
+        return Excel::download(new SimpatisanExport, 'Simpatisan.xlsx');
+    }
 }
