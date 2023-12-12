@@ -1,21 +1,33 @@
 <?php
-
 namespace App\Exports;
 
-use App\Models\Simpatisan;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class SimpatisanExport implements FromCollection, WithHeadings
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
+
     public function collection()
     {
-        return Simpatisan::whereNotNull('nik')
-                            ->take(10)
-                            ->get();
+        $result = DB::select(
+        '
+            SELECT
+                s.id, s.nik, s.name, s.sex, s.age, r.name as regency_name, d.name as district_name, sd.name as subdistrict_name, s.rt, s.rw, s.phone, u.name as user_name
+            FROM
+                simpatisans s
+            JOIN regencies r ON r.id = s.regency_id
+            JOIN districts d ON d.id = s.district_id
+            JOIN subdistricts sd ON sd.id = s.subdistrict_id
+            JOIN users u ON u.id = s.user_id
+            WHERE
+                nik IS NOT NULL
+        ');
+
+        return collect($result);
     }
 
     public function headings(): array
@@ -31,13 +43,8 @@ class SimpatisanExport implements FromCollection, WithHeadings
             'Kelurahan',
             'RT',
             'RW',
-            'TPS',
             'No HP',
-            'KTP',
-            'User ID',
-            'Created At',
-            'Updated At',
-            'Status'
+            'Updated By'
         ];
     }
 }

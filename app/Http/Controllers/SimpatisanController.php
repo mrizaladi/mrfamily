@@ -8,6 +8,7 @@ use App\Models\District;
 use App\Models\Regency;
 use App\Models\Subdistrict;
 use App\Models\Simpatisan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
@@ -378,5 +379,11 @@ class SimpatisanController extends Controller
     public function export()
     {
         return Excel::download(new SimpatisanExport, 'Simpatisan.xlsx');
+    }
+
+    public function indexOfSimpatisanReports()
+    {
+        $data['users'] = DB::select('SELECT id, name FROM users');
+        return view('reports.simpatisan.index', $data);
     }
 }

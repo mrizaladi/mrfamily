@@ -48,7 +48,8 @@ Route::middleware('auth')->group(function () {
             Route::get('getSubDistrict', 'getSubDistrict')->name('getSubDistrict');
             Route::get('getSimpatisan', 'getSimpatisan')->name('getSimpatisan');
             Route::get('clear/{id}', 'clear')->name('simpatisan.clear');
-            Route::get('simpatisan/export/', 'export')->name('simpatisan.export');
+            Route::get('simpatisan/export', 'export')->name('simpatisan.export');
+            Route::get('simpatisan/report', 'indexOfSimpatisanReports')->name('simpatisan.reports.index');
         });
 
         Route::resource('tps', TpsController::class);
