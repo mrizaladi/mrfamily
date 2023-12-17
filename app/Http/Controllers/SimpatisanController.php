@@ -376,11 +376,16 @@ class SimpatisanController extends Controller
             return redirect()->route('simpatisan.index')->with('success', 'Data berhasil di-clear.');
         }
 
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new SimpatisanExport, 'Simpatisan.xlsx');
-    }
+        $date = now()->format('d M Y');
+        $fileName = 'Simpatisan_' . $date . '.xlsx';
 
+        $updatedBy = $request->input('updated_by');
+
+        return Excel::download(new SimpatisanExport($updatedBy), $fileName);
+    }
+    
     public function indexOfSimpatisanReports()
     {
         $data['users'] = DB::select('SELECT id, name FROM users');

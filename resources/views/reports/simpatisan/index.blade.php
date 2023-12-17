@@ -18,8 +18,8 @@
                         <div class="form-group row mt-2">
                             <label class="col-2 col-form-label">User</label>
                             <div class="col-2">
-                                <select name="user" class="form-select">
-                                    <option value="#">Silahkan pilih user</option>
+                                <select name="updated_by" class="form-select">
+                                    <option value="">Semua user</option>
                                       @foreach($users as $user)
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                                       @endforeach
