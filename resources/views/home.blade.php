@@ -42,7 +42,7 @@
 
                                      </tr>
                                      <tr>
-                                         <td>Kabupaten Salatiga</td>
+                                         <td>Kota Salatiga</td>
                                          <td>{{ $totalSimpatisanSalatiga }}</td>
                                          <td>{{ $totalPemilihSalatiga }}</td>
 
