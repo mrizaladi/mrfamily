@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Exports;
 
 use Illuminate\Support\Facades\DB;
@@ -8,11 +9,8 @@ use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class SimpatisanExport implements FromCollection, WithHeadings, WithColumnFormatting
+class SimpatisanExport implements FromCollection, WithHeadings
 {
-    /**
-     * @return \Illuminate\Support\Collection
-     */
     use Exportable;
 
     protected $updatedBy;
@@ -41,18 +39,16 @@ class SimpatisanExport implements FromCollection, WithHeadings, WithColumnFormat
             $query .= ' AND u.id = :updated_by';
         }
 
-        
-        if($this->updatedBy) {
+        if ($this->updatedBy) {
             $result = DB::select($query, [
                 'updated_by' => $this->updatedBy,
             ]);
-        }else {
+        } else {
             $result = DB::select($query);
         }
 
-        return collect($result);
+        return collect($result)->map([$this, 'mapData']);
     }
-
 
     public function headings(): array
     {
@@ -72,10 +68,21 @@ class SimpatisanExport implements FromCollection, WithHeadings, WithColumnFormat
         ];
     }
 
-    public function columnFormats(): array
+    public static function mapData($row): array
     {
         return [
-            'B' => NumberFormat::FORMAT_NUMBER
+            $row->no,
+            "`".$row->nik,
+            $row->name,
+            $row->sex,
+            $row->age,
+            $row->regency_name,
+            $row->district_name,
+            $row->subdistrict_name,
+            $row->rt,
+            $row->rw,
+            $row->phone,
+            $row->user_name,
         ];
     }
 }
