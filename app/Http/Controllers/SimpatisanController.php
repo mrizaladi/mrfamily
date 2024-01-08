@@ -25,6 +25,7 @@ class SimpatisanController extends Controller
     public function index(SimpatisanDataTable $dataTable)
     {
         $data['title'] = 'Simpatisan';
+        $data['route'] = 'simpatisan.form';
         // return $dataTable->render('datatables.base', $data);//OLD
         // return view('datatables.base', $data);//OLD
         $data['regency'] = Regency::orderBy('name')->get();//NEW WITH FILTER

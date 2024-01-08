@@ -15,6 +15,7 @@ class TpsController extends Controller
     public function index(TpsDataTable $dataTable)
     {
         $data['title'] = 'TPS';
+        $data['route'] = 'tps.create';
         return $dataTable->render('datatables.base', $data);
     }
 
