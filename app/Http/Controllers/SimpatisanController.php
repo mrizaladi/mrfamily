@@ -275,10 +275,12 @@ class SimpatisanController extends Controller
             $subdistrict = $request->subdistrict;
             $data = Simpatisan::whereNotNull('nik');
             $data = Simpatisan::whereNotIn('user_id', [18,19,20,21]);
-
+            
             if (Auth::user()->hasRole('user') && Auth::user()->admin == true) {
                 $data->where('regency_id', '=', Auth::user()->regency_id)->whereNotNull('nik');
-            }elseif (Auth::user()->hasRole('user')) {
+            }elseif (Auth::user()->hasRole('user')&& Auth::user()->korcam) {
+                $data->where('regency_id', '=', Auth::user()->regency_id)->where('district_id','=', Auth::user()->district_id)->whereNotNull('nik');
+            }elseif (Auth::user()->hasRole('user')&& !Auth::user()->korcam) {
                 $data->where('regency_id', '=', Auth::user()->regency_id)->where('district_id','=', Auth::user()->district_id)->where('subdistrict_id', '=', Auth::user()->subdistrict_id)->whereNotNull('nik');
             }elseif(Auth::user()->hasRole('superadmin')) {
                 $data->whereNotNull('nik');
