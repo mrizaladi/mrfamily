@@ -18,8 +18,8 @@
                                  <thead>
                                      <tr>
                                          <th>Kabupaten/Kota</th>
-                                         <th>Jumlah Simpatisan</th>
                                          <th>Jumlah DPT</th>
+                                         <th>Jumlah Simpatisan</th>
                                      </tr>
                                  </thead>
                                  <tbody>
