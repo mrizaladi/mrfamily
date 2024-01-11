@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Simpatisan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,15 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data['totalSimpatisanKendal'] = Simpatisan::where('regency_id', 1)->whereNotIn('user_id', [18,19,20,21])->whereNotNull('nik')->count();
-        $data['totalSimpatisanKabSemarang'] = Simpatisan::where('regency_id', 2)->whereNotIn('user_id', [18,19,20,21])->whereNotNull('nik')->count();
-        $data['totalSimpatisanSalatiga'] = Simpatisan::where('regency_id', 3)->whereNotIn('user_id', [18,19,20,21])->whereNotNull('nik')->count();
-        $data['totalSimpatisanKotaSemarang'] = Simpatisan::where('regency_id', 4)->whereNotIn('user_id', [18,19,20,21])->whereNotNull('nik')->count();
-
-        $data['totalPemilihKendal'] = Simpatisan::where('regency_id', 1)->count();
-        $data['totalPemilihKabSemarang'] = Simpatisan::where('regency_id', 2)->count();
-        $data['totalPemilihSalatiga'] = Simpatisan::where('regency_id', 3)->count();
-        $data['totalPemilihKotaSemarang'] = Simpatisan::where('regency_id', 4)->count();
+        $data['simpatisan'] = Simpatisan::select(
+            'regencies.name as kota',
+            DB::raw('COUNT(*) as total_pemilih'),
+            DB::raw('COUNT(CASE WHEN simpatisans.regency_id IN (1, 2, 3, 4) AND user_id NOT IN (18, 19, 20, 21) AND nik IS NOT NULL THEN 1 END) as total_simpatisan')
+            )
+            ->join('regencies', 'regencies.id', '=', 'simpatisans.regency_id')
+            ->whereIn('simpatisans.regency_id', [1, 2, 3, 4])
+            ->groupBy('regencies.id', 'regencies.name')
+            ->get();
         return view('home', $data);
     }
 }
