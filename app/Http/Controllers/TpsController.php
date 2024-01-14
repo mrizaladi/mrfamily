@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\TpsDataTable;
 use App\Models\Tps;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TpsController extends Controller
@@ -16,7 +17,12 @@ class TpsController extends Controller
     {
         $data['title'] = 'TPS';
         $data['route'] = 'tps.create';
-        return $dataTable->render('datatables.base', $data);
+
+        if (Auth::user()->hasRole('superadmin')) {
+            return $dataTable->render('datatables.base', $data);
+        } else {
+            return 'Anda tidak punya akses';
+        }
     }
 
     /**
