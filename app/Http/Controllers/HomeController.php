@@ -44,7 +44,8 @@ class HomeController extends Controller
             return DB::select("
                 SELECT
                     users.name AS nama_user,
-                    COUNT(*) AS total_input
+                    COUNT(*) AS total_input,
+                    ROUND((COUNT(*) / 8000) * 100, 2) as percentage
                 FROM
                     simpatisans
                 JOIN
@@ -56,7 +57,6 @@ class HomeController extends Controller
                 LIMIT 10
             ");
         });
-
         return view('home', $data);
     }
 }
