@@ -14,41 +14,67 @@ class SimpatisanExport implements FromCollection, WithHeadings
     use Exportable;
 
     protected $updatedBy;
+    protected $regency_id;
+    protected $district_id;
 
-    public function __construct($updatedBy)
+    public function __construct($updatedBy, $regency_id, $district_id)
     {
         $this->updatedBy = $updatedBy;
+        $this->regency_id = $regency_id;
+        $this->district_id = $district_id;
     }
 
     public function collection()
     {
         $query = '
-            SELECT
-                ROW_NUMBER() OVER (ORDER BY s.id) as no, s.nik, s.name, s.sex, s.age, r.name as regency_name, 
-                d.name as district_name, sd.name as subdistrict_name, s.rt, s.rw, s.phone, u.name as user_name
-            FROM
-                simpatisans s
-            JOIN regencies r ON r.id = s.regency_id
-            JOIN districts d ON d.id = s.district_id
-            JOIN subdistricts sd ON sd.id = s.subdistrict_id
-            JOIN users u ON u.id = s.user_id
-            WHERE
-                nik IS NOT NULL';
+        SELECT
+            ROW_NUMBER() OVER (ORDER BY s.id) as no, s.nik, s.name, s.sex, s.age, r.name as regency_name, 
+            d.name as district_name, sd.name as subdistrict_name, s.rt, s.rw, s.phone, u.name as user_name
+        FROM
+            simpatisans s
+        JOIN regencies r ON r.id = s.regency_id
+        JOIN districts d ON d.id = s.district_id
+        JOIN subdistricts sd ON sd.id = s.subdistrict_id
+        JOIN users u ON u.id = s.user_id
+        WHERE
+            nik IS NOT NULL';
 
+        // Tambahkan kondisi untuk regency_id dan district_id
+        if ($this->regency_id) {
+            $query .= ' AND s.regency_id = :regency_id';
+        }
+
+        if ($this->district_id) {
+            $query .= ' AND s.district_id = :district_id';
+        }
+
+        // Tambahkan kondisi untuk updated_by
         if ($this->updatedBy) {
             $query .= ' AND u.id = :updated_by';
         }
 
-        if ($this->updatedBy) {
-            $result = DB::select($query, [
-                'updated_by' => $this->updatedBy,
-            ]);
-        } else {
-            $result = DB::select($query);
+        // Eksekusi query dengan parameter
+        $parameters = [];
+
+        if ($this->regency_id) {
+            $parameters['regency_id'] = $this->regency_id;
         }
+
+        if ($this->district_id) {
+            $parameters['district_id'] = $this->district_id;
+        }
+
+        if ($this->updatedBy) {
+            $parameters['updated_by'] = $this->updatedBy;
+        }
+
+        $result = DB::select($query, $parameters);
 
         return collect($result)->map([$this, 'mapData']);
     }
+
+
+
 
     public function headings(): array
     {

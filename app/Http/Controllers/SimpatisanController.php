@@ -386,13 +386,20 @@ class SimpatisanController extends Controller
         $fileName = 'Simpatisan_' . $date . '.xlsx';
 
         $updatedBy = $request->input('updated_by');
+        $regency_id = $request->input('regency_id');
+        $district_id = $request->input('district_id');
 
-        return Excel::download(new SimpatisanExport($updatedBy), $fileName);
+        $simpatisanExport = new SimpatisanExport($updatedBy, $regency_id, $district_id);
+
+        return Excel::download($simpatisanExport, $fileName);
     }
     
     public function indexOfSimpatisanReports()
     {
         $data['users'] = DB::select('SELECT id, name FROM users');
+        $data['regencies'] = DB::table('regencies')->get();
+        $data['districts'] = DB::table('districts')->get();
+        $data['subdistricts'] = DB::table('subdistricts')->get();
         return view('reports.simpatisan.index', $data);
     }
 }
