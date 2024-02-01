@@ -43,7 +43,7 @@
                         <table class="table table-sm table-borderless">
                             <thead>
                                 <tr>
-                                    <th class="text-end">No</th>
+                                    <th>No</th>
                                     <th>User</th>
                                     <th class="text-end">Jumlah</th>
                                 </tr>
@@ -55,14 +55,10 @@
                                         {{ $loop->iteration }}
                                     </td>
                                     <td>
-                                        <div class="progressbg">
-                                            <div class="progress progressbg-progress">
-                                                <div class="progress-bar bg-primary-lt" style="width: {{ $con->percentage }}%" role="progressbar" aria-valuenow="{{ $con->percentage }}" aria-valuemin="0" aria-valuemax="100" aria-label="{{ $con->percentage }}% Complete">
-                                                    <span class="visually-hidden">{{ $con->percentage }}% Complete</span>
-                                                </div>
-                                            </div>
-                                            <div class="progressbg-text">{{ $con->nama_user }}</div>
+                                    <div class="progressbg @if($loop->iteration == 1) gold-bg @elseif($loop->iteration == 2) silver-bg @elseif($loop->iteration == 3) bronze-bg @endif">
+                                            <div>{{ $con->nama_user }}</div>
                                         </div>
+                                    </td>
                                     <td class="w-1 fw-bold text-end">{{ $con->total_input }}</td>
                                 </tr>
                                 @endforeach
@@ -98,20 +94,19 @@
 @endif
 @endsection
 @push('styles')
-<style>
+    <style>
     .gold-bg {
-        background-color: gold;
+    background-color: gold;
     }
 
     .silver-bg {
-        background-color: silver;
+    background-color: silver;
     }
 
     .bronze-bg {
-        background-color: #cd7f32;
-        /* Warna perunggu */
+    background-color: #cd7f32; /* Warna perunggu */
     }
 
-</style>
-@endpush
 
+    </style>
+@endpush
