@@ -28,8 +28,8 @@ class SimpatisanExport implements FromCollection, WithHeadings
     {
         $query = '
         SELECT
-            ROW_NUMBER() OVER (ORDER BY s.id) as no, s.nik, s.name, s.sex, s.age, r.name as regency_name, 
-            d.name as district_name, sd.name as subdistrict_name, s.rt, s.rw, s.phone, u.name as user_name
+            ROW_NUMBER() OVER (ORDER BY s.id) as no, s.nik, s.name, s.age, r.name as regency_name, 
+            d.name as district_name, sd.name as subdistrict_name, s.tps, s.rt, s.rw, s.phone, u.name as user_name
         FROM
             simpatisans s
         JOIN regencies r ON r.id = s.regency_id
@@ -82,11 +82,11 @@ class SimpatisanExport implements FromCollection, WithHeadings
             'No',
             'NIK',
             'Nama',
-            'Jenis Kelamin',
             'Umur',
             'Kota/Kabupaten',
             'Kecamatan',
             'Kelurahan',
+            'TPS',
             'RT',
             'RW',
             'No HP',
@@ -100,11 +100,11 @@ class SimpatisanExport implements FromCollection, WithHeadings
             $row->no,
             "`".$row->nik,
             $row->name,
-            $row->sex,
             $row->age,
             $row->regency_name,
             $row->district_name,
             $row->subdistrict_name,
+            $row->tps,
             $row->rt,
             $row->rw,
             $row->phone,
