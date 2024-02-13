@@ -46,10 +46,11 @@ class TpsController extends Controller
             'regency_id' => 'required',
             'district_id' => 'required',
             'subdistrict_id' => 'required',
-            'village' => '',
             'tps' => 'required',
             'officer' => 'required',
-            'total_voters' => 'required'
+            'total_voters' => 'required',
+            'golkars' => 'required',
+            'check'=>''
         ]);
 
         Tps::create($validatedData);
@@ -91,7 +92,8 @@ class TpsController extends Controller
             'subdistrict_id' => 'required',
             'tps' => 'required',
             'officer' => 'required',
-            'total_voters' => 'required'
+            'total_voters' => 'required',
+            'golkars' => 'required'
         ]);
 
         $tp->update($validatedData);

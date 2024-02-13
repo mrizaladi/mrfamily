@@ -119,10 +119,10 @@ class TpsDataTable extends DataTable
             Column::make('regency_id')->title('Kota/Kabupaten'),
             Column::make('district_id')->title('Kecamatan'),
             Column::make('subdistrict_id')->title('Kelurahan'),
-            Column::make('village')->title('Desa'),
             Column::make('tps')->title('TPS'),
             Column::make('officer')->title('Petugas'),
-            Column::make('total_voters')->title('Jumlah Pemilih'),
+            Column::make('total_voters')->title('Jumlah Pemilih MR'),
+            Column::make('golkars')->title('Jumlah Pemilih Golkar'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

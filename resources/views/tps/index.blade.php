@@ -40,10 +40,10 @@
                                 <th>Kabupaten/Kota</th>
                                 <th>Kecamatan</th>
                                 <th>Kelurahan</th>
-                                <th>Desa</th>
                                 <th>Nomor TPS</th>
                                 <th>Petugas</th>
-                                <th>Jumlah Pemilih</th>
+                                <th>Jumlah Pemilih MR</th>
+                                <th>Jumlah Pemilih Golkar</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -54,10 +54,10 @@
                                 <td>{{ $tp->regency?->name }}</td>
                                 <td>{{ $tp->district?->name }}</td>
                                 <td>{{ $tp->subdistrict?->name }}</td>
-                                <td>{{ $tp->village }}</td>
                                 <td>{{ $tp->tps }}</td>
                                 <td>{{ $tp->officer }}</td>
                                 <td>{{ $tp->total_voters }}</td>
+                                <td>{{ $tp->golkar }}</td>
                                 <td style="width: 10%;">
                                     <div class="d-flex justify-content-around">
                                         <a href="{{ route('tps.edit', $tp->id) }}" class="btn btn-outline-success btn-icon">

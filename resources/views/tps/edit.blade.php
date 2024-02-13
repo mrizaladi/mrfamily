@@ -52,30 +52,29 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">Desa</label>
-                                <input type="text" class="form-control @error('village') is-invalid @enderror" placeholder="Desa" name="village" value="{{ $tp->village }}">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="mb-3">
                                 <label class="form-label required">Nama Petugas</label>
                                 <input type="text" class="form-control @error('officer') is-invalid @enderror" placeholder="Nama Petugas" name="officer" value="{{ $tp->officer }}" >
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-2">
+                        <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">No TPS</label>
                                 <input type="number" class="form-control @error('tps') is-invalid @enderror" placeholder="No TPS" name="tps" value="{{ $tp->tps }}"> 
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-2">
+                        <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
-                                <label class="form-label required">Jumlah Pemilih</label>
-                                <input type="number" class="form-control @error('total_voters') is-invalid @enderror" placeholder="Jumlah Pemilih" name="total_voters" value="{{ $tp->total_voters }}">
+                                <label class="form-label required">Jumlah Pemilih MR</label>
+                                <input type="number" class="form-control @error('total_voters') is-invalid @enderror" placeholder="Jumlah Pemilih MR" name="total_voters" value="{{ $tp->total_voters }}">
                             </div>
                         </div>
-
-                        <div class="col-sm-4 col-md-2">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label required">Jumlah Pemilih Golkar</label>
+                                <input type="number" class="form-control @error('golkars') is-invalid @enderror" placeholder="Jumlah Pemilih Golkar" name="golkars" value="{{ $tp->golkars }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Foto Petugas</label>
                                 <input type="file" class="form-control">

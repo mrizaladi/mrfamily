@@ -13,10 +13,13 @@ class Tps extends Model
         'regency_id',
         'district_id',
         'subdistrict_id',
-        'village',
         'tps',
         'officer',
-        'total_voters'
+        'total_voters',
+        'golkars',
+        'check',
+        'isFastCount',
+
     ];
 
     public function regency()

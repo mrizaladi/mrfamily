@@ -51,13 +51,7 @@
                                  <div class="invalid-feedback">{{ $message }}</div>
                                  @enderror
                             </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3">
-                            <div class="mb-3">
-                                <label class="form-label required">Desa</label>
-                                <input type="text" class="form-control" placeholder="Desa" name="village" required>
-                            </div>
-                        </div>
+                        </div>                        
                         <div class="col-sm-6 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label required">Nama Petugas</label>
@@ -72,12 +66,17 @@
                         </div>
                         <div class="col-sm-6 col-md-2">
                             <div class="mb-3">
-                                <label class="form-label required">Jumlah Pemilih</label>
+                                <label class="form-label required">Jumlah Pemilih MR</label>
                                 <input type="number" class="form-control" placeholder="Jumlah Pemilih" name="total_voters" required>
                             </div>
                         </div>
-
-                        <div class="col-sm-4 col-md-2">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label required">Jumlah Pemilih Golkar</label>
+                                <input type="number" class="form-control" placeholder="Junlah Pemilih Golkar" name="golkars" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Foto Petugas</label>
                                 <input type="file" class="form-control">

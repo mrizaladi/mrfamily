@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('regency_id');
             $table->foreignId('district_id');
             $table->foreignid('subdistrict_id');
-            $table->string('village');
             $table->string('tps');
             $table->string('officer');
             $table->string('total_voters');
