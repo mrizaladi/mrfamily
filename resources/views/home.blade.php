@@ -12,65 +12,32 @@
             <div class="col-md-6 col-lg-5">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Pemilih dan Simpatisan Per-Kabupaten/Kota</h3>
+                        <h3 class="card-title">Data Pemilih TPS Per-Kabupaten/Kota</h3>
                     </div>
                     <table class="table card-table table-vcenter">
                         <thead>
                             <tr>
                                 <th>Kabupaten/Kota</th>
-                                <th>Jumlah DPT</th>
-                                <th>Jumlah Simpatisan</th>
+                                <th>Jumlah Pemilih MR</th>
+                                <th>Jumlah Pemilih Golkar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($simpatisan as $sim)
+                            @foreach ($tps as $tp)
                             <tr>
                                 <b>
-                                    <td>{{ $sim->kota }}</td>
+                                    <td>{{ $tp->kabupaten }}</td>
                                 </b>
-                                <td>{{ $sim->total_pemilih }}</td>
-                                <td>{{ $sim->total_simpatisan }}</td>
+                                <td>{{ $tp->total_voters }}</td>
+                                <td>{{ $tp->total_golkars }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">10 Kontributor Teratas</h3>
-                        <table class="table table-sm table-borderless">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>User</th>
-                                    <th class="text-end">Jumlah</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($contributors as $con)
-                                <tr>
-                                    <td class="text-end">
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td>
-                                    <div class="progressbg @if($loop->iteration == 1) gold-bg @elseif($loop->iteration == 2) silver-bg @elseif($loop->iteration == 3) bronze-bg @endif">
-                                            <div>{{ $con->nama_user }}</div>
-                                        </div>
-                                    </td>
-                                    <td class="w-1 fw-bold text-end">{{ $con->total_input }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-
-
 </div>
 @else
 <div class="page-body">

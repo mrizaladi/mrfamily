@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Simpatisan;
+use App\Models\Tps;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +36,20 @@ class HomeController extends Controller
             )
                 ->join('regencies', 'regencies.id', '=', 'simpatisans.regency_id')
                 ->whereIn('simpatisans.regency_id', [1, 2, 3, 4])
+                ->groupBy('regencies.id', 'regencies.name')
+                ->get();
+        });
+
+        $cacheKeyTps = 'tps_data';
+        $data['tps'] = Cache::remember($cacheKeyTps, now()->addMinutes(5), function () {
+            return Tps::select(
+                'regencies.name as kabupaten',
+                DB::raw('sum(total_voters) as total_voters'),
+                DB::raw('sum(golkars) as total_golkars')
+            )
+                ->join('regencies', 'regencies.id', '=', 'tps.regency_id')
+                ->whereIn('tps.regency_id', [1, 2, 3, 4])
+                ->where('tps.isFastCount', false)
                 ->groupBy('regencies.id', 'regencies.name')
                 ->get();
         });
