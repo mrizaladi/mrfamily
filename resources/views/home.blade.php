@@ -9,7 +9,7 @@
 <div class="page-body">
     <div class="container-xl">
         <div class="row row-deck row-cards">
-            <div class="col-md-6 col-lg-5">
+            <div class="col-md-6 col-lg-8">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Data Pemilih TPS Per-Kabupaten/Kota</h3>
@@ -18,8 +18,9 @@
                         <thead>
                             <tr>
                                 <th>Kabupaten/Kota</th>
-                                <th>Jumlah Pemilih MR</th>
-                                <th>Jumlah Pemilih Golkar</th>
+                                <th>Jumlah TPS</th>
+                                <th>Jumlah Suara MR</th>
+                                <th>Jumlah Suara Partai Golkar RI</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,6 +29,7 @@
                                 <b>
                                     <td>{{ $tp->kabupaten }}</td>
                                 </b>
+                                <td>{{ $tp->total_tps }}</td>
                                 <td>{{ $tp->total_voters }}</td>
                                 <td>{{ $tp->total_golkars }}</td>
                             </tr>

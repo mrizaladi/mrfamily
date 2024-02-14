@@ -45,7 +45,9 @@ class HomeController extends Controller
             return Tps::select(
                 'regencies.name as kabupaten',
                 DB::raw('sum(total_voters) as total_voters'),
-                DB::raw('sum(golkars) as total_golkars')
+                DB::raw('sum(golkars) as total_golkars'),
+                DB::raw('COUNT(*) as total_tps'),
+
             )
                 ->join('regencies', 'regencies.id', '=', 'tps.regency_id')
                 ->whereIn('tps.regency_id', [1, 2, 3, 4])
