@@ -50,7 +50,7 @@ class TpsController extends Controller
             'officer' => 'required',
             'total_voters' => 'required',
             'golkars' => 'required',
-            'check'=>'',
+            'check' => '',
             'proof' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 
@@ -68,12 +68,15 @@ class TpsController extends Controller
             $image = $request->file('proof');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('proof'), $imageName);
+
+            $validatedData['proof'] = $imageName;
         }
 
         Tps::create($validatedData);
 
         return redirect()->route('tps.index')->with('success', 'Data berhasil ditambahkan!');
     }
+
 
     /**
      * Display the specified resource.
@@ -123,7 +126,7 @@ class TpsController extends Controller
         } else {
             $validatedData['tps'] = $tps;
         }
-        
+
         if ($request->hasFile('proof')) {
             $image = $request->file('proof');
             $imageName = time() . '.' . $image->getClientOriginalExtension();

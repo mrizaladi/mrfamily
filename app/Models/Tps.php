@@ -19,6 +19,7 @@ class Tps extends Model
         'golkars',
         'check',
         'isFastCount',
+        'proof'
 
     ];
 
