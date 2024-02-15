@@ -54,6 +54,16 @@ class TpsController extends Controller
             'proof' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 
+        $tps = (string)$validatedData['tps'];
+
+        $maxLength = 3;
+
+        if (strlen($tps) < $maxLength) {
+            $validatedData['tps'] = str_pad($tps, $maxLength, '0', STR_PAD_LEFT);
+        } else {
+            $validatedData['tps'] = $tps;
+        }
+
         if ($request->hasFile('proof')) {
             $image = $request->file('proof');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -104,6 +114,16 @@ class TpsController extends Controller
             'proof' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 
+        $tps = (string)$validatedData['tps'];
+
+        $maxLength = 3;
+
+        if (strlen($tps) < $maxLength) {
+            $validatedData['tps'] = str_pad($tps, $maxLength, '0', STR_PAD_LEFT);
+        } else {
+            $validatedData['tps'] = $tps;
+        }
+        
         if ($request->hasFile('proof')) {
             $image = $request->file('proof');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
