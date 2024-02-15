@@ -50,8 +50,15 @@ class TpsController extends Controller
             'officer' => 'required',
             'total_voters' => 'required',
             'golkars' => 'required',
-            'check'=>''
+            'check'=>'',
+            'proof' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
+
+        if ($request->hasFile('proof')) {
+            $image = $request->file('proof');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('proof'), $imageName);
+        }
 
         Tps::create($validatedData);
 
@@ -93,8 +100,23 @@ class TpsController extends Controller
             'tps' => 'required',
             'officer' => 'required',
             'total_voters' => 'required',
-            'golkars' => 'required'
+            'golkars' => 'required',
+            'proof' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
+
+        if ($request->hasFile('proof')) {
+            $image = $request->file('proof');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('proof'), $imageName);
+
+            if ($tp->proof && file_exists(public_path('proof/' . $tp->proof))) {
+                unlink(public_path('proof/' . $tp->proof));
+            }
+
+            $validatedData['proof'] = $imageName;
+
+            $tp->update(['status' => true]);
+        }
 
         $tp->update($validatedData);
 

@@ -79,7 +79,10 @@
                         <div class="col-sm-4 col-md-3">
                             <div class="mb-3">
                                 <label class="form-label">Foto Petugas</label>
-                                <input type="file" class="form-control">
+                                <input type="file" class="form-control @error('proof') is-invalid @enderror" name="proof">
+                                @error('proof')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
