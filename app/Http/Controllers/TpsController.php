@@ -50,7 +50,7 @@ class TpsController extends Controller
             'officer' => 'required',
             'total_voters' => 'required',
             'golkars' => 'required',
-            'check' => '',
+            'chec' => '',
             'proof' => 'file|mimes:jpg,png,jpeg,gif,svg,pdf,doc,docx|max:4096'
         ]);
 

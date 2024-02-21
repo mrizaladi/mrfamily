@@ -51,7 +51,6 @@ class HomeController extends Controller
             )
                 ->join('regencies', 'regencies.id', '=', 'tps.regency_id')
                 ->whereIn('tps.regency_id', [1, 2, 3, 4])
-                ->where('tps.isFastCount', false)
                 ->groupBy('regencies.id', 'regencies.name')
                 ->get();
         });

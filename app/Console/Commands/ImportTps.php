@@ -55,7 +55,7 @@ class ImportTps extends Command
                 'total_voters' => $row[4],
                 'golkars'=> $row[5],
                 'officer' => $row[6],
-                'check'=> $row[7],
+                'chec'=> $row[7],
                 'isFastCount' => true,
                 
                 // Tambahkan kolom-kolom lainnya sesuai dengan struktur CSV

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('tps', function (Blueprint $table) {
             $table->string('golkars'); // Kolom 'golkars' yang wajib diisi
-            $table->string('check')->unique(); // Kolom 'check' yang unik dan harus berisi nilai numerik
+            $table->string('chec')->unique(); // Kolom 'check' yang unik dan harus berisi nilai numerik
         });
     }
 
