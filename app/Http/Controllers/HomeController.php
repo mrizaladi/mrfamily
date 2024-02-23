@@ -40,20 +40,27 @@ class HomeController extends Controller
                 ->get();
         });
 
-        $cacheKeyTps = 'tps_data';
-        $data['tps'] = Cache::remember($cacheKeyTps, now()->addMinutes(5), function () {
-            return Tps::select(
-                'regencies.name as kabupaten',
-                DB::raw('sum(total_voters) as total_voters'),
-                DB::raw('sum(golkars) as total_golkars'),
-                DB::raw('COUNT(*) as total_tps'),
-
-            )
-                ->join('regencies', 'regencies.id', '=', 'tps.regency_id')
-                ->whereIn('tps.regency_id', [1, 2, 3, 4])
-                ->groupBy('regencies.id', 'regencies.name')
-                ->get();
-        });
+    $cacheKeyTps = 'tps_data';
+    $data['tps'] = Cache::remember($cacheKeyTps, now(), function () {
+    return Tps::select(
+        'regencies.name as kabupaten',
+        DB::raw('sum(total_voters) as total_voters'),
+        DB::raw('sum(golkars) as total_golkars'),
+        DB::raw('COUNT(*) as total_tps'),
+        DB::raw('case when regencies.id = 1 then 3491
+            when regencies.id = 2 then 4637
+            when regencies.id = 3 then 652
+            when regencies.id = 4 then 3351 end as totaltpstetap'),
+        DB::raw('case when regencies.id = 1 then Concat(ROUND((select count(*)/3491*100 from tps where regency_id = 1),1),"%")
+            when regencies.id = 2 then Concat(ROUND((select count(*)/4637*100 from tps where regency_id = 2),1),"%")
+            when regencies.id = 3 then Concat(ROUND((select count(*)/652*100 from tps where regency_id = 3),1),"%")
+            when regencies.id = 4 then Concat(ROUND((select count(*)/3351*100 from tps where regency_id = 4),1),"%") end as persentase')
+    )
+        ->join('regencies', 'regencies.id', '=', 'tps.regency_id')
+        ->whereIn('tps.regency_id', [1, 2, 3, 4])
+        ->groupBy('regencies.id', 'regencies.name')
+        ->get();
+});
 
         $cacheKeyContributors = 'top_contributors';
         $data['contributors'] = Cache::remember($cacheKeyContributors, now()->addMinutes(10), function () {
